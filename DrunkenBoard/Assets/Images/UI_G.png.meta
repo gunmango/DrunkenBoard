@@ -1,0 +1,1183 @@
+fileFormatVersion: 2
+guid: 6c9be1bc28d60684b9e99e44a445980f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2408619231166489457
+    second: UI_G_0
+  - first:
+      213: 7310854098716783102
+    second: UI_G_1
+  - first:
+      213: 2530342093713187376
+    second: UI_G_2
+  - first:
+      213: 6586742831538118657
+    second: UI_G_3
+  - first:
+      213: 7289811751716243860
+    second: UI_G_4
+  - first:
+      213: 8141984786576927486
+    second: UI_G_5
+  - first:
+      213: -8602937833523181340
+    second: UI_G_6
+  - first:
+      213: 282852929884838433
+    second: UI_G_7
+  - first:
+      213: -798612080013699300
+    second: UI_G_8
+  - first:
+      213: -2016065063812994005
+    second: UI_G_9
+  - first:
+      213: -4068416762386860802
+    second: UI_G_10
+  - first:
+      213: 8953931678061567126
+    second: UI_G_11
+  - first:
+      213: -9170763569371547649
+    second: UI_G_12
+  - first:
+      213: 5481814404389566143
+    second: UI_G_13
+  - first:
+      213: -1697966600710045888
+    second: UI_G_14
+  - first:
+      213: -2463805179839093778
+    second: UI_G_15
+  - first:
+      213: 3791869572720952900
+    second: UI_G_16
+  - first:
+      213: -1090549577876273246
+    second: UI_G_17
+  - first:
+      213: 8371718711011449373
+    second: UI_G_18
+  - first:
+      213: 6926691439711664403
+    second: UI_G_19
+  - first:
+      213: 8414100705650951343
+    second: UI_G_20
+  - first:
+      213: 7164548425510236208
+    second: UI_G_21
+  - first:
+      213: 3264925639098312888
+    second: UI_G_22
+  - first:
+      213: -2009590228972845900
+    second: UI_G_23
+  - first:
+      213: 6143014052945911713
+    second: UI_G_24
+  - first:
+      213: 6520842495904305343
+    second: UI_G_25
+  - first:
+      213: -6258880019082329757
+    second: UI_G_26
+  - first:
+      213: -3117387387264072012
+    second: UI_G_27
+  - first:
+      213: -8671078130902453857
+    second: UI_G_28
+  - first:
+      213: -7872630094433547396
+    second: UI_G_29
+  - first:
+      213: -632787039545560135
+    second: UI_G_30
+  - first:
+      213: -8097081127097635441
+    second: UI_G_31
+  - first:
+      213: -6307195460793816967
+    second: UI_G_32
+  - first:
+      213: 4222076370335231031
+    second: UI_G_33
+  - first:
+      213: -4260461676622787787
+    second: UI_G_34
+  - first:
+      213: 7347822237184614474
+    second: UI_G_35
+  - first:
+      213: -8577887127568807262
+    second: UI_G_36
+  - first:
+      213: -2872305010802452284
+    second: UI_G_37
+  - first:
+      213: -560489076266077263
+    second: UI_G_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Board_Height
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33fc61d2fffe0e14481027d2885d6691
+      internalID: -1894688940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Board_Corner
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1792
+        width: 384
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eda35cd7f3cc1640b80904747c6ff30
+      internalID: 538268971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Popup_Square
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 384
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12d1b619d95826b4792fa15da8842b94
+      internalID: 1466647089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chat_Box
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1792
+        width: 768
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6e801c0babb87c43ae78fc27d2c5a1d
+      internalID: -1748113262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Board_Width
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1664
+        width: 384
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8a516aab9dd8be4f880f88c92b3a511
+      internalID: -1117332760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Popup_Rectangle
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1664
+        width: 512
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e9f885fc9a895b45bc83feb5701218c
+      internalID: -1779822717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_DoneB
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1664
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1273898ba85a2b45bdee6385e6d0a2d
+      internalID: 588453496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_BrushSize
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1664
+        width: 256
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40d61e1f725cc46499327b51d7021ca7
+      internalID: 323788139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Board_Cam
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 384
+        height: 384
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e329f9d7cd433b04c83493872d07e71b
+      internalID: 1965028084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Print
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee77f3b86b13494aa2f4fdd1f23b532
+      internalID: 12894984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Eraser
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe7d341af9de1f4bb75cbafc3f72529
+      internalID: 493273624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_pencil
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1152
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c04544e5590a18945bd8a2ff3e339258
+      internalID: 1525318307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_W_GoBack
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4926b45fee5e944968c92869e4e4fa
+      internalID: 1942971412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_W_GoFront
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c90d8a2b9a7fd41a4119f27a0c71e9
+      internalID: -1596213548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_W_Pencil
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 762252a32e9bede4ab44982e5fcc4825
+      internalID: 1435775686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_W_Eraser
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7617afb6097d9bf4ea128c2eec44bf9f
+      internalID: -385747645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_W_Print
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1024
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6939dbb0e18a154499f8b7534e2a0628
+      internalID: -814821855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Indigo
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ee1562b0a0d8674fa99174bb134e01f
+      internalID: 721579552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Purple
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50061db8128970f4b95344865a3d6d4a
+      internalID: 601266074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_W_Base
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94a2bbe3bfb43d045ae9423377efd921
+      internalID: 303276608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_LightBlue
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33a87020e66583543bbeb508e90f4a9e
+      internalID: 298060672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Blue
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 024f3ff5f8e4e654881b8370042e37fe
+      internalID: -740302417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Pink
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9af48c1b52d4e4aa981cb9a9f7e7df
+      internalID: -751473198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Orange
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5681cdb6b502464d988ce109479ca3d
+      internalID: 1593037217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_DarkGreen
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0803b6bfd788a1f47a459043cc8000c2
+      internalID: -1609845974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Popup_GameInfo_O
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 1408
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c855f9f74de6feb43a82ee05b4cd9041
+      internalID: -1233703484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Black
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6272443b8b8ddf4ca8c4569cfd1df69
+      internalID: -1409067736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_White
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aae3af1f34790a04abc035dc87a9460e
+      internalID: -470222189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Red
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b06cae02c419864f80b66d02af59d92
+      internalID: 1207339866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_Yellow
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d2047392227144bb7494634c609171
+      internalID: 1856641380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Color_LightGreen
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09acc502c9ba3554c9664f539e86959f
+      internalID: 1334626601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GalticP_Board
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 896
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d7fa4ad14177ba4d84ffb67248b9092
+      internalID: -1695452895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Popup_GameInf_I
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 768
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c052672d2a8214ba435cf17d8dfa13
+      internalID: -2140063269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c427f8a83c995e74fae18a67e0770e8d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BoardWidth: -1117332760
+      Board_Cam: 1965028084
+      Board_Corner: 538268971
+      Board_Height: -1894688940
+      Board_Width: -1117332760
+      Chat_Box: -1748113262
+      DarkGreen: 1856641380
+      GalticP_Board: -1695452895
+      GalticP_BrushSize: 323788139
+      GalticP_Color_Black: -1409067736
+      GalticP_Color_Blue: -740302417
+      GalticP_Color_DarkGreen: -1609845974
+      GalticP_Color_Indigo: 721579552
+      GalticP_Color_LightBlue: 298060672
+      GalticP_Color_LightGreen: 1334626601
+      GalticP_Color_Orange: 1593037217
+      GalticP_Color_Pink: -751473198
+      GalticP_Color_Purple: 601266074
+      GalticP_Color_Red: 1207339866
+      GalticP_Color_White: -470222189
+      GalticP_Color_Yellow: 1856641380
+      GalticP_DoneB: 588453496
+      GalticP_Eraser: 493273624
+      GalticP_Print: 12894984
+      GalticP_W_Base: 303276608
+      GalticP_W_Eraser: -385747645
+      GalticP_W_GoBack: 1942971412
+      GalticP_W_GoFront: -1596213548
+      GalticP_W_Pencil: 1435775686
+      GalticP_W_Print: -814821855
+      GalticP_pencil: 1525318307
+      Popup_GameInf_I: -2140063269
+      Popup_GameInfo_O: -1233703484
+      Popup_Rectangle: -1779822717
+      Popup_Square: 1466647089
+      Rectangle: -1779822717
+      UI_G_0: 790123111
+      UI_G_1: 2099663846
+      UI_G_10: -1622771888
+      UI_G_106: 869778219
+      UI_G_107: 1186552834
+      UI_G_108: -131492429
+      UI_G_109: -829222075
+      UI_G_110: 1774700262
+      UI_G_111: 1316482009
+      UI_G_112: 1105695288
+      UI_G_113: 1357673949
+      UI_G_114: -981484687
+      UI_G_115: -350056836
+      UI_G_121: 808092707
+      UI_G_122: -814626889
+      UI_G_123: -513475667
+      UI_G_124: -458020866
+      UI_G_125: -1466523144
+      UI_G_126: 1542827284
+      UI_G_127: 1361040712
+      UI_G_128: -253309534
+      UI_G_129: 2130828374
+      UI_G_13: 1524015726
+      UI_G_130: -953894955
+      UI_G_131: 1304660454
+      UI_G_132: -237809978
+      UI_G_133: -160982614
+      UI_G_134: -1141335198
+      UI_G_135: -1930037919
+      UI_G_136: 1870490407
+      UI_G_137: -114045619
+      UI_G_138: -1707644585
+      UI_G_139: 1896789922
+      UI_G_14: -150162326
+      UI_G_140: 1464043941
+      UI_G_141: -18535524
+      UI_G_142: -253534984
+      UI_G_143: -212252624
+      UI_G_144: -1908389581
+      UI_G_145: -1507068813
+      UI_G_146: 1284830555
+      UI_G_147: 135877233
+      UI_G_148: -248901020
+      UI_G_149: -473010866
+      UI_G_150: 1950608517
+      UI_G_151: -980512816
+      UI_G_152: 1499488868
+      UI_G_153: 494146427
+      UI_G_154: 798705085
+      UI_G_155: -831896128
+      UI_G_156: -1531700665
+      UI_G_157: 1202748635
+      UI_G_158: 2093704721
+      UI_G_159: -1577061261
+      UI_G_16: 307014368
+      UI_G_161: -614922817
+      UI_G_162: 1099322117
+      UI_G_163: -93057567
+      UI_G_164: -41822291
+      UI_G_165: -1362402297
+      UI_G_166: -632221891
+      UI_G_167: 1611051793
+      UI_G_168: 1794220296
+      UI_G_169: 1839902990
+      UI_G_17: 1202315123
+      UI_G_170: -1699606761
+      UI_G_171: 1066029077
+      UI_G_172: -1454389809
+      UI_G_174: 870111307
+      UI_G_175: 1995256840
+      UI_G_176: 1069608116
+      UI_G_177: -1527357648
+      UI_G_178: -1248517826
+      UI_G_19: -52507994
+      UI_G_2: -1403803671
+      UI_G_20: 1601304549
+      UI_G_21: -1611432399
+      UI_G_22: 694451266
+      UI_G_23: 1881306085
+      UI_G_25: 319261115
+      UI_G_26: 1596614396
+      UI_G_28: -187295575
+      UI_G_29: -1183186213
+      UI_G_3: -2069056228
+      UI_G_30: -63166843
+      UI_G_32: 1120427951
+      UI_G_34: -1696015405
+      UI_G_35: -689459895
+      UI_G_36: -634528976
+      UI_G_37: -1824528763
+      UI_G_38: -1895673811
+      UI_G_39: 2132154889
+      UI_G_4: -198470357
+      UI_G_40: -1816287697
+      UI_G_42: 1332864894
+      UI_G_43: 2116371531
+      UI_G_44: 1439704521
+      UI_G_45: -1404855147
+      UI_G_46: -2044950531
+      UI_G_47: 7659531
+      UI_G_48: 2031015901
+      UI_G_49: -2078814813
+      UI_G_5: -778424495
+      UI_G_50: -68395203
+      UI_G_51: 1714350619
+      UI_G_52: -1497940191
+      UI_G_53: -60869172
+      UI_G_54: 2033633094
+      UI_G_55: -1184000168
+      UI_G_59: 602875540
+      UI_G_6: -2643261
+      UI_G_60: -74073285
+      UI_G_61: 96611221
+      UI_G_62: -2105108358
+      UI_G_63: 1526978290
+      UI_G_64: 1012428372
+      UI_G_65: -1660915657
+      UI_G_66: 1653864627
+      UI_G_67: 570488862
+      UI_G_68: -1641608082
+      UI_G_69: -1813891998
+      UI_G_7: -1217500457
+      UI_G_75: 2024079706
+      UI_G_76: 613570025
+      UI_G_77: -684592606
+      UI_G_78: 1466730847
+      UI_G_79: 2147462673
+      UI_G_8: -281110040
+      UI_G_80: -1155471626
+      UI_G_81: -1505921684
+      UI_G_82: -2026128006
+      UI_G_83: 2112275974
+      UI_G_84: -263546108
+      UI_G_85: 1177058140
+      UI_G_89: 1175586322
+      UI_G_9: -1046913863
+      UI_G_90: 786497710
+      UI_G_91: 2024306561
+      UI_G_92: -1952458778
+      UI_G_93: 1963862247
+      UI_G_94: -863359312
+      UI_G_95: 921605887
+      UI_G_96: 1011940477
+      UI_G_97: 354026857
+      UI_G_98: 1304144635
+      UI_G_99: 576109504
+      Yellow: 1207339866
+      length: -1894688940
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
