@@ -1294,7 +1294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_145
+      name: Item_Shield
       rect:
         serializedVersion: 2
         x: 1024
@@ -1316,7 +1316,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_146
+      name: Item_Key
       rect:
         serializedVersion: 2
         x: 1152
@@ -1338,7 +1338,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_147
+      name: Voting_Refuse
       rect:
         serializedVersion: 2
         x: 1280
@@ -1360,7 +1360,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_148
+      name: Voting_Agree
       rect:
         serializedVersion: 2
         x: 1408
@@ -1382,7 +1382,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_149
+      name: Voting_C_Agree
       rect:
         serializedVersion: 2
         x: 1536
@@ -1404,7 +1404,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_150
+      name: Voting_C_Refuse
       rect:
         serializedVersion: 2
         x: 1664
@@ -1426,7 +1426,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_151
+      name: Crocodile_MouseP_2
       rect:
         serializedVersion: 2
         x: 1792
@@ -1448,7 +1448,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_152
+      name: Item_B_1
       rect:
         serializedVersion: 2
         x: 0
@@ -1470,7 +1470,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_153
+      name: Item_B_2
       rect:
         serializedVersion: 2
         x: 128
@@ -1492,7 +1492,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_154
+      name: Item_B_3
       rect:
         serializedVersion: 2
         x: 256
@@ -1514,7 +1514,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_155
+      name: Item_B_4
       rect:
         serializedVersion: 2
         x: 384
@@ -1536,7 +1536,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_156
+      name: Item_B_5
       rect:
         serializedVersion: 2
         x: 512
@@ -1558,7 +1558,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_157
+      name: Item_B_6
       rect:
         serializedVersion: 2
         x: 640
@@ -1580,7 +1580,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_158
+      name: Item_B_7
       rect:
         serializedVersion: 2
         x: 768
@@ -1602,7 +1602,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_159
+      name: Item_B_8
       rect:
         serializedVersion: 2
         x: 896
@@ -1624,7 +1624,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_160
+      name: Item_B_9
       rect:
         serializedVersion: 2
         x: 1024
@@ -1646,7 +1646,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_161
+      name: Item_B_0
       rect:
         serializedVersion: 2
         x: 1152
@@ -1668,7 +1668,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_162
+      name: Item_B_Colon
       rect:
         serializedVersion: 2
         x: 1280
@@ -1690,7 +1690,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_163
+      name: Item_Cup_2
       rect:
         serializedVersion: 2
         x: 1408
@@ -1712,7 +1712,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_164
+      name: Item_Cup_1
       rect:
         serializedVersion: 2
         x: 1536
@@ -1734,7 +1734,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_165
+      name: Crocodile_MouseP_1
       rect:
         serializedVersion: 2
         x: 1792
@@ -1756,7 +1756,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_166
+      name: Item_S_1
       rect:
         serializedVersion: 2
         x: 0
@@ -1778,7 +1778,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_167
+      name: Item_S_2
       rect:
         serializedVersion: 2
         x: 128
@@ -1800,7 +1800,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_168
+      name: Item_S_3
       rect:
         serializedVersion: 2
         x: 256
@@ -1822,7 +1822,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_169
+      name: Item_S_4
       rect:
         serializedVersion: 2
         x: 384
@@ -1844,7 +1844,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_170
+      name: Item_S_5
       rect:
         serializedVersion: 2
         x: 512
@@ -1866,7 +1866,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_171
+      name: Item_S_6
       rect:
         serializedVersion: 2
         x: 640
@@ -1888,7 +1888,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_172
+      name: Item_S_7
       rect:
         serializedVersion: 2
         x: 768
@@ -1910,7 +1910,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_173
+      name: Item_S_8
       rect:
         serializedVersion: 2
         x: 896
@@ -1932,7 +1932,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_174
+      name: Item_S_9
       rect:
         serializedVersion: 2
         x: 1024
@@ -1954,7 +1954,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_175
+      name: Item_S_0
       rect:
         serializedVersion: 2
         x: 1152
@@ -1976,7 +1976,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_176
+      name: Item_S_Colon
       rect:
         serializedVersion: 2
         x: 1280
@@ -1998,7 +1998,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_177
+      name: Item_Tbox
       rect:
         serializedVersion: 2
         x: 1408
@@ -2020,12 +2020,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_178
+      name: Voting_Bar
       rect:
         serializedVersion: 2
         x: 0
         y: 128
-        width: 128
+        width: 896
         height: 128
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2042,139 +2042,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_179
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 345947904fab5454c96b4d880fbb8fe9
-      internalID: 693928607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crocodile_G_180
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74bc08cb3865da7419bb95a8b51d131b
-      internalID: 20872654
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crocodile_G_181
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: adb153132b056a045a02fe99bbdb15c2
-      internalID: -343379206
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crocodile_G_182
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2114a04da7ddf784889336f989f5b0ac
-      internalID: 1987361888
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crocodile_G_183
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d806b13312ed4cb4f98b2074cdd175e3
-      internalID: -1487903913
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crocodile_G_184
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8520b0dc047af3b499e8fbcfdf4e2db8
-      internalID: 1515277616
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crocodile_G_185
+      name: UI_D_O
       rect:
         serializedVersion: 2
         x: 896
@@ -2196,7 +2064,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_186
+      name: UI_D_X
       rect:
         serializedVersion: 2
         x: 1024
@@ -2218,7 +2086,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_187
+      name: UI_D_Camera
       rect:
         serializedVersion: 2
         x: 1152
@@ -2240,7 +2108,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_188
+      name: UI_D_Video
       rect:
         serializedVersion: 2
         x: 1280
@@ -2262,7 +2130,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_189
+      name: UI_D_Sound
       rect:
         serializedVersion: 2
         x: 1408
@@ -2284,7 +2152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_190
+      name: UI_D_Pause
       rect:
         serializedVersion: 2
         x: 1536
@@ -2306,7 +2174,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_191
+      name: UI_D_Home
       rect:
         serializedVersion: 2
         x: 1664
@@ -2328,7 +2196,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_192
+      name: UI_D_Check
       rect:
         serializedVersion: 2
         x: 1792
@@ -2350,7 +2218,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_193
+      name: UI_D_Arrow
       rect:
         serializedVersion: 2
         x: 1920
@@ -2372,7 +2240,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_194
+      name: UI_B_O
       rect:
         serializedVersion: 2
         x: 0
@@ -2394,7 +2262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_195
+      name: UI_B_X
       rect:
         serializedVersion: 2
         x: 128
@@ -2416,7 +2284,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_196
+      name: UI_B_Camera
       rect:
         serializedVersion: 2
         x: 256
@@ -2438,7 +2306,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_197
+      name: UI_B_Video
       rect:
         serializedVersion: 2
         x: 384
@@ -2460,7 +2328,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_198
+      name: UI_B_Sound
       rect:
         serializedVersion: 2
         x: 512
@@ -2482,7 +2350,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_199
+      name: UI_B_Pause
       rect:
         serializedVersion: 2
         x: 640
@@ -2504,7 +2372,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_200
+      name: UI_B_Home
       rect:
         serializedVersion: 2
         x: 768
@@ -2526,7 +2394,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_201
+      name: UI_B_Check
       rect:
         serializedVersion: 2
         x: 896
@@ -2548,7 +2416,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_202
+      name: UI_B_Arrow
       rect:
         serializedVersion: 2
         x: 1024
@@ -2570,7 +2438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_203
+      name: UI_B_Info
       rect:
         serializedVersion: 2
         x: 1152
@@ -2592,7 +2460,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_204
+      name: UI_B_Setting
       rect:
         serializedVersion: 2
         x: 1280
@@ -2614,7 +2482,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_205
+      name: UI_D_Info
       rect:
         serializedVersion: 2
         x: 1792
@@ -2636,7 +2504,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_206
+      name: UI_D_Setting
       rect:
         serializedVersion: 2
         x: 1920
@@ -2671,8 +2539,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      1: 1825687151
       Apart: -394656667
       Apart_Window: -240634827
+      Colon: -950672727
       Crocodile_1: -942150936
       Crocodile_2: -1187487534
       Crocodile_G_10: -666575703
@@ -2695,43 +2565,9 @@ TextureImporter:
       Crocodile_G_141: 1958494530
       Crocodile_G_142: 1690789437
       Crocodile_G_143: -1199284151
-      Crocodile_G_145: -201701353
-      Crocodile_G_146: -1944269471
-      Crocodile_G_147: -1692217445
-      Crocodile_G_148: 1957300315
-      Crocodile_G_149: -1042185513
       Crocodile_G_15: 862884823
-      Crocodile_G_150: -353134836
-      Crocodile_G_151: -1201531834
-      Crocodile_G_152: 906863014
-      Crocodile_G_153: -634684520
-      Crocodile_G_154: 1606174243
-      Crocodile_G_155: 1498700266
-      Crocodile_G_156: -1417178322
-      Crocodile_G_157: -1531586181
-      Crocodile_G_158: -107861782
-      Crocodile_G_159: -1986356910
       Crocodile_G_16: -1319972802
-      Crocodile_G_160: 1716615744
-      Crocodile_G_161: -513024585
-      Crocodile_G_162: -950672727
-      Crocodile_G_163: 2021320164
-      Crocodile_G_164: 302557956
-      Crocodile_G_165: 1825687151
-      Crocodile_G_166: -676871548
-      Crocodile_G_167: 1544231757
-      Crocodile_G_168: -2034625088
-      Crocodile_G_169: 1244396768
       Crocodile_G_17: -1793186893
-      Crocodile_G_170: -1006047071
-      Crocodile_G_171: -560268578
-      Crocodile_G_172: -1803837837
-      Crocodile_G_173: 1751261760
-      Crocodile_G_174: -1734463450
-      Crocodile_G_175: 1854350060
-      Crocodile_G_176: 1897719529
-      Crocodile_G_177: 1117121998
-      Crocodile_G_178: -1547753971
       Crocodile_G_179: 693928607
       Crocodile_G_18: -1177932902
       Crocodile_G_180: 20872654
@@ -2739,31 +2575,9 @@ TextureImporter:
       Crocodile_G_182: 1987361888
       Crocodile_G_183: -1487903913
       Crocodile_G_184: 1515277616
-      Crocodile_G_185: -740840610
-      Crocodile_G_186: -28029367
-      Crocodile_G_187: -1610128992
-      Crocodile_G_188: 1849197015
-      Crocodile_G_189: -1494016276
       Crocodile_G_19: 1627062318
-      Crocodile_G_190: -760207373
-      Crocodile_G_191: -594979302
-      Crocodile_G_192: 1271661512
-      Crocodile_G_193: -884694349
-      Crocodile_G_194: -1243515933
-      Crocodile_G_195: 760582128
-      Crocodile_G_196: 1348290708
-      Crocodile_G_197: -1132270846
-      Crocodile_G_198: 1960747827
-      Crocodile_G_199: 328337663
       Crocodile_G_2: -655846954
       Crocodile_G_20: 1276756796
-      Crocodile_G_200: -568449961
-      Crocodile_G_201: 760392069
-      Crocodile_G_202: 740600299
-      Crocodile_G_203: 1699017852
-      Crocodile_G_204: 476150087
-      Crocodile_G_205: 493612408
-      Crocodile_G_206: -109526136
       Crocodile_G_207: -1140647435
       Crocodile_G_21: -1794271768
       Crocodile_G_22: 556128950
@@ -2844,6 +2658,9 @@ TextureImporter:
       Crocodile_G_90: -1550354547
       Crocodile_G_91: -450224893
       Crocodile_G_92: 393741839
+      Crocodile_MP: 1825687151
+      Crocodile_MouseP_1: 1825687151
+      Crocodile_MouseP_2: -1201531834
       Crocodile_T_1: -1502377588
       Crocodile_T_10: -90126704
       Crocodile_T_10_1: 1909516466
@@ -2872,6 +2689,33 @@ TextureImporter:
       Crocodile_T_8_1: -642901394
       Crocodile_T_9: -2018372376
       Crocodile_T_9_1: -1235486854
+      Item_B_0: -513024585
+      Item_B_1: 906863014
+      Item_B_2: -634684520
+      Item_B_3: 1606174243
+      Item_B_4: 1498700266
+      Item_B_5: -1417178322
+      Item_B_6: -1531586181
+      Item_B_7: -107861782
+      Item_B_8: -1986356910
+      Item_B_9: 1716615744
+      Item_B_Colon: -950672727
+      Item_Cup_1: 302557956
+      Item_Cup_2: 2021320164
+      Item_Key: -1944269471
+      Item_S_0: 1854350060
+      Item_S_1: -676871548
+      Item_S_2: 1544231757
+      Item_S_3: -2034625088
+      Item_S_4: 1244396768
+      Item_S_5: -1006047071
+      Item_S_6: -560268578
+      Item_S_7: -1803837837
+      Item_S_8: 1751261760
+      Item_S_9: -1734463450
+      Item_S_Colon: 1897719529
+      Item_Shield: -201701353
+      Item_Tbox: 1117121998
       RSP_C_P: 1132977796
       RSP_C_R: -1151967937
       RSP_C_S: -119676021
@@ -2879,6 +2723,34 @@ TextureImporter:
       RSP_R: 1790018053
       RSP_S: 1040630734
       Soju: 252171630
+      UI_B_Arrow: 740600299
+      UI_B_Camera: 1348290708
+      UI_B_Check: 760392069
+      UI_B_Home: -568449961
+      UI_B_Info: 1699017852
+      UI_B_O: -1243515933
+      UI_B_Pause: 328337663
+      UI_B_Setting: 476150087
+      UI_B_Sound: 1960747827
+      UI_B_Video: -1132270846
+      UI_B_X: 760582128
+      UI_D_Arrow: -884694349
+      UI_D_Camera: -1610128992
+      UI_D_Check: 1271661512
+      UI_D_Home: -594979302
+      UI_D_Info: 493612408
+      UI_D_O: -740840610
+      UI_D_Pause: -760207373
+      UI_D_Setting: -109526136
+      UI_D_Sound: -1494016276
+      UI_D_Video: 1849197015
+      UI_D_X: -28029367
+      Voting_Agree: 1957300315
+      Voting_Bar: -1547753971
+      Voting_C_Agree: -1042185513
+      Voting_C_Refuse: -353134836
+      Voting_Refuse: -1692217445
+      agree: 1957300315
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
