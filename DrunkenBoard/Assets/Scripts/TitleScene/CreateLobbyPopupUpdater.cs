@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class CreateLobbyPopupUpdater : MonoBehaviour
 {
     [SerializeField] private TMP_InputField lobbyNameInputField;
-    [SerializeField] private Button joinLobbyButton;
-    
+    [SerializeField] private Button createLobbyButton;
+    [SerializeField] private Button closeButton;
     public TMP_InputField LobbyNameInputField => lobbyNameInputField;
-    public Button JoinLobbyButton => joinLobbyButton;
+    public Button CreateLobbyButton => createLobbyButton;
+    public Button CloseButton => closeButton;
 }

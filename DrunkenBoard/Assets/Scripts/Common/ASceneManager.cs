@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -29,8 +30,18 @@ public class ASceneManager<T> : MonoBehaviour where T : MonoBehaviour
     { 
         if (IsSceneLoaded("ManagerScene") == false)
         {
-            SceneManager.LoadScene((int)ESceneType.Manager, LoadSceneMode.Additive);
+            StartCoroutine(LoadManagerSceneAsync());
+            return;
         }
+        Initialize();
+    }
+
+    /// <summary>
+    /// ManagerScene 이 필요한 초기화 작업
+    /// </summary>
+    protected virtual void Initialize()
+    {
+        
     }
     
     private static bool IsSceneLoaded(string sceneName)
@@ -42,5 +53,19 @@ public class ASceneManager<T> : MonoBehaviour where T : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    private IEnumerator LoadManagerSceneAsync()
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync((int)ESceneType.Manager, LoadSceneMode.Additive);
+        
+        // 씬 로드 도중에는 isDone이 false
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        
+        GameManager.SceneController.SetScene(sceneType);
+        Initialize();
     }
 }

@@ -14,7 +14,7 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadSceneAsync((int)ESceneType.Title, LoadSceneMode.Additive);
         CurrentScene = ESceneType.Title;
     }
-
+    
     public void LoadScene(ESceneType scene)
     {
         _loadingOperations.Add(SceneManager.UnloadSceneAsync((int)CurrentScene));
@@ -22,6 +22,15 @@ public class SceneController : MonoBehaviour
         StartCoroutine(GetSceneLoading(scene));
     }
 
+    /// <summary>
+    /// 매니저씬 처음 로드될때 현재씬 저장
+    /// </summary>
+    /// <param name="scene"></param>
+    public void SetScene(ESceneType scene)
+    {
+        CurrentScene = scene;
+    }
+    
     private IEnumerator GetSceneLoading(ESceneType scene)
     {
 

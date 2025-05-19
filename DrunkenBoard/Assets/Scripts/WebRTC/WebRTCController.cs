@@ -30,6 +30,7 @@ public class WebRTCController : MonoBehaviour
             case "offer": yield return OnOffer(signalingMessage); break;
             case "answer": yield return OnAnswer(signalingMessage); break;
             case "candidate": yield return OnCandidate(signalingMessage); break;
+            case "leave": yield return OnLeave(signalingMessage); break;
         }
     }
     

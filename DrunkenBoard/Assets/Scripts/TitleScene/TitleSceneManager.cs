@@ -3,10 +3,9 @@ using UnityEngine.UI;
 
 public class TitleSceneManager : ASceneManager<TitleSceneManager>
 {
-    [SerializeField] private Button demoStartButton;
-    protected override void Start()
+    public static void CreateLobby(string lobbyName)
     {
-        base.Start();
-        demoStartButton.onClick.AddListener(()=>GameManager.SceneController.LoadScene(ESceneType.MainGame));
+        GameManager.SignalingClient.SetRoomId(lobbyName);
+        GameManager.SceneController.LoadScene(ESceneType.Lobby);
     }
 }

@@ -9,10 +9,8 @@ using WebSocketSharp;
 public class SignalingClient : MonoBehaviour
 {
     public string signalingUrl = "ws://localhost:8765";
-    public string roomId = "room123";
-    
-    private readonly string uuid = Guid.NewGuid().ToString();
-    public string Uuid => uuid;
+    private string _roomId = "room123";
+    public string Uuid { get; } = Guid.NewGuid().ToString();
 
     public Func<SignalingMessage, IEnumerator> OnMessageReceived;
 
@@ -20,6 +18,11 @@ public class SignalingClient : MonoBehaviour
     
     private readonly Queue<SignalingMessage> messageQueue = new();
 
+    public void SetRoomId(string roomId)
+    {
+        _roomId = roomId;
+    }
+    
     public void JoinRoom()
     {
         websocket.ConnectAsync();
@@ -109,15 +112,15 @@ public class SignalingClient : MonoBehaviour
     private void SendJoin() =>
         SendJson(new
         {
-            type = "join", room = roomId, fromUuid = uuid 
+            type = "join", room = _roomId, fromUuid = Uuid 
         });
     
     private void SendLeave() =>
         SendJson(new
         {
             type = "leave",
-            room = roomId,
-            fromUuid = uuid        
+            room = _roomId,
+            fromUuid = Uuid        
         });
     
     public void SendOffer(RTCSessionDescription desc, string targetUuid) =>
@@ -125,8 +128,8 @@ public class SignalingClient : MonoBehaviour
         {
             type = "offer",
             sdp = desc.sdp,
-            room = roomId,
-            fromUuid = uuid,
+            room = _roomId,
+            fromUuid = Uuid,
             toUuid = targetUuid
         });
 
@@ -135,8 +138,8 @@ public class SignalingClient : MonoBehaviour
         { 
             type = "answer",
             sdp = desc.sdp,
-            room = roomId,
-            fromUuid = uuid,
+            room = _roomId,
+            fromUuid = Uuid,
             toUuid = targetUuid
         });
 
@@ -147,8 +150,8 @@ public class SignalingClient : MonoBehaviour
             candidate = candidate.Candidate,
             sdpMid = candidate.SdpMid,
             sdpMLineIndex = candidate.SdpMLineIndex,
-            room = roomId,
-            fromUuid = uuid,
+            room = _roomId,
+            fromUuid = Uuid,
             toUuid = targetUuid
         });
 
