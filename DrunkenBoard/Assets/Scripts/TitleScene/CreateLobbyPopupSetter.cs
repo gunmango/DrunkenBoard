@@ -1,17 +1,31 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-public class CreateLobbyPopupSetter : MonoBehaviour
+public class CreateLobbyPopupSetter : ABasePopup
 {
+    [SerializeField] private Button createLobbyButton;
     [SerializeField] private CreateLobbyPopupUpdater updater;
 
     private void Start()
     {
-        //updater.JoinLobbyButton.onClick.AddListener();
+        createLobbyButton.onClick.AddListener(()=>GameManager.PopupManager.OpenPopup(this));
+        updater.CloseButton.onClick.AddListener(()=>GameManager.PopupManager.CloseTopPopup());
+        updater.CreateLobbyButton.onClick.AddListener(CreateLobby);
     }
 
-    private void OpenPopup()
+    public override void Open()
     {
-        
+        updater.gameObject.SetActive(true);
+    }
+
+    public override void Close()
+    {
+        updater.gameObject.SetActive(false);
+    }
+
+    private void CreateLobby()
+    {
+        TitleSceneManager.CreateLobby(updater.LobbyNameInputField.text);
     }
 }
