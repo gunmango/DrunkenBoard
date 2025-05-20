@@ -3,5 +3,6 @@ public enum ESceneType
     None,
     Manager = 0,
     Title = 1,
-    MainGame = 2,
+    Lobby = 2,
+    MainGame = 3,
 }

@@ -18,5 +18,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SceneController sceneController;
     public static SceneController SceneController => Instance.sceneController;
+
+    [SerializeField] private PopupManager popupManager;
+    public static PopupManager PopupManager => Instance.popupManager;
     
+    [SerializeField] private SignalingClient signalingClient;
+    public static SignalingClient SignalingClient => Instance.signalingClient;
 }

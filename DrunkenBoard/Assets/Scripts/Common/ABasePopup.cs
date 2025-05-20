@@ -6,4 +6,8 @@ public abstract class ABasePopup : MonoBehaviour
 
     public abstract void Open();
     public abstract void Close();
+    public virtual void Set(object data)
+    {
+        
+    }
 }
