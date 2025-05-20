@@ -8,67 +8,91 @@ using WebSocketSharp;
 
 public class SignalingClient : MonoBehaviour
 {
-    public string signalingUrl = "ws://localhost:8765";
-    private string _roomId = "room123";
+    [SerializeField] private GameObject reconnectCanvas;
     public string Uuid { get; } = Guid.NewGuid().ToString();
 
-    public Func<SignalingMessage, IEnumerator> OnMessageReceived;
+    public Func<SignalingMessage, IEnumerator> OnMessageReceived { get; set; }
+    public Action OnConnected { get; set; }
 
-    private WebSocket websocket;
+    private WebSocket _websocket;
     
-    private readonly Queue<SignalingMessage> messageQueue = new();
+    private readonly Queue<SignalingMessage> _messageQueue = new();
+    private string _signalingUrl = string.Empty;
+    private string _roomId = string.Empty;
+
+    private bool _isOpened;
+
 
     public void SetRoomId(string roomId)
     {
         _roomId = roomId;
     }
+
+    public void SetSignalingUrl(string hostIp)
+    {
+        _signalingUrl = NetWorkConstants.GetSignalingUrl(hostIp);
+    }
+
+    public void SetHostSignalingUrl()
+    {
+        _signalingUrl = NetWorkConstants.GetSignalingUrl();
+    }
     
     public void JoinRoom()
     {
-        websocket.ConnectAsync();
+        InitializeWebSocket();
+        _websocket.ConnectAsync();
         
         StartCoroutine(ReconnectProcess());
         StartCoroutine(ReceiveProcess());
+        StartCoroutine(OpenProcess());
     }
 
     public void LeaveRoom(string reason = null)
     {
-        if (websocket != null && websocket.IsAlive)
+        if (_websocket != null && _websocket.IsAlive)
         {
             SendLeave();
-            websocket.Close(CloseStatusCode.Normal, reason);
+            _websocket.Close(CloseStatusCode.Normal, reason);
         }
 
         StopAllCoroutines();
     }
     
-    private void Start()
+    private void InitializeWebSocket()
     {
-        websocket = new WebSocket(signalingUrl);
+        _websocket = new WebSocket(_signalingUrl);
 
-        websocket.OnOpen += (sender, args) =>
+        _websocket.OnOpen += (sender, args) =>
         {
             Debug.Log("WebSocket Connected"); 
             SendJoin();
+            _isOpened = true;
         };
 
-        websocket.OnClose += (sender, args) =>
+        _websocket.OnClose += (sender, args) =>
         {
             Debug.LogWarning("WebSocket Disconnected: " + args.Reason);
         };
 
-        websocket.OnMessage += (sender, args) =>
+        _websocket.OnMessage += (sender, args) =>
         {
             Debug.Log("WebSocket Message: " + args.Data);
             if (args.IsText)
             {
                 var signalingMessage = JsonConvert.DeserializeObject<SignalingMessage>(args.Data);
-                messageQueue.Enqueue(signalingMessage);
+                _messageQueue.Enqueue(signalingMessage);
                 _ = StartCoroutine(OnMessageReceived(signalingMessage));
             }
         };
     }
-    
+
+    private IEnumerator OpenProcess()
+    {
+        yield return new WaitUntil(() => _isOpened);
+        OnConnected?.Invoke();
+    }
+
     private IEnumerator ReconnectProcess()
     {
         var wfs = new WaitForSeconds(1f);
@@ -76,12 +100,20 @@ public class SignalingClient : MonoBehaviour
         {
             yield return wfs;
 
-            if (websocket.IsAlive)
+            if (_websocket.IsAlive)
+            {
+                if(reconnectCanvas.activeSelf)
+                    reconnectCanvas.SetActive(false);
                 continue;
+            }
+            
+            if(reconnectCanvas.activeSelf == false)
+                reconnectCanvas.SetActive(true);
             
             Debug.Log("Reconnecting...");
-            websocket.ConnectAsync();
+            _websocket.ConnectAsync();
         }
+        
     }
 
     private IEnumerator ReceiveProcess()
@@ -90,12 +122,12 @@ public class SignalingClient : MonoBehaviour
         {
             yield return null;
             
-            if (!websocket.IsAlive)
+            if (!_websocket.IsAlive)
                 continue;
 
-            while (messageQueue.Count > 0)
+            while (_messageQueue.Count > 0)
             {
-                if (messageQueue.TryDequeue(out var signalingMessage))
+                if (_messageQueue.TryDequeue(out var signalingMessage))
                 {
                     yield return OnMessageReceived(signalingMessage);
                 }
@@ -106,7 +138,7 @@ public class SignalingClient : MonoBehaviour
     {
         string json = JsonConvert.SerializeObject(obj);
         Debug.Log($"SendJson : {json}");
-        websocket.Send(json);
+        _websocket.Send(json);
     }
     
     private void SendJoin() =>

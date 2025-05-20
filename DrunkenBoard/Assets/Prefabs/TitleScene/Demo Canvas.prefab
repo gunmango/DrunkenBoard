@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 4744228675336497170}
   - component: {fileID: 2636983783444440959}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: LobbyNameInputField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 5547531262500768485}
   - component: {fileID: 7590225533310815131}
   m_Layer: 5
-  m_Name: Button
+  m_Name: JoinLobbyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2514,7 +2514,7 @@ GameObject:
   - component: {fileID: 4730477433191901577}
   - component: {fileID: 3345156666744713212}
   m_Layer: 5
-  m_Name: InputField (TMP) (1)
+  m_Name: 'HostIpInputField '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3265,6 +3265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203504037800951910}
   - component: {fileID: 2368487957521111888}
+  - component: {fileID: 3086379486890808039}
   - component: {fileID: 4034960212724191366}
   m_Layer: 5
   m_Name: JoinLobbyPopupUpdater
@@ -3272,7 +3273,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &203504037800951910
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3304,6 +3305,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8361481245495487086}
   m_CullTransparentMesh: 1
+--- !u!114 &3086379486890808039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361481245495487086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b7057c8c7a7b340b454b443cd8178d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lobbyNameInputField: {fileID: 2636983783444440959}
+  hostIpInputField: {fileID: 3345156666744713212}
+  joinLobbyButton: {fileID: 7590225533310815131}
+  closeButton: {fileID: 6344234335074634850}
 --- !u!114 &4034960212724191366
 MonoBehaviour:
   m_ObjectHideFlags: 0
