@@ -1,37 +1,38 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class Dice : MonoBehaviour
 {
-    public Animator Diceanimator;
-    public int result { get; set; }
-    public bool isRolling { get; private set; }
+    [SerializeField] private Animator diceAnimator;
+    public int Result { get; set; }
+    public bool IsRolling { get; private set; }
 
-    private string[] animNames = { "Dice1", "Dice2", "Dice3", "Dice4", "Dice5", "Dice6" };
+    private string[] _animNames = { "Dice1", "Dice2", "Dice3", "Dice4", "Dice5", "Dice6" };
 
     public void Awake()
     {
-        isRolling = false;
+        IsRolling = false;
     }
 
     public void Roll()
     {
-        if (isRolling) return;
+        if (IsRolling) return;
 
-        isRolling = true;
-        result = Random.Range(1, 7);
-        Diceanimator.SetTrigger("Dice" + result); 
+        IsRolling = true;
+        Result = Random.Range(1, 7);
+        diceAnimator.SetTrigger("Dice" + Result); 
 
-        string selectedAnim = animNames[result - 1];
-        Diceanimator.Play(selectedAnim);
+        string selectedAnim = _animNames[Result - 1];
+        diceAnimator.Play(selectedAnim);
 
         Invoke(nameof(FinishRoll), 1f);
     }
 
     private void FinishRoll()
     {
-        isRolling = false;
-        Debug.Log(result);
+        IsRolling = false;
+        Debug.Log(Result);
     }
 }
