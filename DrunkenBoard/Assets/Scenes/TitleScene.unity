@@ -168,8 +168,8 @@ Camera:
   m_GameObject: {fileID: 1776561521}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.44025147, g: 0.44025147, b: 0.44025147, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -321,10 +321,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TitleSceneManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5854169512723041797, guid: 222bd0fa882c53442a724312f5a1dbdf, type: 3}
-      propertyPath: demoStartButton
-      value: 
-      objectReference: {fileID: 743668904}
     - target: {fileID: 6637201601230210740, guid: 222bd0fa882c53442a724312f5a1dbdf, type: 3}
       propertyPath: updater
       value: 
@@ -333,6 +329,14 @@ PrefabInstance:
       propertyPath: createLobbyButton
       value: 
       objectReference: {fileID: 743668904}
+    - target: {fileID: 8353566320938515839, guid: 222bd0fa882c53442a724312f5a1dbdf, type: 3}
+      propertyPath: updater
+      value: 
+      objectReference: {fileID: 7915312935233767005}
+    - target: {fileID: 8353566320938515839, guid: 222bd0fa882c53442a724312f5a1dbdf, type: 3}
+      propertyPath: joinLobbyButton
+      value: 
+      objectReference: {fileID: 7915312935233767006}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -430,11 +434,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8361481245495487086, guid: 352201f7cd35f6b4199247fe085e0d72, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 352201f7cd35f6b4199247fe085e0d72, type: 3}
+--- !u!114 &7915312935233767005 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3086379486890808039, guid: 352201f7cd35f6b4199247fe085e0d72, type: 3}
+  m_PrefabInstance: {fileID: 7915312935233767004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b7057c8c7a7b340b454b443cd8178d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7915312935233767006 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8610510663467430443, guid: 352201f7cd35f6b4199247fe085e0d72, type: 3}
+  m_PrefabInstance: {fileID: 7915312935233767004}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

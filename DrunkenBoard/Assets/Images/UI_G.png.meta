@@ -432,10 +432,10 @@ TextureImporter:
       name: Board_Cam
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1280
-        width: 384
-        height: 384
+        x: 24
+        y: 1310
+        width: 338
+        height: 322
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -806,10 +806,10 @@ TextureImporter:
       name: Popup_GameInfo_O
       rect:
         serializedVersion: 2
-        x: 0
-        y: 640
-        width: 1408
-        height: 640
+        x: 48
+        y: 661
+        width: 1312
+        height: 606
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -957,13 +957,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Popup_GameInf_I
+      name: Popup_GameInfo_I
       rect:
         serializedVersion: 2
-        x: 1280
-        y: 0
-        width: 768
-        height: 640
+        x: 1330
+        y: 50
+        width: 669
+        height: 543
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -987,7 +987,7 @@ TextureImporter:
         width: 279
         height: 218
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1045,7 +1045,7 @@ TextureImporter:
       GalticP_W_Pencil: 1435775686
       GalticP_W_Print: -814821855
       GalticP_pencil: 1525318307
-      Popup_GameInf_I: -2140063269
+      Popup_GameInfo_I: -2140063269
       Popup_GameInfo_O: -1233703484
       Popup_Rectangle: -1779822717
       Popup_Square: 1466647089

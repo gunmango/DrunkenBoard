@@ -26,6 +26,6 @@ public class CreateLobbyPopupSetter : ABasePopup
 
     private void CreateLobby()
     {
-        TitleSceneManager.CreateLobby(updater.LobbyNameInputField.text);
+        TitleSceneManager.Instance.CreateLobby(updater.LobbyNameInputField.text);
     }
 }
