@@ -48,7 +48,7 @@ public class SignalingClient : MonoBehaviour
         StartCoroutine(OpenProcess());
     }
 
-    public void LeaveRoom(string reason = null)
+    private void LeaveRoom(string reason = null)
     {
         if (_websocket != null && _websocket.IsAlive)
         {

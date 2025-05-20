@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 public class MainGameSceneManager : ASceneManager<MainGameSceneManager>
 {
-    protected override void Start()
+    public Action ActInitialize { get; set; }
+
+    protected override void Initialize()
     {
-        base.Start();
-        
+        base.Initialize();
+        ActInitialize?.Invoke();
     }
 }

@@ -8,13 +8,19 @@ using UnityEditor.Analytics;
 
 public class WebRTCController : MonoBehaviour
 {
+    public Action<VideoStreamTrack,string> OnVideoReceived { get; set; }
+    public Action<string> OnVideoDisconnect { get; set; }
+    
     [SerializeField] private SignalingClient signaling = null;
-    [SerializeField] private WebCamPlayer player = null;
-    [SerializeField] private List<VideoReceiver> remoteReceivers = new List<VideoReceiver>();
     
     private readonly List<Peer> _peers = new List<Peer>();
     
-    private VideoStreamTrack videoTrack;
+    private VideoStreamTrack _videoTrack;
+
+    public void SetSelfWebCamTexture(WebCamTexture texture)
+    {
+        _videoTrack = new VideoStreamTrack(texture);
+    }
     
     private void Start()
     {
@@ -168,12 +174,7 @@ public class WebRTCController : MonoBehaviour
         peer.Connection.Dispose();
         _peers.Remove(peer);
 
-        var receiver = remoteReceivers.Find(v => { return v.Uuid == peer.RemoteUuid; });
-        if (receiver == null) 
-        {
-            Debug.LogError("");
-        }
-        //비디오안보이게
+        OnVideoDisconnect(peer.RemoteUuid);
     }
 
     private Peer CreatePeer(SignalingMessage msg)
@@ -200,23 +201,20 @@ public class WebRTCController : MonoBehaviour
             Debug.Log("비디오 수신");
             if (e.Track is VideoStreamTrack track)
             {
-                foreach (var receiver in remoteReceivers)
-                {
-                    if (receiver.IsUsing == true)
-                        continue;
-                    
-                    receiver.SetTrack(track); // 상대방 캠 영상 표시
-                    break;
-                }
+                // foreach (var receiver in remoteReceivers)
+                // {
+                //     if (receiver.IsUsing == true)
+                //         continue;
+                //     
+                //     receiver.SetTrack(track); // 상대방 캠 영상 표시
+                //     break;
+                // }
+                OnVideoReceived?.Invoke(track,newPeer.RemoteUuid);
             }
         };
         
         // 4. 내 비디오 송출 등록 (AddTrack)
-        if (videoTrack == null)
-        {
-            videoTrack = new VideoStreamTrack(player.CamTexture);
-        }
-        newPeer.Connection.AddTrack(videoTrack);
+        newPeer.Connection.AddTrack(_videoTrack);
 
         return newPeer;
     }

@@ -24,4 +24,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private SignalingClient signalingClient;
     public static SignalingClient SignalingClient => Instance.signalingClient;
+    
+    [SerializeField] private WebRTCController webRtcController;
+    public static WebRTCController WebRtcController => Instance.webRtcController;
 }
