@@ -981,6 +981,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 858699617574539024, guid: b239430d888543a44adb29c8d53c70c7, type: 3}
+      propertyPath: startButton
+      value: 
+      objectReference: {fileID: 2059552889}
     - target: {fileID: 3163438669453525473, guid: b239430d888543a44adb29c8d53c70c7, type: 3}
       propertyPath: updater
       value: 
