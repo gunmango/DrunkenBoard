@@ -8,12 +8,10 @@ public class WebCamSetter : MonoBehaviour
     
     private List<WebCamViewer> _webCamViewers = new List<WebCamViewer>();
 
-    private void Initialize()
+    public void Initialize()
     {
         GameManager.WebRtcController.OnVideoReceived += OnVideoReceived;
         GameManager.WebRtcController.OnVideoDisconnect += OnVideoDisconnect;
-        
-        
     }
 
     private void OnVideoReceived(VideoStreamTrack arg1, string arg2)
