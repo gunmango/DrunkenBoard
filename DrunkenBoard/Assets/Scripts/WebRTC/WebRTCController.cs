@@ -4,7 +4,6 @@ using UnityEngine;
 using Unity.WebRTC;
 using System.Collections;
 using System.Linq;
-using UnityEditor.Analytics;
 
 public class WebRTCController : MonoBehaviour
 {

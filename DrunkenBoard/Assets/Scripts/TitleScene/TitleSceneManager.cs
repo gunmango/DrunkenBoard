@@ -9,8 +9,8 @@ public class TitleSceneManager : ASceneManager<TitleSceneManager>
         GameManager.SignalingClient.SetRoomId(lobbyName);
         GameManager.SignalingClient.SetHostSignalingUrl();
 
-        Debug.Log("Create lobby");
-        GameManager.SignalingClient.OnConnected += LoadLobby;
+        //GameManager.SignalingClient.OnConnected += LoadLobby;
+        GameManager.SceneController.LoadScene((ESceneType.MainGame));
         GameManager.SignalingClient.JoinRoom();
     }
 
@@ -19,7 +19,8 @@ public class TitleSceneManager : ASceneManager<TitleSceneManager>
         GameManager.SignalingClient.SetRoomId(lobbyName);
         GameManager.SignalingClient.SetSignalingUrl(hostIp);
         
-        GameManager.SignalingClient.OnConnected += LoadLobby;
+        //GameManager.SignalingClient.OnConnected += LoadLobby;
+        GameManager.SceneController.LoadScene((ESceneType.MainGame));
         GameManager.SignalingClient.JoinRoom();
 
     }
