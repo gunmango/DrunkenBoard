@@ -31,10 +31,10 @@ public class DiceGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!dice.isRolling && dice.result != 0)
+        if (!dice.IsRolling && dice.Result != 0)
         {
-            Debug.Log($"사용자:{currentplayerIndex+1}_{dice.result}");
-            dice.result = 0;
+            Debug.Log($"사용자:{currentplayerIndex+1}_{dice.Result}");
+            dice.Result = 0;
             currentplayerIndex = (currentplayerIndex + 1) % totalplayers;
             
             rollButton.interactable = true;
