@@ -77,7 +77,7 @@ public class SignalingClient : MonoBehaviour
 
         _websocket.OnMessage += (sender, args) =>
         {
-            Debug.Log("WebSocket Message: " + args.Data);
+            //Debug.Log("WebSocket Message: " + args.Data);
             if (args.IsText)
             {
                 var signalingMessage = JsonConvert.DeserializeObject<SignalingMessage>(args.Data);
@@ -137,7 +137,7 @@ public class SignalingClient : MonoBehaviour
     private void SendJson(object obj)
     {
         string json = JsonConvert.SerializeObject(obj);
-        Debug.Log($"SendJson : {json}");
+        //Debug.Log($"SendJson : {json}");
         _websocket.Send(json);
     }
     
