@@ -22,6 +22,7 @@ public class WebCamViewer
     public void UnSetTrack()
     {
         _webCamUpdater.RawImage.texture = null;
+        UnityEngine.Object.Destroy(_webCamUpdater.gameObject);
         
         if (_track == null)
             return;
