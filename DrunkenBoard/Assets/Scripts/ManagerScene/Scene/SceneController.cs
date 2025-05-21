@@ -7,7 +7,13 @@ public class SceneController : MonoBehaviour
 {
     private readonly List<AsyncOperation> _loadingOperations = new List<AsyncOperation>();
     
-    private ESceneType CurrentScene { get; set; } = ESceneType.None;
+    public ESceneType CurrentScene { get; set; } = ESceneType.None;
+
+    public void LoadTitle()
+    {
+        SceneManager.LoadScene((int)ESceneType.Title);
+        CurrentScene = ESceneType.Title;
+    }
     
     public void LoadScene(ESceneType scene)
     {
