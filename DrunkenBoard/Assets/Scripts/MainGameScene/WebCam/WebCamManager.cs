@@ -21,6 +21,7 @@ public class WebCamManager : MonoBehaviour
     private void OnVideoReceived(VideoStreamTrack track, string uuid)
     {
         WebCamUnit webCamViewer = Instantiate(originalPrefab, webCamCanvasUpdater.ContentTransform);
+        webCamViewer.SetUuid(uuid);
         webCamViewer.SetTrack(track);
         originalPrefab.gameObject.SetActive(true);
         

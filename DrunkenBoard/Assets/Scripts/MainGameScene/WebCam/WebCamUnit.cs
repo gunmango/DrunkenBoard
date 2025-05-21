@@ -8,7 +8,7 @@ public class WebCamUnit : MonoBehaviour
     [SerializeField] private ATrackController clientTrackController;
     public string Uuid { get; private set; }
 
-    public WebCamUnit(string uuid)
+    public void SetUuid(string uuid)
     {
         this.Uuid = uuid;
     }
