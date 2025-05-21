@@ -186,6 +186,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DevGameScenePrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 6743106043279659386, guid: ebeaf13b0d3c39940a367de1c3fd4fa7, type: 3}
+      propertyPath: m_Name
+      value: WebCamUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7113778655627535516, guid: ebeaf13b0d3c39940a367de1c3fd4fa7, type: 3}
+      propertyPath: m_Name
+      value: WebCamManager
+      objectReference: {fileID: 0}
     - target: {fileID: 8409304530206716455, guid: ebeaf13b0d3c39940a367de1c3fd4fa7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
