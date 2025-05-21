@@ -12,7 +12,7 @@ public class CrocodileGameManager : MonoBehaviour
     public Crocodile Croc;
     public List<Tooth> allTeeth;
     // public Tooth tooth;
-    
+    //
     [SerializeField] private Button startButton;
     private bool gameStarted = false;
     
