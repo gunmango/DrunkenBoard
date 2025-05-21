@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 2940527209772919426}
   - component: {fileID: 210280042627802271}
   - component: {fileID: 8282323646387436319}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 2609981688982743874}
   - component: {fileID: 6865821571527617007}
   - component: {fileID: 6224686124833762233}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ReconnectScreenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 8150102406208410250}
   - component: {fileID: 426546160989055611}
   - component: {fileID: 1181265940942203929}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ConnectingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 7295161850662943024}
   - component: {fileID: 5089598126713133559}
   - component: {fileID: 4753252581655569533}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: ClickBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}

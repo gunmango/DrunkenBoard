@@ -14,10 +14,13 @@ public class WebCamManager : MonoBehaviour
     public void Initialize()
     {
         _webCamUnits.Add(selfWebCamUnit);
-        MoveCamsToBoardView();
+        SetCamsToBoardView();
 
         GameManager.WebRtcController.OnVideoReceived += OnVideoReceived;
         GameManager.WebRtcController.OnVideoDisconnect += OnVideoDisconnect;
+
+        MainGameSceneManager.MiniGameManager.OnMiniGameStart += MoveCamsToGameView;
+        MainGameSceneManager.MiniGameManager.OnMiniGameEnd += MoveCamsToBoardView;
     }
     
     private void OnVideoReceived(VideoStreamTrack track, string uuid)
@@ -34,7 +37,7 @@ public class WebCamManager : MonoBehaviour
         
         _webCamUnits.Add(webCamUnit);
         
-        MoveCamsToBoardView();
+        SetCamsToBoardView();
         
         return webCamUnit;
     }
@@ -52,13 +55,35 @@ public class WebCamManager : MonoBehaviour
         }
     }
 
+    private void SetCamsToBoardView()
+    {
+        WebCamAnchoredPosition camAnchoredPosition = _positionTable.GetAnchoredPosition(_webCamUnits.Count);
+        
+        for (int i = 0; i < _webCamUnits.Count; i++)
+        {
+            _webCamUnits[i].Mover.SetTo(camAnchoredPosition.BoardViewPositions[i]);
+        }
+    }
+
     private void MoveCamsToBoardView()
     {
         WebCamAnchoredPosition camAnchoredPosition = _positionTable.GetAnchoredPosition(_webCamUnits.Count);
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
-            _webCamUnits[i].MoveTo(camAnchoredPosition.BoardViewPositions[i]);
+            _webCamUnits[i].Mover.MoveToween(camAnchoredPosition.BoardViewPositions[i]);
+            _webCamUnits[i].ShowItemSocket();
+        }
+    }
+    
+    private void MoveCamsToGameView()
+    {
+        WebCamAnchoredPosition camAnchoredPosition = _positionTable.GetAnchoredPosition(_webCamUnits.Count);
+        
+        for (int i = 0; i < _webCamUnits.Count; i++)
+        {
+            _webCamUnits[i].Mover.MoveToween(camAnchoredPosition.GameViewPositions[i]);
+            _webCamUnits[i].HideItemSocket();
         }
     }
 }
