@@ -1,6 +1,5 @@
 using Unity.WebRTC;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class WebCamUnit : MonoBehaviour
 {
@@ -9,7 +8,8 @@ public class WebCamUnit : MonoBehaviour
     [SerializeField] private WebCamMover mover;
     public string Uuid { get; private set; }
     public int Index { get; private set; }
-
+    public WebCamMover Mover => mover;
+    
     public void SetUuid(string uuid)
     {
         this.Uuid = uuid;
@@ -22,6 +22,14 @@ public class WebCamUnit : MonoBehaviour
         clientTrackController.UnsetTrack();
         Destroy(gameObject);
     }
-    
-    public void MoveTo(Vector2 anchoredPosition) => mover.MoveTo(anchoredPosition);
+
+    public void HideItemSocket()
+    {
+        webCamUpdater.ItemSocket.SetActive(false);
+    }
+
+    public void ShowItemSocket()
+    {
+        webCamUpdater.ItemSocket.SetActive(true);
+    }
 }
