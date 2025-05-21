@@ -589,18 +589,6 @@ PrefabInstance:
       value: Crocodile
       objectReference: {fileID: 0}
     - target: {fileID: 8926937914677084793, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -674.54285
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926937914677084793, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -400.20633
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926937914677084793, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.5966185
-      objectReference: {fileID: 0}
-    - target: {fileID: 8926937914677084793, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
