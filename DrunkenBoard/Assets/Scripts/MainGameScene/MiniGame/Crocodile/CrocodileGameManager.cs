@@ -13,8 +13,11 @@ public class CrocodileGameManager : MonoBehaviour
     public List<Tooth> allTeeth;
     // public Tooth tooth;
     
+    [SerializeField] private Button startButton;
+    private bool gameStarted = false;
+    
     [Header("players")]
-    [SerializeField] public List<Player> players = new List<Player>();
+    [SerializeField] public List<CrocodilePlayer> players = new List<CrocodilePlayer>();
     
     [Header("Ui")]
     [SerializeField] public Text currentTurnText;
@@ -33,15 +36,27 @@ public class CrocodileGameManager : MonoBehaviour
     private void Start()
     {
         //테스트용 유저 배치
-        players = new List<Player>();
+        players = new List<CrocodilePlayer>();
         {
-        players.Add(new Player("삐약이,첫도착자"));
-        players.Add(new Player("데굴이"));
-        players.Add(new Player("삐죽이"));
+        players.Add(new CrocodilePlayer("삐약이,첫도착자"));
+        players.Add(new CrocodilePlayer("데굴이"));
+        players.Add(new CrocodilePlayer("삐죽이"));
         }
         
-        
         AssignPlayerOrder();
+        
+        //시작버튼 관련 설정 아직 네트워크 전이라 일단아래쪽에 트루로 해놈
+
+        if (IsLocalPlayerOne())
+        {
+            startButton.gameObject.SetActive(true);
+            startButton.onClick.AddListener(StartGame);
+        }
+
+        else
+        {
+            startButton.gameObject.SetActive(false);
+        }
 
         foreach (var tooth in allTeeth)
         {
@@ -51,7 +66,23 @@ public class CrocodileGameManager : MonoBehaviour
         int trapIndex = Random.Range(0, allTeeth.Count);
         allTeeth[trapIndex].Istrap = true;
 
-        StartTurn();
+        StartCycle();
+    }
+
+    private bool IsLocalPlayerOne()
+    {
+        return true;
+    }
+
+    private void StartGame()
+    {
+        gameStarted = true;
+        startButton.gameObject.SetActive(false);
+        
+        int trapIndex = Random.Range(0, allTeeth.Count);
+        allTeeth[trapIndex].Istrap = true;
+        
+        StartCycle();
     }
 
     private void AssignPlayerOrder()
@@ -65,7 +96,7 @@ public class CrocodileGameManager : MonoBehaviour
         var fristPlayer = players[0];
         var otherPlayer = players.Skip(1).OrderBy(p=>Random.value).ToList();
 
-        players = new List<Player> { fristPlayer };
+        players = new List<CrocodilePlayer> { fristPlayer };
         players.AddRange(otherPlayer);
 
         for (int i = 0; i < players.Count; i++)
@@ -76,7 +107,7 @@ public class CrocodileGameManager : MonoBehaviour
 
     private void Update()
     {
-        if(!_isTurnActive) return;
+        if(!gameStarted||!_isTurnActive) return;
         
         _turnTimer += Time.deltaTime;
         float remainingTime = Mathf.Max(0,turnDuration-_turnTimer);
@@ -92,12 +123,13 @@ public class CrocodileGameManager : MonoBehaviour
     {
         get
         {
+            if(!gameStarted) return false;
             if(!_isTurnActive) return false;
             if (IsGameOver) return false;
             if(players.Count == 0) return false;
             
             int currentPlayerIndex = _currentTurnIndex%players.Count;
-            return !players[currentPlayerIndex].HasPlayer;
+            return !players[currentPlayerIndex].TurnPlayer;
         }
     }
 
@@ -108,7 +140,7 @@ public class CrocodileGameManager : MonoBehaviour
         _isTurnActive = false;
         
         int currentPlayerIndex = _currentTurnIndex % players.Count;
-        players[currentPlayerIndex].HasPlayer = true;
+        players[currentPlayerIndex].TurnPlayer = true;
 
         tooth.ForcePress();
         if (tooth.Istrap)
@@ -119,7 +151,7 @@ public class CrocodileGameManager : MonoBehaviour
             return;
         }
         
-        NextTurn();
+        NextCycle();
     }
 
 
@@ -133,13 +165,13 @@ public class CrocodileGameManager : MonoBehaviour
             Debug.Log($"{randomTooth.name} pressed");
         }
     }
-    private void NextTurn()
+    private void NextCycle()
     {
         _currentTurnIndex++;
         
         if (_currentTurnIndex < allTeeth.Count)
         {
-            StartTurn();
+            StartCycle();
         }
         else
         {
@@ -149,7 +181,7 @@ public class CrocodileGameManager : MonoBehaviour
         }
     }
 
-    private void StartTurn()
+    private void StartCycle()
     {
         if (players.Count == 0)
         {
@@ -160,7 +192,7 @@ public class CrocodileGameManager : MonoBehaviour
 
         foreach (var player in players)
         {
-            player.HasPlayer = false;
+            player.TurnPlayer = false;
         }
         _isTurnActive = true;
         _turnTimer = 0f;
