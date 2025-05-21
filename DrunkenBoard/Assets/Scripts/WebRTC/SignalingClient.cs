@@ -77,7 +77,7 @@ public class SignalingClient : MonoBehaviour
 
         _websocket.OnMessage += (sender, args) =>
         {
-            //Debug.Log("WebSocket Message: " + args.Data);
+            Debug.Log("WebSocket Message: " + args.Data);
             if (args.IsText)
             {
                 var signalingMessage = JsonConvert.DeserializeObject<SignalingMessage>(args.Data);

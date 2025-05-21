@@ -1009,7 +1009,7 @@ TextureImporter:
         width: 256
         height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1018,6 +1018,50 @@ TextureImporter:
       bones: []
       spriteID: f3672537a4bd52e41b133fd26895d1ba
       internalID: 2099663846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Board_Cam_Background
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 1409
+        width: 335
+        height: 253
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8224330e7bebb3445b52c2621ed9282c
+      internalID: 2139061039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Board_Cam_Item
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 1320
+        width: 337
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370727489dac3bd438fa2931a8cd7b78
+      internalID: -92390597
       vertices: []
       indices: 
       edges: []
@@ -1038,6 +1082,8 @@ TextureImporter:
     nameFileIdTable:
       BoardWidth: -1117332760
       Board_Cam: 1965028084
+      Board_Cam_Background: -1403803671
+      Board_Cam_Item: -92390597
       Board_Corner: 538268971
       Board_Height: -1894688940
       Board_Width: -1117332760
@@ -1146,7 +1192,6 @@ TextureImporter:
       UI_G_177: -1527357648
       UI_G_178: -1248517826
       UI_G_19: -52507994
-      UI_G_2: -1403803671
       UI_G_20: 1601304549
       UI_G_21: -1611432399
       UI_G_22: 694451266

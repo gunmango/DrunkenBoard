@@ -41,7 +41,7 @@ public class WebRTCController : MonoBehaviour
     
     private IEnumerator OnNewClient(SignalingMessage msg)
     {
-        //Debug.Log(msg.type);
+        Debug.Log(msg.type);
         //이미 연결된 상대라면 무시
         foreach (var peer in _peers)
         {
@@ -61,14 +61,14 @@ public class WebRTCController : MonoBehaviour
 
     private IEnumerator OnOffer(SignalingMessage msg)
     {
-        //Debug.Log(msg.type);
+        Debug.Log(msg.type);
         
         //이미 연결된 상대라면 무시
         foreach (var peer in _peers)
         {
             if (peer.RemoteUuid == msg.fromUuid)
             {
-                //Debug.Log($"이미 받은 오퍼: {peer.RemoteUuid}");
+                Debug.Log($"이미 받은 오퍼: {peer.RemoteUuid}");
                 yield break;
             }
         }
@@ -93,17 +93,17 @@ public class WebRTCController : MonoBehaviour
         
         // 상대방에게 answer 전송
         signaling.SendAnswer(answerDesc,msg.fromUuid);
-        //Debug.Log("받은 Offer 처리");
+        Debug.Log("받은 Offer 처리");
     }
 
     private IEnumerator OnAnswer(SignalingMessage msg)
     {
-        //Debug.Log(msg.type);
+        Debug.Log(msg.type);
         
         if (msg.toUuid != signaling.Uuid)
         {
             //여기로 온 메세지 아님
-            //Debug.Log($"여기로 온 Answer 아님 {msg.toUuid}");
+            Debug.Log($"여기로 온 Answer 아님 {msg.toUuid}");
             yield break;
         }
         
@@ -124,13 +124,13 @@ public class WebRTCController : MonoBehaviour
             };
             
             yield return peer.Connection.SetRemoteDescription(ref desc);
-            //Debug.Log("Answer 처리");
+            Debug.Log("Answer 처리");
         }
     }
     
     private IEnumerator OnCandidate(SignalingMessage msg)
     {
-        //Debug.Log(msg.type);
+        Debug.Log(msg.type);
         
         if (msg.toUuid != signaling.Uuid)
         {
@@ -155,12 +155,12 @@ public class WebRTCController : MonoBehaviour
         };
         peer.Connection.AddIceCandidate(new RTCIceCandidate(init));
         
-        //Debug.Log("Candidate 처리");
+        Debug.Log("Candidate 처리");
     }
 
     private IEnumerator OnLeave(SignalingMessage msg)
     {
-        //Debug.Log(msg.type);
+        Debug.Log(msg.type);
         
         var peer = _peers.FirstOrDefault(p => p.RemoteUuid == msg.fromUuid);
         if (peer == null)

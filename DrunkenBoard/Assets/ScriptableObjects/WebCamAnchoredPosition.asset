@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bca93554d8fd4b54fb22868d94a0ef06, type: 3}
+  m_Name: WebCamAnchoredPosition
+  m_EditorClassIdentifier: 
+  Positions:
+  - PlayerCount: 8
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    - {x: -167.5, y: 195.5}
+    - {x: 167.5, y: 195.5}
+    - {x: 502.5, y: 195.5}
+    - {x: -502.5, y: -123.5}
+    - {x: -167.5, y: -123.5}
+    - {x: 167.5, y: -123.5}
+    - {x: 502.5, y: -123.5}
+    GameViewPositions:
+    - {x: -792, y: 379.5}
+    - {x: 792, y: 379.5}
+    - {x: -792, y: 126.5}
+    - {x: 792, y: 126.5}
+    - {x: -792, y: -126.5}
+    - {x: 792, y: -126.5}
+    - {x: -792, y: -379.5}
+    - {x: 792, y: -379.5}
+  - PlayerCount: 7
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    - {x: -167.5, y: 195.5}
+    - {x: 167.5, y: 195.5}
+    - {x: 502.5, y: 195.5}
+    - {x: -502.5, y: -123.5}
+    - {x: -167.5, y: -123.5}
+    - {x: 167.5, y: -123.5}
+    GameViewPositions:
+    - {x: -792, y: 379.5}
+    - {x: 792, y: 253}
+    - {x: -792, y: 126.5}
+    - {x: 792, y: 0}
+    - {x: -792, y: -126.5}
+    - {x: 792, y: -253}
+    - {x: -792, y: -379.5}
+  - PlayerCount: 6
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    - {x: -167.5, y: 195.5}
+    - {x: 167.5, y: 195.5}
+    - {x: 502.5, y: 195.5}
+    - {x: -502.5, y: -123.5}
+    - {x: -167.5, y: -123.5}
+    GameViewPositions:
+    - {x: -792, y: 253}
+    - {x: 792, y: 253}
+    - {x: -792, y: 0}
+    - {x: 792, y: 0}
+    - {x: -792, y: -253}
+    - {x: 792, y: -253}
+  - PlayerCount: 5
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    - {x: -167.5, y: 195.5}
+    - {x: 167.5, y: 195.5}
+    - {x: 502.5, y: 195.5}
+    - {x: -502.5, y: -123.5}
+    GameViewPositions:
+    - {x: -792, y: 253}
+    - {x: 792, y: 126.5}
+    - {x: -792, y: 0}
+    - {x: 792, y: -126.5}
+    - {x: -792, y: -253}
+  - PlayerCount: 4
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    - {x: -167.5, y: 195.5}
+    - {x: 167.5, y: 195.5}
+    - {x: 502.5, y: 195.5}
+    GameViewPositions:
+    - {x: -792, y: 126.5}
+    - {x: 792, y: 126.5}
+    - {x: -792, y: -126.5}
+    - {x: 792, y: -126.5}
+  - PlayerCount: 3
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    - {x: -167.5, y: 195.5}
+    - {x: 167.5, y: 195.5}
+    GameViewPositions:
+    - {x: -792, y: 126.5}
+    - {x: 792, y: 0}
+    - {x: -792, y: -126.5}
+  - PlayerCount: 2
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    - {x: -167.5, y: 195.5}
+    GameViewPositions:
+    - {x: -792, y: 0}
+    - {x: 792, y: 0}
+  - PlayerCount: 1
+    BoardViewPositions:
+    - {x: -502.5, y: 195.5}
+    GameViewPositions:
+    - {x: -792, y: 0}
