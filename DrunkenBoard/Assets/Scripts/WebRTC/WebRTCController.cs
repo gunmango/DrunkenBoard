@@ -14,11 +14,11 @@ public class WebRTCController : MonoBehaviour
     
     private readonly List<Peer> _peers = new List<Peer>();
     
-    private VideoStreamTrack _videoTrack;
+    private VideoStreamTrack _selfVideoTrack;
 
     public void SetSelfWebCamTexture(WebCamTexture texture)
     {
-        _videoTrack = new VideoStreamTrack(texture);
+        _selfVideoTrack = new VideoStreamTrack(texture);
     }
     
     private void Start()
@@ -205,7 +205,7 @@ public class WebRTCController : MonoBehaviour
         };
         
         // 4. 내 비디오 송출 등록 (AddTrack)
-        newPeer.Connection.AddTrack(_videoTrack);
+        newPeer.Connection.AddTrack(_selfVideoTrack);
 
         return newPeer;
     }

@@ -1,10 +1,9 @@
+using Unity.WebRTC;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SelfWebCamPlayer : MonoBehaviour
+public class SelfTrackController : ATrackController
 {
     [SerializeField] private int deviceNum = 0;
-    [SerializeField] private RawImage image;
     
     private WebCamTexture _webCamTexture;
 
@@ -15,14 +14,19 @@ public class SelfWebCamPlayer : MonoBehaviour
     
     private void Initialize()
     {
+        SetTrack(null);
+    }
+    
+    public override void SetTrack(VideoStreamTrack track)
+    {
         _webCamTexture = new WebCamTexture(WebCamTexture.devices[deviceNum].name);
         _webCamTexture.Play();
         image.texture = _webCamTexture;
         
-        GameManager.WebRtcController.SetSelfWebCamTexture(_webCamTexture);
+        GameManager.WebRtcController.SetSelfWebCamTexture(_webCamTexture);    
     }
 
-    private void OnDestroy()
+    public override void UnsetTrack()
     {
         MainGameSceneManager.Instance.ActInitialize -= Initialize;
     }
