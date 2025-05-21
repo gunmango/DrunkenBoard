@@ -6,7 +6,9 @@ public class WebCamUnit : MonoBehaviour
 {
     [SerializeField] private WebCamUpdater webCamUpdater;
     [SerializeField] private ATrackController clientTrackController;
+    [SerializeField] private WebCamMover mover;
     public string Uuid { get; private set; }
+    public int Index { get; private set; }
 
     public void SetUuid(string uuid)
     {
@@ -20,4 +22,6 @@ public class WebCamUnit : MonoBehaviour
         clientTrackController.UnsetTrack();
         Destroy(gameObject);
     }
+    
+    public void MoveTo(Vector2 anchoredPosition) => mover.MoveTo(anchoredPosition);
 }

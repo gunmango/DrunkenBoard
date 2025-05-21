@@ -7,12 +7,14 @@ public class WebCamManager : MonoBehaviour
     [SerializeField] private WebCamCanvasUpdater webCamCanvasUpdater;
     [SerializeField] private WebCamUnit selfWebCamUnit;
     [SerializeField] private WebCamUnit originalPrefab;
+    [SerializeField] private WebCamAnchoredPositionTable _positionTable;
     
     private readonly List<WebCamUnit> _webCamUnits = new List<WebCamUnit>();
     
     public void Initialize()
     {
         _webCamUnits.Add(selfWebCamUnit);
+        MoveCamsToBoardView();
 
         GameManager.WebRtcController.OnVideoReceived += OnVideoReceived;
         GameManager.WebRtcController.OnVideoDisconnect += OnVideoDisconnect;
@@ -31,6 +33,9 @@ public class WebCamManager : MonoBehaviour
         originalPrefab.gameObject.SetActive(true);
         
         _webCamUnits.Add(webCamUnit);
+        
+        MoveCamsToBoardView();
+        
         return webCamUnit;
     }
 
@@ -44,6 +49,16 @@ public class WebCamManager : MonoBehaviour
                 _webCamUnits.RemoveAt(i);
                 break;
             }
+        }
+    }
+
+    private void MoveCamsToBoardView()
+    {
+        WebCamAnchoredPosition camAnchoredPosition = _positionTable.GetAnchoredPosition(_webCamUnits.Count);
+        
+        for (int i = 0; i < _webCamUnits.Count; i++)
+        {
+            _webCamUnits[i].MoveTo(camAnchoredPosition.BoardViewPositions[i]);
         }
     }
 }
