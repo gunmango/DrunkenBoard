@@ -20,7 +20,7 @@ public class ApartUIManager : MonoBehaviour
 
     public void SetHost(bool isHost)
     {
-        isHost = isHost;
+        //isHost = isHost;
         startButton.gameObject.SetActive(isHost);
     }
 }

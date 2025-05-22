@@ -71,7 +71,7 @@ public class WebCamManager : MonoBehaviour
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
-            _webCamUnits[i].Mover.MoveToween(camAnchoredPosition.BoardViewPositions[i]);
+            _webCamUnits[i].Mover.MoveTween(camAnchoredPosition.BoardViewPositions[i]);
             _webCamUnits[i].ShowItemSocket();
         }
     }
@@ -82,7 +82,7 @@ public class WebCamManager : MonoBehaviour
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
-            _webCamUnits[i].Mover.MoveToween(camAnchoredPosition.GameViewPositions[i]);
+            _webCamUnits[i].Mover.MoveTween(camAnchoredPosition.GameViewPositions[i]);
             _webCamUnits[i].HideItemSocket();
         }
     }
