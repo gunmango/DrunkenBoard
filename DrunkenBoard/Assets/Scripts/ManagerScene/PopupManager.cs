@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PopupManager : MonoBehaviour
 {
+    [SerializeField] private EventSystem eventSystem;
+    
     private readonly Stack<ABasePopup> _popupStack = new();
     public bool IsAnyPopupOpen => _popupStack.Count > 0;
 
@@ -29,4 +32,8 @@ public class PopupManager : MonoBehaviour
             popup.Close();
         }
     }
-}
+    
+    public void ToggleInteraction(bool isOn)
+    {
+        eventSystem.enabled = isOn;
+    }}

@@ -27,4 +27,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private WebRTCController webRtcController;
     public static WebRTCController WebRtcController => Instance.webRtcController;
+    
+    [SerializeField] private FusionSession fusionSession;
+    public static FusionSession FusionSession => Instance.fusionSession;
 }

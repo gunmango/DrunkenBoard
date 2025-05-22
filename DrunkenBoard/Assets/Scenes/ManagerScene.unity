@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 413088960}
   - component: {fileID: 413088959}
   - component: {fileID: 413088962}
+  - component: {fileID: 413088963}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -256,6 +257,22 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &413088963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 413088958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d73b0a95be81246699cf0d9ecdc01863, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PreferredRunner: 0
+  Components:
+  - {fileID: 413088959}
+  _guid: 79c12f2b-6227-4728-
 --- !u!1 &1034301105
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +404,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2669342196268638135, guid: 8143cf5dc4ac44b45a8771fdda12c301, type: 3}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1034301107}
     - target: {fileID: 7198350846755276287, guid: 8143cf5dc4ac44b45a8771fdda12c301, type: 3}
       propertyPath: m_Name
       value: GameManager

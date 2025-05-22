@@ -6,32 +6,25 @@ public class TitleSceneManager : ASceneManager<TitleSceneManager>
 {
     public void CreateLobby(string lobbyName)
     {
-        GameManager.SignalingClient.SetRoomId(lobbyName);
         GameManager.SignalingClient.SetHostSignalingUrl();
 
-        //GameManager.SignalingClient.OnConnected += LoadLobby;
-        GameManager.SceneController.LoadScene((ESceneType.MainGame));
-        GameManager.SignalingClient.JoinRoom();
+        ToMainGame(lobbyName);
     }
 
     public void JoinLobby(string lobbyName, string hostIp)
     {
-        GameManager.SignalingClient.SetRoomId(lobbyName);
         GameManager.SignalingClient.SetSignalingUrl(hostIp);
         
-        //GameManager.SignalingClient.OnConnected += LoadLobby;
+        ToMainGame(lobbyName);
+    }
+
+    private void ToMainGame(string lobbyName)
+    {
+        GameManager.SignalingClient.SetRoomId(lobbyName);
+        //GameManager.SignalingClient.JoinRoom();
+
         GameManager.SceneController.LoadScene((ESceneType.MainGame));
-        GameManager.SignalingClient.JoinRoom();
-
+        GameManager.FusionSession.TryConnect(lobbyName);
     }
-
-    private void LoadLobby()
-    {
-        GameManager.SceneController.LoadScene(ESceneType.Lobby);
-    }
-
-    private void OnDestroy()
-    {
-        GameManager.SignalingClient.OnConnected -= LoadLobby;
-    }
+    
 }

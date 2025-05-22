@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1292535721118077835}
   - component: {fileID: 6136541078828994820}
   - component: {fileID: 7091764329544706624}
+  - component: {fileID: 8293603487348222219}
+  - component: {fileID: 1090082034401675470}
   m_Layer: 5
   m_Name: WebCamUnit
   m_TagString: Untagged
@@ -93,6 +95,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 2453442833936916295}
   moveDuration: 2
+--- !u!114 &8293603487348222219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766046723539360907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 4089450237
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 1090082034401675470}
+  ForceRemoteRenderTimeframe: 0
+--- !u!114 &1090082034401675470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766046723539360907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateAuthorityChangeErrorCorrectionDelta: 0
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &1994744731344190015
 GameObject:
   m_ObjectHideFlags: 0

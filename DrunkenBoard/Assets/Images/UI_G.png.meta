@@ -982,10 +982,10 @@ TextureImporter:
       name: UI_G_0
       rect:
         serializedVersion: 2
-        x: 1714
-        y: 1811
-        width: 279
-        height: 218
+        x: 1718
+        y: 1814
+        width: 271
+        height: 212
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1053,7 +1053,7 @@ TextureImporter:
         width: 337
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

@@ -1,7 +1,6 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
-using static DG.Tweening.DOTween;
 
 public class WebCamMover : MonoBehaviour
 {
@@ -13,8 +12,11 @@ public class WebCamMover : MonoBehaviour
         rectTransform.anchoredPosition = anchoredPosition;
     }
 
-    public void MoveTween(Vector2 anchoredPosition)
+    public void MoveTween(Vector2 anchoredPosition, Action onComplete = null)
     {
-        rectTransform.DOAnchorPos(anchoredPosition,moveDuration).SetEase(Ease.InOutQuad);
+        rectTransform.DOAnchorPos(anchoredPosition,moveDuration).SetEase(Ease.InOutQuad).OnComplete(() =>
+        {
+            onComplete?.Invoke();
+        });
     }
 }
