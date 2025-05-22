@@ -71,8 +71,11 @@ public class WebCamManager : MonoBehaviour
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
-            _webCamUnits[i].Mover.MoveTween(camAnchoredPosition.BoardViewPositions[i]);
-            _webCamUnits[i].ShowItemSocket();
+            WebCamUnit unit = _webCamUnits[i];
+            unit.Mover.MoveTween(camAnchoredPosition.BoardViewPositions[i], ()=>
+            {
+                unit.ShowItemSocket();
+            });
         }
     }
     
