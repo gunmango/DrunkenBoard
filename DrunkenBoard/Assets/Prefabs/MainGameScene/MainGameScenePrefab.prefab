@@ -77,9 +77,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   webCamCanvasUpdater: {fileID: 7298498879751677125}
-  selfWebCamUnit: {fileID: 9128482499253363659}
-  originalPrefab: {fileID: 6136541078828994820, guid: 47fcaedd5b69baa4d91867b5b095fdb4, type: 3}
-  _positionTable: {fileID: 11400000, guid: ce11bcc9ed59ec54587abd9b11426dea, type: 2}
+  selfWebCamUnit: {fileID: 1360469254421979512, guid: 01f979ad97afbfb4993e5d07e4aa9293, type: 3}
+  originalWebCamUnit: {fileID: 6136541078828994820, guid: 47fcaedd5b69baa4d91867b5b095fdb4, type: 3}
+  positionTable: {fileID: 11400000, guid: ce11bcc9ed59ec54587abd9b11426dea, type: 2}
 --- !u!1 &3031418720481723315
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4855025929271420169}
+  - component: {fileID: 2052332683544081963}
   - component: {fileID: 7294178784722112397}
   m_Layer: 0
   m_Name: MainGameSceneManager
@@ -457,6 +458,24 @@ Transform:
   - {fileID: 8340955506082758822}
   m_Father: {fileID: 1845839458588749855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052332683544081963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8152535164622374202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 0
+  ObjectInterest: 1
+  Flags: 262144
+  NestedObjects: []
+  NetworkedBehaviours: []
+  ForceRemoteRenderTimeframe: 0
 --- !u!114 &7294178784722112397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,17 +847,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 249806a8017162844ae155841b622253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9128482499253363659 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8770311510595967460, guid: 48ac9fa6ccd1f414586158d1e5908be5, type: 3}
-  m_PrefabInstance: {fileID: 511305539755080239}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdda28ee7af9de943a8845cc9401ff72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1131004022079103477

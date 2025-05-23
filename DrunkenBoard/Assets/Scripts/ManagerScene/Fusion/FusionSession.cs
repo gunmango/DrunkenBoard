@@ -10,12 +10,13 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
     [SerializeField] private NetworkRunner runnerPrefab;
     
     public NetworkRunner Runner { get; private set; }
-    
-    public void TryConnect(string sessionName)
-    {
-        StartCoroutine(ConnectSharedSessionRoutine(sessionName));
-    }
+    public Action<NetworkRunner> ActOnSceneLoadDone {get; set;}
+    public Action<NetworkRunner,PlayerRef> ActOnPlayerJoined {get; set;}
 
+    public void TryConnect(string lobbyName)
+    {
+        StartCoroutine(ConnectSharedSessionRoutine(lobbyName));
+    }
     private IEnumerator ConnectSharedSessionRoutine(string sessionName)
     {
         GameManager.PopupManager.ToggleInteraction(false);
@@ -47,8 +48,7 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
             Debug.LogWarning(result.ShutdownReason);
         }
     }
-
-
+    
     #region INetworkRunnerCallbacks
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
     {
@@ -60,6 +60,7 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        ActOnPlayerJoined?.Invoke(runner, player);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
@@ -120,6 +121,7 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnSceneLoadDone(NetworkRunner runner)
     {
+        ActOnSceneLoadDone?.Invoke(runner);
     }
 
     public void OnSceneLoadStart(NetworkRunner runner)

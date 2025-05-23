@@ -1,21 +1,24 @@
 using System.Collections.Generic;
+using Fusion;
 using Unity.WebRTC;
 using UnityEngine;
+using System.Collections;
 
-public class WebCamManager : MonoBehaviour
+public class WebCamManager : SimulationBehaviour
 {
     [SerializeField] private WebCamCanvasUpdater webCamCanvasUpdater;
     [SerializeField] private WebCamUnit selfWebCamUnit;
-    [SerializeField] private WebCamUnit originalPrefab;
-    [SerializeField] private WebCamAnchoredPositionTable _positionTable;
+    [SerializeField] private WebCamUnit originalWebCamUnit;
+    [SerializeField] private WebCamAnchoredPositionTable positionTable;
     
     private readonly List<WebCamUnit> _webCamUnits = new List<WebCamUnit>();
     
     public void Initialize()
     {
-        _webCamUnits.Add(selfWebCamUnit);
         SetCamsToBoardView();
 
+        GameManager.FusionSession.ActOnPlayerJoined += OnNewPlayer;
+        
         GameManager.WebRtcController.OnVideoReceived += OnVideoReceived;
         GameManager.WebRtcController.OnVideoDisconnect += OnVideoDisconnect;
 
@@ -23,23 +26,40 @@ public class WebCamManager : MonoBehaviour
         MainGameSceneManager.MiniGameManager.OnMiniGameEnd += MoveCamsToBoardView;
     }
     
-    private void OnVideoReceived(VideoStreamTrack track, string uuid)
+    public WebCamUnit CreateUnit(WebCamUnit unitPrefab)
     {
-        WebCamUnit webCamUnit = CreateUnit(uuid);
-        webCamUnit.SetTrack(track);
-    }
-
-    public WebCamUnit CreateUnit(string uuid)
-    {
-        WebCamUnit webCamUnit = Instantiate(originalPrefab, webCamCanvasUpdater.ContentTransform);
-        webCamUnit.SetUuid(uuid);
-        originalPrefab.gameObject.SetActive(true);
+        var runners = NetworkRunner.Instances;
+        foreach (var runner in runners)
+        {
+            Debug.Log(runner.name);
+        }
+        
+        WebCamUnit webCamUnit = Instantiate(unitPrefab, webCamCanvasUpdater.ContentTransform);
+        webCamUnit.gameObject.SetActive(true);
         
         _webCamUnits.Add(webCamUnit);
         
         SetCamsToBoardView();
         
         return webCamUnit;
+    }
+    
+    private void OnNewPlayer(NetworkRunner runner, PlayerRef playerRef)
+    {
+        StartCoroutine(CreateUnitCo());
+    }
+
+    private IEnumerator CreateUnitCo()
+    {
+        yield return new WaitWhile(()=>MainGameSceneManager.MiniGameManager.IsPlaying);
+        
+        CreateUnit(originalWebCamUnit);
+    }
+    
+    
+    private void OnVideoReceived(VideoStreamTrack track, string uuid)
+    {
+        
     }
 
     private void OnVideoDisconnect(string obj)
@@ -49,15 +69,19 @@ public class WebCamManager : MonoBehaviour
             if (_webCamUnits[i].Uuid == obj)
             {
                 _webCamUnits[i].UnSetTrack();
-                _webCamUnits.RemoveAt(i);
                 break;
             }
         }
     }
+    
+    
+    
+    
+    #region 위치옮기기
 
     private void SetCamsToBoardView()
     {
-        WebCamAnchoredPosition camAnchoredPosition = _positionTable.GetAnchoredPosition(_webCamUnits.Count);
+        WebCamAnchoredPosition camAnchoredPosition = positionTable.GetAnchoredPosition(_webCamUnits.Count);
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
@@ -67,7 +91,7 @@ public class WebCamManager : MonoBehaviour
 
     private void MoveCamsToBoardView()
     {
-        WebCamAnchoredPosition camAnchoredPosition = _positionTable.GetAnchoredPosition(_webCamUnits.Count);
+        WebCamAnchoredPosition camAnchoredPosition = positionTable.GetAnchoredPosition(_webCamUnits.Count);
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
@@ -81,7 +105,7 @@ public class WebCamManager : MonoBehaviour
     
     private void MoveCamsToGameView()
     {
-        WebCamAnchoredPosition camAnchoredPosition = _positionTable.GetAnchoredPosition(_webCamUnits.Count);
+        WebCamAnchoredPosition camAnchoredPosition = positionTable.GetAnchoredPosition(_webCamUnits.Count);
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
@@ -89,4 +113,7 @@ public class WebCamManager : MonoBehaviour
             _webCamUnits[i].HideItemSocket();
         }
     }
+    
+    #endregion
+    
 }

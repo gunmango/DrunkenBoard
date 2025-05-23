@@ -16,11 +16,11 @@ public class WebCamUnit : MonoBehaviour
     }
     
     public void SetTrack(VideoStreamTrack track) => clientTrackController.SetTrack(track);
+    
     //플레이어 webrtc 연결끊김
     public void UnSetTrack()
     {
         clientTrackController.UnsetTrack();
-        Destroy(gameObject);
     }
 
     public void HideItemSocket()

@@ -14,7 +14,7 @@ public class DevGameSceneHelper : MonoBehaviour
         //임의로 플레이어 만들기
         for (int i = 0; i < totalPlayerCount - 1; i++)
         {
-            MainGameSceneManager.WebCamManager.CreateUnit(i.ToString());
+            //MainGameSceneManager.WebCamManager.CreateUnit(i.ToString());
         }
     }
 
