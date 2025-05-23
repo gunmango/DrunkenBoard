@@ -33,6 +33,5 @@ public class LobbySceneManager : ASceneManager<LobbySceneManager>
 
     private void GameStart()
     {
-        GameManager.SceneController.LoadScene(ESceneType.MainGame);
     }
 }
