@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DemoTriangle : NetworkBehaviour
 {
-    [Networked] public int Count { get; set; }
+    [Networked] public bool Count { get; set; }
 
-    public override void FixedUpdateNetwork()
+    public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Count++;
+            Count = !Count;
         }
     }
 }
