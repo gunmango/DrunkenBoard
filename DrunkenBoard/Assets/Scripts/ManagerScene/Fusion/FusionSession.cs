@@ -34,8 +34,7 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
                 SessionName = sessionName,
                 SceneManager = Runner.GetComponent<INetworkSceneManager>(),
                 ObjectProvider = Runner.GetComponent<INetworkObjectProvider>(),
-                //Scene = SceneRef.FromIndex((int)ESceneType.MainGame)
-                Scene = null 
+                Scene = SceneRef.FromIndex((int)ESceneType.MainGame)
             });
         yield return new WaitUntil(() => task.IsCompleted);
         

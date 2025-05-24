@@ -168,13 +168,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2052332683544081963, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
-      propertyPath: Flags
-      value: 262145
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2052332683544081963, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
-      propertyPath: SortKey
-      value: 1000247898
-      objectReference: {fileID: 0}
+      propertyPath: 'NetworkedBehaviours.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4743927488975116159}
     - target: {fileID: 3532020903940481419, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
       propertyPath: m_Name
       value: MainGameScenePrefab
@@ -184,6 +184,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+--- !u!114 &4743927488975116159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1648234622428510157, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+  m_PrefabInstance: {fileID: 4743927488975116158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3579b1c8cd50af94f9bd274b3aeb2b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

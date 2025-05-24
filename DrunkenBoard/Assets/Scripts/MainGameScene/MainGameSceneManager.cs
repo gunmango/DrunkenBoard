@@ -11,9 +11,11 @@ public class MainGameSceneManager : ASceneManager<MainGameSceneManager>
     [SerializeField] private MiniGameManager miniGameManager;
     public static MiniGameManager MiniGameManager => Instance.miniGameManager;
     
-    protected override void Initialize()
+    [SerializeField] private MainGameStateManager gameStateManager;
+    public static MainGameStateManager GameStateManager => Instance.gameStateManager;
+    
+    protected void Start()
     {
-        base.Initialize();
         webCamManager.Initialize();
         ActInitialize?.Invoke();
     }

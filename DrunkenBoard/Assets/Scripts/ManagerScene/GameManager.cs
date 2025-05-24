@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);  
+        
         if (Instance == null)
         {
             Instance = this;
@@ -15,9 +17,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    [SerializeField] private SceneController sceneController;
-    public static SceneController SceneController => Instance.sceneController;
+    
 
     [SerializeField] private PopupManager popupManager;
     public static PopupManager PopupManager => Instance.popupManager;

@@ -44,5 +44,8 @@ TagManager:
   - name: Board
     uniqueID: 3728010353
     locked: 0
+  - name: UI
+    uniqueID: 3570304293
+    locked: 0
   m_RenderingLayers:
   - Default
