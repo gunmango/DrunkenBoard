@@ -12,9 +12,14 @@ public class WebCamManager : SimulationBehaviour
     [SerializeField] private WebCamAnchoredPositionTable positionTable;
     
     private readonly List<WebCamUnit> _webCamUnits = new List<WebCamUnit>();
-    
+
+    private void OnEnable()
+    {
+        Debug.Log("onEnable");
+    }
     public void Initialize()
     {
+        Debug.Log("initialize");
         SetCamsToBoardView();
 
         GameManager.FusionSession.ActOnPlayerJoined += OnNewPlayer;
@@ -28,6 +33,7 @@ public class WebCamManager : SimulationBehaviour
     
     private WebCamUnit CreateUnit(NetworkRunner runner, PlayerRef playerRef)
     {
+        Debug.Log("create unit");
         WebCamUnit webCamUnit;
         if (playerRef == runner.LocalPlayer)
         {
@@ -49,6 +55,7 @@ public class WebCamManager : SimulationBehaviour
     
     private void OnNewPlayer(NetworkRunner runner, PlayerRef playerRef)
     {
+        Debug.Log("OnNewPlayer");
         StartCoroutine(CreateUnitCo(runner, playerRef));
     }
 
