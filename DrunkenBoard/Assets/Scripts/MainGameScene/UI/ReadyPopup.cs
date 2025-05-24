@@ -1,30 +1,36 @@
 using System.Collections;
 using UnityEngine;
+using Fusion;
+using Fusion.Sockets;
+using Unity.VisualScripting;
 
-public class ReadyPopup : ABasePopup
+
+public class ReadyPopup : SimulationBehaviour 
 {
+    [Networked] public NetworkBool IsOpen { get; set; }
+    
     [SerializeField] private ReadyPopupUpdater updater;
-
-    private void Awake()
+    
+    private void Start()
     {
-        updater.StartButton.onClick.AddListener(()=> GameManager.PopupManager.CloseTopPopup());
-    }
-
-    private IEnumerator Start()
-    {
-        yield return new WaitWhile(()=> MainGameSceneManager.GameStateManager.IsSpawned == false);
-        GameManager.PopupManager.OpenPopup(this);
+        if (GameManager.FusionSession.Runner.IsSharedModeMasterClient)
+        {
+            updater.GameObject().SetActive(true);
+            updater.StartButton.gameObject.SetActive(true);
+            updater.StartButton.onClick.AddListener(OnClickStartButton);
+            return;
+        }
+        
+        updater.StartButton.gameObject.SetActive(false);
+        updater.gameObject.SetActive(IsOpen);
     }
     
-    public override void Open()
+    private void OnClickStartButton()
     {
-        if(MainGameSceneManager.GameStateManager.CurrentState != EMainGameState.Ready)
+        if (GameManager.FusionSession.Runner.IsSharedModeMasterClient == false)
             return;
-        updater.gameObject.SetActive(true);
-    }
-
-    public override void Close()
-    {
+        
+        IsOpen = false;
         updater.gameObject.SetActive(false);
         MainGameSceneManager.GameStateManager.ChangeState(EMainGameState.Board);
     }
