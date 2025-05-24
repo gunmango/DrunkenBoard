@@ -23,7 +23,6 @@ public class TitleSceneManager : ASceneManager<TitleSceneManager>
         GameManager.SignalingClient.SetRoomId(lobbyName);
         //GameManager.SignalingClient.JoinRoom();
 
-        GameManager.SceneController.LoadScene((ESceneType.MainGame));
         GameManager.FusionSession.TryConnect(lobbyName);
     }
     

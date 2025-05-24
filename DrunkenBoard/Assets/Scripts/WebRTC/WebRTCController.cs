@@ -16,9 +16,9 @@ public class WebRTCController : MonoBehaviour
     
     private VideoStreamTrack _selfVideoTrack;
 
-    public void SetSelfWebCamTexture(WebCamTexture texture)
+    public void SetSelfWebCamTexture(VideoStreamTrack track)
     {
-        _selfVideoTrack = new VideoStreamTrack(texture);
+        _selfVideoTrack = track;
     }
     
     private void Start()

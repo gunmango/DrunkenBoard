@@ -26,17 +26,20 @@ public class WebCamManager : SimulationBehaviour
         MainGameSceneManager.MiniGameManager.OnMiniGameEnd += MoveCamsToBoardView;
     }
     
-    public WebCamUnit CreateUnit(WebCamUnit unitPrefab)
+    private WebCamUnit CreateUnit(NetworkRunner runner, PlayerRef playerRef)
     {
-        var runners = NetworkRunner.Instances;
-        foreach (var runner in runners)
+        WebCamUnit webCamUnit;
+        if (playerRef == runner.LocalPlayer)
         {
-            Debug.Log(runner.name);
+            webCamUnit = Instantiate(selfWebCamUnit, webCamCanvasUpdater.ContentTransform);
+            webCamUnit.SetTrack(null);
+        }
+        else
+        {
+            webCamUnit = Instantiate(originalWebCamUnit, webCamCanvasUpdater.ContentTransform);
         }
         
-        WebCamUnit webCamUnit = Instantiate(unitPrefab, webCamCanvasUpdater.ContentTransform);
         webCamUnit.gameObject.SetActive(true);
-        
         _webCamUnits.Add(webCamUnit);
         
         SetCamsToBoardView();
@@ -46,14 +49,15 @@ public class WebCamManager : SimulationBehaviour
     
     private void OnNewPlayer(NetworkRunner runner, PlayerRef playerRef)
     {
-        StartCoroutine(CreateUnitCo());
+        StartCoroutine(CreateUnitCo(runner, playerRef));
     }
 
-    private IEnumerator CreateUnitCo()
+    private IEnumerator CreateUnitCo(NetworkRunner runner, PlayerRef playerRef)
     {
-        yield return new WaitWhile(()=>MainGameSceneManager.MiniGameManager.IsPlaying);
+        yield return new WaitUntil(()=> MainGameSceneManager.GameStateManager.IsSpawned);
+        yield return new WaitUntil(()=> MainGameSceneManager.GameStateManager.CurrentState == EMainGameState.Board);
         
-        CreateUnit(originalWebCamUnit);
+        CreateUnit(runner, playerRef);
     }
     
     

@@ -7,9 +7,8 @@ public class LobbySceneManager : ASceneManager<LobbySceneManager>
     [SerializeField] private UuidListSetter uuidListSetter;
     [SerializeField] private Button startButton;
     
-    protected override void Initialize()
+    protected void Start()
     {
-        base.Initialize();
         uuidListSetter.Initialize();
         GameManager.SignalingClient.OnMessageReceived += OnSignalingMessage;
        
