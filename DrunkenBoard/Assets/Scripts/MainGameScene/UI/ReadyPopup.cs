@@ -18,6 +18,7 @@ public class ReadyPopup : SimulationBehaviour
             updater.GameObject().SetActive(true);
             updater.StartButton.gameObject.SetActive(true);
             updater.StartButton.onClick.AddListener(OnClickStartButton);
+            IsOpen = true;
             return;
         }
         
