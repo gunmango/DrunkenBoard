@@ -5,7 +5,7 @@ using Fusion.Sockets;
 using Unity.VisualScripting;
 
 
-public class ReadyPopup : SimulationBehaviour
+public class ReadyPopup : NetworkBehaviour
 {
     [Networked] public int Count { get; set; } = 0;
     
