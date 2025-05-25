@@ -12,6 +12,7 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
     public NetworkRunner Runner { get; private set; }
     public Action<NetworkRunner> ActOnSceneLoadDone {get; set;}
     public Action<NetworkRunner,PlayerRef> ActOnPlayerJoined {get; set;}
+    public Action<NetworkRunner,PlayerRef> ActOnPlayerLeft { get; set; }
 
     public void TryConnect(string lobbyName)
     {
@@ -59,11 +60,14 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
+        if (player == runner.LocalPlayer)
+            GameManager.SignalingClient.Uuid = player.RawEncoded.ToString();
         ActOnPlayerJoined?.Invoke(runner, player);
     }
 
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player)
     {
+        ActOnPlayerLeft?.Invoke(runner, player);
     }
 
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason)

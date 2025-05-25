@@ -6,11 +6,11 @@ public class WebCamUnit : MonoBehaviour
     [SerializeField] private WebCamUpdater webCamUpdater;
     [SerializeField] private ATrackController clientTrackController;
     [SerializeField] private WebCamMover mover;
-    public string Uuid { get; private set; }
+    public int Uuid { get; private set; }
     public int Index { get; private set; }
     public WebCamMover Mover => mover;
     
-    public void SetUuid(string uuid)
+    public void SetUuid(int uuid)
     {
         this.Uuid = uuid;
     }
