@@ -9,7 +9,7 @@ using WebSocketSharp;
 public class SignalingClient : MonoBehaviour
 {
     [SerializeField] private GameObject reconnectCanvas;
-    public string Uuid { get; } = Guid.NewGuid().ToString();
+    public string Uuid { get; set; }   //playerRef 의 RawEncoded
 
     public Func<SignalingMessage, IEnumerator> OnMessageReceived { get; set; }
     public Action OnConnected { get; set; }

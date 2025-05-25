@@ -11,7 +11,7 @@ public class UuidListSetter : MonoBehaviour
     public void Initialize()
     {
         var uuid = GameManager.SignalingClient.Uuid;
-        uuidList.Add(updater.CreateUuidText(uuid));
+        //uuidList.Add(updater.CreateUuidText(uuid));
     }
 
     public void AddNewClient(string uuid)

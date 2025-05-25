@@ -3,6 +3,7 @@ using Fusion;
 using Unity.WebRTC;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class WebCamManager : SimulationBehaviour
 {
@@ -12,17 +13,13 @@ public class WebCamManager : SimulationBehaviour
     [SerializeField] private WebCamAnchoredPositionTable positionTable;
     
     private readonly List<WebCamUnit> _webCamUnits = new List<WebCamUnit>();
-
-    private void OnEnable()
-    {
-        Debug.Log("onEnable");
-    }
+    
     public void Initialize()
     {
-        Debug.Log("initialize");
         SetCamsToBoardView();
 
         GameManager.FusionSession.ActOnPlayerJoined += OnNewPlayer;
+        GameManager.FusionSession.ActOnPlayerLeft += OnPlayerLeft;
         
         GameManager.WebRtcController.OnVideoReceived += OnVideoReceived;
         GameManager.WebRtcController.OnVideoDisconnect += OnVideoDisconnect;
@@ -30,10 +27,11 @@ public class WebCamManager : SimulationBehaviour
         MainGameSceneManager.MiniGameManager.OnMiniGameStart += MoveCamsToGameView;
         MainGameSceneManager.MiniGameManager.OnMiniGameEnd += MoveCamsToBoardView;
     }
-    
+
+
+
     private WebCamUnit CreateUnit(NetworkRunner runner, PlayerRef playerRef)
     {
-        Debug.Log("create unit");
         WebCamUnit webCamUnit;
         if (playerRef == runner.LocalPlayer)
         {
@@ -45,6 +43,7 @@ public class WebCamManager : SimulationBehaviour
             webCamUnit = Instantiate(originalWebCamUnit, webCamCanvasUpdater.ContentTransform);
         }
         
+        webCamUnit.SetUuid(playerRef.RawEncoded);
         webCamUnit.gameObject.SetActive(true);
         _webCamUnits.Add(webCamUnit);
         
@@ -55,7 +54,7 @@ public class WebCamManager : SimulationBehaviour
     
     private void OnNewPlayer(NetworkRunner runner, PlayerRef playerRef)
     {
-        Debug.Log("OnNewPlayer");
+        //Debug.Log("OnNewPlayer");
         StartCoroutine(CreateUnitCo(runner, playerRef));
     }
 
@@ -66,26 +65,44 @@ public class WebCamManager : SimulationBehaviour
         
         CreateUnit(runner, playerRef);
     }
-    
+
+    private void OnPlayerLeft(NetworkRunner arg1, PlayerRef arg2)
+    {
+        for (int i = 0; i < _webCamUnits.Count; i++)
+        {
+            if (_webCamUnits[i].Uuid == arg2.RawEncoded)
+            {
+                _webCamUnits[i].UnSetTrack();
+                _webCamUnits.RemoveAt(i);
+                Destroy(_webCamUnits[i].gameObject);
+                break;
+            }
+        }
+    }
     
     private void OnVideoReceived(VideoStreamTrack track, string uuid)
     {
-        
+        foreach (WebCamUnit webCamUnit in _webCamUnits)
+        {
+            if (webCamUnit.Uuid.ToString() == uuid)
+            {
+                webCamUnit.SetTrack(track);
+                break;
+            }
+        }
     }
 
     private void OnVideoDisconnect(string obj)
     {
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
-            if (_webCamUnits[i].Uuid == obj)
+            if (_webCamUnits[i].Uuid.ToString() == obj)
             {
                 _webCamUnits[i].UnSetTrack();
                 break;
             }
         }
     }
-    
-    
     
     
     #region 위치옮기기
