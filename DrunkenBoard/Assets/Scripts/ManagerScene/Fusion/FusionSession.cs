@@ -62,6 +62,9 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
     {
         if (player == runner.LocalPlayer)
             GameManager.SignalingClient.Uuid = player.RawEncoded.ToString();
+        
+        GameManager.SignalingClient.JoinRoom();
+        
         ActOnPlayerJoined?.Invoke(runner, player);
     }
 
