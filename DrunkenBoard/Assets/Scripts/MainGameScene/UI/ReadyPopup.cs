@@ -7,7 +7,7 @@ using Unity.VisualScripting;
 
 public class ReadyPopup : NetworkBehaviour
 {
-    [Networked] public int Count { get; set; } = 0;
+    [Networked, OnChangedRender(nameof(UpdateUI))] public bool IsOpen { get; set; }
     
     [SerializeField] private ReadyPopupUpdater updater;
     
@@ -18,13 +18,13 @@ public class ReadyPopup : NetworkBehaviour
             updater.GameObject().SetActive(true);
             updater.StartButton.gameObject.SetActive(true);
             updater.StartButton.onClick.AddListener(OnClickStartButton);
-            Count++;
+            IsOpen = true;
             return;
         }
         
         updater.StartButton.gameObject.SetActive(false);
  
-        updater.gameObject.SetActive((Count != 0));
+        updater.gameObject.SetActive((IsOpen));
     }
     
     private void OnClickStartButton()
@@ -32,8 +32,16 @@ public class ReadyPopup : NetworkBehaviour
         if (GameManager.FusionSession.Runner.IsSharedModeMasterClient == false)
             return;
 
-        Count = 0;
+        IsOpen = false;
         updater.gameObject.SetActive(false);
         MainGameSceneManager.GameStateManager.ChangeState(EMainGameState.Board);
+    }
+
+    private void UpdateUI()
+    {
+        if (!GameManager.FusionSession.Runner.IsRunning)
+            return;
+        
+        updater.gameObject.SetActive(IsOpen);
     }
 }
