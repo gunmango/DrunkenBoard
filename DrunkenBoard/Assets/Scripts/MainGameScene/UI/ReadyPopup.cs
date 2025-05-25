@@ -11,7 +11,7 @@ public class ReadyPopup : NetworkBehaviour
     
     [SerializeField] private ReadyPopupUpdater updater;
     
-    private void Start()
+    public override void Spawned()
     {
         if (GameManager.FusionSession.Runner.IsSharedModeMasterClient)
         {

@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runnerPrefab: {fileID: 1300242937636229259, guid: 45bbd1db6464c7c41b73e2e8b310b5b3, type: 3}
+  gameScene: Assets/Scenes/MainGameScene.unity
 --- !u!1 &6742010534606910876
 GameObject:
   m_ObjectHideFlags: 0
