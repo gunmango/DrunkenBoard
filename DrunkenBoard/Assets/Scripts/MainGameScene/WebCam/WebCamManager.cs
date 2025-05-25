@@ -54,7 +54,6 @@ public class WebCamManager : SimulationBehaviour
     
     private void OnNewPlayer(NetworkRunner runner, PlayerRef playerRef)
     {
-        //Debug.Log("OnNewPlayer");
         StartCoroutine(CreateUnitCo(runner, playerRef));
     }
 
@@ -73,8 +72,9 @@ public class WebCamManager : SimulationBehaviour
             if (_webCamUnits[i].Uuid == arg2.RawEncoded)
             {
                 _webCamUnits[i].UnSetTrack();
-                _webCamUnits.RemoveAt(i);
                 Destroy(_webCamUnits[i].gameObject);
+                _webCamUnits.RemoveAt(i);
+                SetCamsToBoardView();
                 break;
             }
         }

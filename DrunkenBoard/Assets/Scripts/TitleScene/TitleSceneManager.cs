@@ -21,8 +21,6 @@ public class TitleSceneManager : ASceneManager<TitleSceneManager>
     private void ToMainGame(string lobbyName)
     {
         GameManager.SignalingClient.SetRoomId(lobbyName);
-        //GameManager.SignalingClient.JoinRoom();
-
         GameManager.FusionSession.TryConnect(lobbyName);
     }
     
