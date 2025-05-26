@@ -12,6 +12,15 @@ public class BoardGameProcessor : SimulationBehaviour
         MainGameSceneManager.GameStateManager.ActOnBoard += StartBoardGame;
         
         GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
+        GameManager.FusionSession.ActOnPlayerLeft += OnPlayerLeft;
+    }
+
+    private void OnPlayerLeft(NetworkRunner arg1, PlayerRef arg2)
+    {
+        if (GameManager.FusionSession.Runner.IsSharedModeMasterClient == false)
+            return;
+        
+        turnSystem.RemoveTurnPlayer_RPC(arg2.RawEncoded);
     }
 
     private void OnPlayerJoined(NetworkRunner arg1, PlayerRef arg2)

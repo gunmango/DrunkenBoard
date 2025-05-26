@@ -6,11 +6,6 @@ public abstract class ATurnPlayer : NetworkBehaviour
     public int Uuid { get; set; }
     public TurnSystem TurnSystem { get; set; }
     protected Coroutine _takeTurnCoroutine = null;
-
-    public override void Despawned(NetworkRunner runner, bool hasState)
-    {
-        TurnSystem.RemoveTurnPlayer_RPC(this);
-    }
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public virtual void TakeTurn_RPC()
