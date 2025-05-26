@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8218908039506886365
+--- !u!1 &3441362543445787414
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2021489757486031670}
-  - component: {fileID: 7631111568717427325}
-  - component: {fileID: -1249675221699260086}
+  - component: {fileID: 552115661205434829}
+  - component: {fileID: 8899374833815843159}
+  - component: {fileID: 7481883216344281611}
   m_Layer: 0
-  m_Name: BoardGame
+  m_Name: TurnSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2021489757486031670
+  m_IsActive: 1
+--- !u!4 &552115661205434829
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8218908039506886365}
+  m_GameObject: {fileID: 3441362543445787414}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7631111568717427325
+--- !u!114 &8899374833815843159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8218908039506886365}
+  m_GameObject: {fileID: 3441362543445787414}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfc008fc7f404c54889384f7196743f0, type: 3}
@@ -48,22 +48,22 @@ MonoBehaviour:
   _CurrentPlayerIndex: 0
   _TurnEnded: 0
   _TurnPlayers: []
---- !u!114 &-1249675221699260086
+--- !u!114 &7481883216344281611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8218908039506886365}
+  m_GameObject: {fileID: 3441362543445787414}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 1497212917
+  SortKey: 2906259914
   ObjectInterest: 1
-  Flags: 262145
+  Flags: 131073
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 7631111568717427325}
+  - {fileID: 8899374833815843159}
   ForceRemoteRenderTimeframe: 0

@@ -19,13 +19,18 @@ public class BoardGameProcessor : SimulationBehaviour
 
     private IEnumerator StartBoardGameCo()
     {
-        yield return new WaitUntil(()=>turnSystem.Object.IsValid);
         NetworkRunner runner = GameManager.FusionSession.Runner;
+        // if (runner.IsSharedModeMasterClient)
+        //     runner.Spawn(turnSystem);
+        
+        yield return new WaitUntil(()=>turnSystem.Object.IsValid);
+        
         var newPlayer = runner.Spawn(originalPlayer);
         newPlayer.Uuid = runner.LocalPlayer.RawEncoded;
         turnSystem.AddTurnPlayer(newPlayer);
         
-        if(runner.IsSharedModeMasterClient)
-            turnSystem.gameObject.SetActive(true);
+        Debug.Log(runner.LocalPlayer.RawEncoded);
+        
+        turnSystem.gameObject.SetActive(true);
     }
 }
