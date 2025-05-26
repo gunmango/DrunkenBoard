@@ -10,17 +10,15 @@ public class TurnSystem : NetworkBehaviour
     [Networked] public bool TurnEnded { get; set; }
     
     [Networked, Capacity(8)] public NetworkLinkedList<ATurnPlayer> TurnPlayers => default;
-
-    //public List<ATurnPlayer> TurnPlayers;
     
     public int GetCurrentPlayerUuid()
     {
         return TurnPlayers[CurrentPlayerIndex].Uuid;
     }
     
-    public void AddTurnPlayer(ATurnPlayer turnPlayer)
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void AddTurnPlayer_RPC(ATurnPlayer turnPlayer)
     {        
-        turnPlayer.TurnSystem = this;
         TurnPlayers.Add(turnPlayer);
     }   
     
@@ -46,7 +44,6 @@ public class TurnSystem : NetworkBehaviour
             TurnEnded = true;
     }
     
-    
     public override void FixedUpdateNetwork()
     {
         // StateAuthority(서버 혹은 호스트) 만이 턴을 넘깁니다.
@@ -59,7 +56,7 @@ public class TurnSystem : NetworkBehaviour
         }
     }
     
-    // 외부에서 턴이 종료됐다고 알릴 때 호출x`z`
+    // 외부에서 턴이 종료됐다고 알릴 때 호출
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void EndTurn_RPC()
     {
