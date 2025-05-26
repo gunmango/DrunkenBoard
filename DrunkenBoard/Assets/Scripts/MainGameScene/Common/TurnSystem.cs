@@ -1,28 +1,33 @@
 using System.Collections.Generic;
 using Fusion;
+using UnityEngine;
 
 public class TurnSystem : NetworkBehaviour
 {
-    // 네트워크로 동기화할 현재 턴 플레이어 인덱스
-    [Networked] public int CurrentPlayerIndex { get; set; }
-    
     // 턴이 끝났음을 표시하는 네트워크 플래그
     [Networked] public bool TurnEnded { get; set; }
     
+    // 네트워크로 동기화할 현재 턴 플레이어 인덱스
+    [Networked] public int CurrentPlayerIndex { get; set; }
+
     [Networked, Capacity(8)] public NetworkLinkedList<ATurnPlayer> TurnPlayers => default;
     
-    public int GetCurrentPlayerUuid()
+    public void StartSystem()
     {
-        return TurnPlayers[CurrentPlayerIndex].Uuid;
+        gameObject.SetActive(true);
+
+        TurnEnded = true;
+        CurrentPlayerIndex = -1;
     }
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void AddTurnPlayer_RPC(ATurnPlayer turnPlayer)
     {        
         TurnPlayers.Add(turnPlayer);
-    }   
-    
-    public void RemoveTurnPlayer(ATurnPlayer turnPlayer)
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RemoveTurnPlayer_RPC(ATurnPlayer turnPlayer)
     {
         int idx = TurnPlayers.IndexOf(turnPlayer);
         if (idx < 0) return;
@@ -53,6 +58,7 @@ public class TurnSystem : NetworkBehaviour
         {
             TurnEnded = false;
             CurrentPlayerIndex = (CurrentPlayerIndex + 1) % TurnPlayers.Count;
+            TurnPlayers[CurrentPlayerIndex].TakeTurn_RPC();
         }
     }
     

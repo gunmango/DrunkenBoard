@@ -7,27 +7,19 @@ public abstract class ATurnPlayer : NetworkBehaviour
     public TurnSystem TurnSystem { get; set; }
     protected Coroutine _takeTurnCoroutine = null;
 
-    public override void Spawned()
+    public override void Despawned(NetworkRunner runner, bool hasState)
     {
-        base.Spawned();
+        TurnSystem.RemoveTurnPlayer_RPC(this);
     }
-    public override void FixedUpdateNetwork()
+    
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public virtual void TakeTurn_RPC()
     {
-        if (!HasStateAuthority) 
-            return;   // 내 로컬 클라이언트만 아래 로직 실행
-        
-        // 내 차례가 아니면 아무 것도 안 함
-        if (TurnSystem.GetCurrentPlayerUuid() != Uuid) return;
-
-        // 한 번만 호출하도록 
-        if (_takeTurnCoroutine == null)
-        {
-            _takeTurnCoroutine = Runner.StartCoroutine(TakeTurn());
-        }
+        StartCoroutine(TakeTurnCoroutine());
     }
     
     //자기턴에 해야할 행동, 코루틴 끝에 EndTurn 호출해야함
-    protected abstract IEnumerator TakeTurn();
+    protected abstract IEnumerator TakeTurnCoroutine();
 
     protected virtual void EndTurn()
     {

@@ -10,6 +10,18 @@ public class BoardGameProcessor : SimulationBehaviour
     private void Start()
     {
         MainGameSceneManager.GameStateManager.ActOnBoard += StartBoardGame;
+        
+        GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
+    }
+
+    private void OnPlayerJoined(NetworkRunner arg1, PlayerRef arg2)
+    {
+        if (arg1.LocalPlayer != arg2)
+            return;
+        var newPlayer = arg1.Spawn(originalPlayer);
+        newPlayer.Uuid = arg1.LocalPlayer.RawEncoded;
+        newPlayer.TurnSystem = turnSystem;
+        turnSystem.AddTurnPlayer_RPC(newPlayer);    
     }
 
     private void StartBoardGame()
@@ -20,18 +32,10 @@ public class BoardGameProcessor : SimulationBehaviour
     private IEnumerator StartBoardGameCo()
     {
         NetworkRunner runner = GameManager.FusionSession.Runner;
-        // if (runner.IsSharedModeMasterClient)
-        //     runner.Spawn(turnSystem);
         
         yield return new WaitUntil(()=>turnSystem.Object.IsValid);
         
-        var newPlayer = runner.Spawn(originalPlayer);
-        newPlayer.Uuid = runner.LocalPlayer.RawEncoded;
-        newPlayer.TurnSystem = turnSystem;
-        turnSystem.AddTurnPlayer_RPC(newPlayer);
-        
-        Debug.Log(runner.LocalPlayer.RawEncoded);
-        
-        turnSystem.gameObject.SetActive(true);
+        if(runner.IsSharedModeMasterClient)
+            turnSystem.StartSystem();
     }
 }
