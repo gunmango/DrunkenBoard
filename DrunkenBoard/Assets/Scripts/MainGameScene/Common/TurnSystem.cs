@@ -27,10 +27,22 @@ public class TurnSystem : NetworkBehaviour
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void RemoveTurnPlayer_RPC(ATurnPlayer turnPlayer)
+    public void RemoveTurnPlayer_RPC(int uuid)
     {
-        int idx = TurnPlayers.IndexOf(turnPlayer);
-        if (idx < 0) return;
+        int idx = 0;
+        ATurnPlayer turnPlayer = null;
+        for (int i = 0; i < TurnPlayers.Count; i++)
+        {
+            if (TurnPlayers[i].Uuid == uuid)
+            {
+                idx = i;
+                turnPlayer = TurnPlayers[i];
+                break;
+            }
+        }
+
+        if (turnPlayer == null)
+            return;
         
         TurnPlayers.Remove(turnPlayer);
 
