@@ -14,6 +14,10 @@ public class ReadyPopupSetter : SimulationBehaviour
     private IEnumerator OpenReadyPopupCo()
     {
         NetworkRunner runner = GameManager.FusionSession.Runner;
+        
+        if (runner == null)
+            yield break;
+        
         yield return new WaitUntil(()=> runner.IsRunning);
 
         if(!runner.IsSharedModeMasterClient)
