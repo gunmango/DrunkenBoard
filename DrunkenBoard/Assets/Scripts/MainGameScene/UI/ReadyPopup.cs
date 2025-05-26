@@ -1,8 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using Fusion;
-using Fusion.Sockets;
-using Unity.VisualScripting;
 
 
 public class ReadyPopup : NetworkBehaviour
@@ -15,7 +12,7 @@ public class ReadyPopup : NetworkBehaviour
     {
         if (GameManager.FusionSession.Runner.IsSharedModeMasterClient)
         {
-            updater.GameObject().SetActive(true);
+            updater.gameObject.SetActive(true);
             updater.StartButton.gameObject.SetActive(true);
             updater.StartButton.onClick.AddListener(OnClickStartButton);
             IsOpen = true;
@@ -34,7 +31,7 @@ public class ReadyPopup : NetworkBehaviour
 
         IsOpen = false;
         updater.gameObject.SetActive(false);
-        MainGameSceneManager.GameStateManager.ChangeState(EMainGameState.Board);
+        MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
     }
 
     private void UpdateUI()
