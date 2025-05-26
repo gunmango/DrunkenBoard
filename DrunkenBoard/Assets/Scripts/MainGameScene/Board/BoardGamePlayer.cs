@@ -15,7 +15,7 @@ public class BoardGamePlayer : ATurnPlayer
         rollDiceButton.gameObject.SetActive(false);
     }
     
-    protected override IEnumerator TakeTurn()
+    protected override IEnumerator TakeTurnCoroutine()
     {
         Debug.Log($"{Uuid} is taking turn");
         rollDiceButton.gameObject.SetActive(true);
