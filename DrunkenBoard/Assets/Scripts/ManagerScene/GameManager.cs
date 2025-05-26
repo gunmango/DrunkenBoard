@@ -1,3 +1,4 @@
+using Fusion;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -30,4 +31,21 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private FusionSession fusionSession;
     public static FusionSession FusionSession => Instance.fusionSession;
+    
+    public bool IsTestMode = false;
+
+    private void Start()
+    {
+        if (IsTestMode == false)
+            FusionSession.ActOnPlayerJoined += ConnectFusionAndSignalingClient;
+    }
+
+    private void ConnectFusionAndSignalingClient(NetworkRunner runner, PlayerRef player)
+    {
+        if (player == runner.LocalPlayer)
+        {
+            SignalingClient.Uuid = player.RawEncoded.ToString();
+            SignalingClient.JoinRoom();
+        }    
+    }
 }

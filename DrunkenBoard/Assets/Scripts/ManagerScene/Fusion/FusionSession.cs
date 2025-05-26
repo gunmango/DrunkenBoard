@@ -60,11 +60,6 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
-        if (player == runner.LocalPlayer)
-            GameManager.SignalingClient.Uuid = player.RawEncoded.ToString();
-        
-        GameManager.SignalingClient.JoinRoom();
-        
         ActOnPlayerJoined?.Invoke(runner, player);
     }
 

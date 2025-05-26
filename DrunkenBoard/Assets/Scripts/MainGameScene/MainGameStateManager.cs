@@ -1,12 +1,13 @@
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Fusion;
 using UnityEngine;
 
 public class MainGameStateManager : NetworkBehaviour
 {
-    [Networked] public EMainGameState CurrentState { get; private set; }
-    
-    public Action ActOnStartGame { get; set; }  //준비에서 첫시작
+    [Networked ,OnChangedRender(nameof(OnChangedState))] public EMainGameState CurrentState { get; private set; }
+
+    public Action ActOnStartGame { get; set; } //준비에서 첫시작
     public Action ActOnBoard { get; set; } //보드판
     public Action ActOnSpaceEvent { get; set; } //칸이벤트
     public bool IsSpawned { get; private set; } = false;
@@ -20,16 +21,22 @@ public class MainGameStateManager : NetworkBehaviour
         IsSpawned = true;
     }
 
-    public void ChangeState(EMainGameState newState)
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void ChangeState_RPC(EMainGameState newState)
     {
-        if (!Object.HasStateAuthority)
+        if (newState == EMainGameState.Ready)
             return;
+        CurrentState = newState;
+    }
+
+    public void OnChangedState(NetworkBehaviourBuffer previous)
+    {
+        var oldState = GetPropertyReader<EMainGameState>(nameof(CurrentState)).Read(previous);
         
-        if (CurrentState == EMainGameState.Ready)
+        if (oldState == EMainGameState.Ready)
         {
             ActOnStartGame?.Invoke();
         }
-        CurrentState = newState;
 
         if (CurrentState == EMainGameState.Board)
         {
