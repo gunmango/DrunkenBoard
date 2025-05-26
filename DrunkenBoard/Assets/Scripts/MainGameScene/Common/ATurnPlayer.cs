@@ -4,9 +4,13 @@ using Fusion;
 public abstract class ATurnPlayer : NetworkBehaviour
 {
     public int Uuid { get; set; }
-    public TurnSystem TurnSystem = null;
+    public TurnSystem TurnSystem { get; set; }
     protected Coroutine _takeTurnCoroutine = null;
-    
+
+    public override void Spawned()
+    {
+        base.Spawned();
+    }
     public override void FixedUpdateNetwork()
     {
         if (!HasStateAuthority) 

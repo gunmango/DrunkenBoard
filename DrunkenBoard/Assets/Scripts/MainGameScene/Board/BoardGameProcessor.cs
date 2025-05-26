@@ -27,7 +27,8 @@ public class BoardGameProcessor : SimulationBehaviour
         
         var newPlayer = runner.Spawn(originalPlayer);
         newPlayer.Uuid = runner.LocalPlayer.RawEncoded;
-        turnSystem.AddTurnPlayer(newPlayer);
+        newPlayer.TurnSystem = turnSystem;
+        turnSystem.AddTurnPlayer_RPC(newPlayer);
         
         Debug.Log(runner.LocalPlayer.RawEncoded);
         
