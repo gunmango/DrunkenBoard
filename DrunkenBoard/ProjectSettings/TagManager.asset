@@ -44,6 +44,9 @@ TagManager:
   - name: Board
     uniqueID: 3728010353
     locked: 0
+  - name: MiniGame
+    uniqueID: 2598905997
+    locked: 0
   - name: UI
     uniqueID: 3570304293
     locked: 0
