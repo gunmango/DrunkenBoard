@@ -1,8 +1,6 @@
 public enum ESceneType
 {
     None,
-    Manager = 0,
-    Title = 1,
-    Lobby = 2,
-    MainGame = 3,
+    Title = 0,
+    MainGame = 1,
 }
