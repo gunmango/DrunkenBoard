@@ -10,26 +10,29 @@ public class ApartGameManager : MonoBehaviour
     public GameObject FloorPrefab;
     public float FloorHeight = 1.0f;
     
-    private int currentFloorCount ;
+    private int _currentFloorCount;
     
     private void Awake()
     {
         Instance = this;
     }
-
+    
+    // ReSharper disable Unity.PerformanceAnalysis
     public void AddFloor()
     {
         
-        currentFloorCount++;
-        Debug.Log("확인용");
-        Vector3 floorPos = ApartBase.position + Vector3.up * FloorHeight*(currentFloorCount-1);
-        GameObject newFloor = Instantiate(FloorPrefab, floorPos, Quaternion.identity,ApartBase);
-        
-        
-        // 층 번호 표시 (예: 텍스트 컴포넌트에 층 번호 세팅)
-        Text floorNumText = newFloor.GetComponentInChildren<Text>();
-        if(floorNumText != null)
-            floorNumText.text = currentFloorCount.ToString();
+        _currentFloorCount++;
+        Vector3 floorPos = ApartBase.position + Vector3.up * (FloorHeight * (_currentFloorCount-1));
+        GameObject newFloor = Instantiate(FloorPrefab,ApartBase);
+        newFloor.transform.localPosition = floorPos;
+        newFloor.transform.localRotation = Quaternion.identity;
+
+        NumberingSprite display = newFloor.GetComponentInChildren<NumberingSprite>();
+        if (display)
+        {
+            display.SetNumber(_currentFloorCount);
+        }
+
     }
 
     public void AddRandomFloors(int floorCount)
@@ -40,27 +43,52 @@ public class ApartGameManager : MonoBehaviour
         }
     }
 
-    public void RaiseFloorsTo(int targetFloor)
+    public void RaiseFloorsTo(int targetFloor, System.Action onComplete = null)
     {
-        StartCoroutine(RaiseFloorsCoroutine(targetFloor));
+        Debug.Log($"RaiseFloorsTo 호출됨. 목표층: {targetFloor}");
+        StartCoroutine(RaiseFloorsCoroutine(targetFloor, onComplete));
     }
 
-    private IEnumerator RaiseFloorsCoroutine(int targetFloor)
+    private IEnumerator RaiseFloorsCoroutine(int targetFloor, System.Action onComplete)
     {
-        while (currentFloorCount<targetFloor)
+        if (_currentFloorCount >= targetFloor)
+        {
+            Debug.Log("이미 목표층 도달. 콜백 바로 실행!");
+            onComplete?.Invoke();
+            yield break;
+        }
+
+        while (_currentFloorCount < targetFloor)
         {
             AddFloor();
-            yield return new WaitForSeconds(0.1f);//층올리는 속도
+            yield return new WaitForSeconds(0.1f); // 층 쌓는 속도
         }
+
+        // ✅ 한 프레임 기다리기 (등록 다 될 때까지)
+        yield return null;
+
+        Debug.Log("층 다 쌓음! 콜백 실행");
+        onComplete?.Invoke();
     }
 
     public void HighlightFloor(int floorNumber)
-    {
-        Transform targetFloor = ApartBase.GetChild(floorNumber-1);
-        if (targetFloor != null)
+    { 
+        int index = floorNumber - 1;
+
+        if (index < 0 || index >= ApartBase.childCount)
         {
-            StartCoroutine(HighlightAnima(targetFloor));
+            Debug.LogWarning($"[HighlightFloor] 유효하지 않은 층 번호: {floorNumber} (현재 층 수: {ApartBase.childCount})");
+            return;
         }
+
+        Transform targetFloor = ApartBase.GetChild(index);
+        StartCoroutine(MovetoHighlignt(targetFloor));
+    }
+    private IEnumerator MovetoHighlignt(Transform targetFloor)
+    {  
+        yield return StartCoroutine(MoveApartToFloor(targetFloor));
+        yield return StartCoroutine(HighlightAnima(targetFloor));
+        
     }
 
     private IEnumerator HighlightAnima(Transform targetFloor)
@@ -69,6 +97,9 @@ public class ApartGameManager : MonoBehaviour
         Vector3 targetScale = originalScale * 1.2f;
         float time = 0f;
         float duration = 0.2f;
+        
+        Vector3 originalPosition = targetFloor.position;
+        targetFloor.position += new Vector3(0, 0, -0.1f);
 
         while (time < duration)
         {
@@ -78,7 +109,7 @@ public class ApartGameManager : MonoBehaviour
         }
         targetFloor.localScale = targetScale;
         
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(1f);
         
         time = 0f;
         while (time < duration)
@@ -88,6 +119,32 @@ public class ApartGameManager : MonoBehaviour
             yield return null;
         }
         targetFloor.localScale = originalScale;
+        
+       // targetFloor.position = originalPosition;
+        
+    }
+
+    private IEnumerator MoveApartToFloor(Transform targetFloor)
+    {
+       float speed = 10f;
+       
+        float targetY = -targetFloor.localPosition.y+FloorHeight;
+        Vector3 startPos = ApartBase.position;
+        Vector3 targetPos = new Vector3(startPos.x, targetY, startPos.z);  // y 위치 변경!
+       
+        
+        float distance = Vector3.Distance(startPos, targetPos);
+        float duration = distance/speed;
+        float time = 0f;
+
+
+        while (time < duration)
+        {
+            ApartBase.position = Vector3.Lerp(startPos, targetPos, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        ApartBase.position = targetPos;
     }
     
 }

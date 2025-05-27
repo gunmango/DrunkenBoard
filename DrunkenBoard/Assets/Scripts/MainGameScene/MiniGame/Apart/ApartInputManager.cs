@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -37,8 +38,11 @@ public class ApartInputManager : MonoBehaviour
       if (int.TryParse(NumberInputField.text, out int number))
       {
          InputPanel.SetActive(false);
-         ApartGameManager.Instance.RaiseFloorsTo(number);
-         ApartGameManager.Instance.HighlightFloor(number);
+         ApartGameManager.Instance.RaiseFloorsTo(number, () =>
+         {
+            // 층 다 쌓고 나서 코루틴으로 한 프레임 기다린 후 Highlight
+            StartCoroutine(DelayedHighlight(number));
+         });
          
          apartPlayerManager.NextPlayer();
       }
@@ -46,6 +50,13 @@ public class ApartInputManager : MonoBehaviour
       {
          Debug.Log("유효한 숫자를 입력해주세요.");
       }
+
+      
+   }
+   private IEnumerator DelayedHighlight(int floorNumber)
+   {
+      yield return null; // 한 프레임 기다려서 층이 모두 등록되게 함
+      ApartGameManager.Instance.HighlightFloor(floorNumber);
    }
 
    private void Update()

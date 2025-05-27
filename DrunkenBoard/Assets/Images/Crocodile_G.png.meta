@@ -1101,7 +1101,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 511
-        width: 768
+        width: 384
         height: 256
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2525,6 +2525,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Crocodile_G_0
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 650
+        width: 87
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f98c4eff2de4514cb94d9fa190021bf
+      internalID: 212523250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Crocodile_G_1
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 652
+        width: 68
+        height: 104
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f632998c8eabd54a81820940e8caa92
+      internalID: 609454932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -2545,6 +2589,8 @@ TextureImporter:
       Colon: -950672727
       Crocodile_1: -942150936
       Crocodile_2: -1187487534
+      Crocodile_G_0: 212523250
+      Crocodile_G_1: 609454932
       Crocodile_G_10: -666575703
       Crocodile_G_11: -1594907960
       Crocodile_G_12: 17275801
