@@ -30,22 +30,21 @@ public class TurnSystem : NetworkBehaviour
     public void RemoveTurnPlayer_RPC(int uuid)
     {
         int idx = 0;
-        ATurnPlayer turnPlayer = null;
         for (int i = 0; i < TurnPlayers.Count; i++)
         {
-            if (TurnPlayers[i].Uuid == uuid)
+            if (TurnPlayers[i] == null)
             {
                 idx = i;
-                turnPlayer = TurnPlayers[i];
                 break;
             }
         }
-
-        if (turnPlayer == null)
-            return;
         
-        TurnPlayers.Remove(turnPlayer);
+        TurnPlayers.Remove(null);
 
+        // 만약 “지금 턴이었던 사람이 삭제”라면 즉시 턴 넘기기
+        if (idx == CurrentPlayerIndex)
+            TurnEnded = true;
+        
         // CurrentPlayerIndex 보정
         if (TurnPlayers.Count == 0)
         {
@@ -55,10 +54,6 @@ public class TurnSystem : NetworkBehaviour
         {
             CurrentPlayerIndex = (CurrentPlayerIndex - 1 + TurnPlayers.Count) % TurnPlayers.Count;
         }
-        
-        // 만약 “지금 턴이었던 사람이 삭제”라면 즉시 턴 넘기기
-        if (idx == CurrentPlayerIndex)
-            TurnEnded = true;
     }
     
     public override void FixedUpdateNetwork()
