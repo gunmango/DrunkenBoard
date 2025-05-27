@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4085627499671485733}
   - component: {fileID: 3683590031607952318}
   - component: {fileID: 2647786981843665116}
+  - component: {fileID: 7403703301915585804}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Untagged
@@ -144,3 +145,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DelayIfSceneManagerIsBusy: 1
+--- !u!114 &7403703301915585804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224573665661642914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b647363db012284c8f868a07fb19098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerPrefab>k__BackingField: {fileID: 8462061248558014051, guid: 2c13d6543c510b143b0914c5d021052a, type: 3}

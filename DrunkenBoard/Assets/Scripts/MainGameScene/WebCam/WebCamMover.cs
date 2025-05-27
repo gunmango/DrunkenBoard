@@ -19,4 +19,9 @@ public class WebCamMover : MonoBehaviour
             onComplete?.Invoke();
         });
     }
+
+    public Vector2 GetAnchoredPosition()
+    {
+        return rectTransform.anchoredPosition;
+    }
 }
