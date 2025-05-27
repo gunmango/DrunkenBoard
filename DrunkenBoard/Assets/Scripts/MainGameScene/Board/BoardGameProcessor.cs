@@ -6,7 +6,8 @@ public class BoardGameProcessor : SimulationBehaviour
 {
     [SerializeField] private TurnSystem turnSystem;
     [SerializeField] private BoardGamePlayer originalPlayer;
-
+    [SerializeField] private DiceSetter diceSetter;
+    
     private void Start()
     {
         MainGameSceneManager.GameStateManager.ActOnBoard += StartBoardGame;
@@ -28,8 +29,7 @@ public class BoardGameProcessor : SimulationBehaviour
         if (arg1.LocalPlayer != arg2)
             return;
         var newPlayer = arg1.Spawn(originalPlayer);
-        newPlayer.Uuid = arg1.LocalPlayer.RawEncoded;
-        newPlayer.TurnSystem = turnSystem;
+        newPlayer.Initialize(diceSetter, turnSystem, arg1.LocalPlayer.RawEncoded);
         turnSystem.AddTurnPlayer_RPC(newPlayer);    
     }
 

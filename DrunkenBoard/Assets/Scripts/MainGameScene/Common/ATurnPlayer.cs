@@ -5,7 +5,6 @@ public abstract class ATurnPlayer : NetworkBehaviour
 {
     public int Uuid { get; set; }
     public TurnSystem TurnSystem { get; set; }
-    protected Coroutine _takeTurnCoroutine = null;
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public virtual void TakeTurn_RPC()
@@ -18,7 +17,6 @@ public abstract class ATurnPlayer : NetworkBehaviour
 
     protected virtual void EndTurn()
     {
-        _takeTurnCoroutine = null;
         TurnSystem.EndTurn_RPC();
     }
 }
