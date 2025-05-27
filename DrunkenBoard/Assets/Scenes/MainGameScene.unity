@@ -175,9 +175,25 @@ PrefabInstance:
       propertyPath: 'NestedObjects.Array.data[1]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2782342381853804597, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: m_Name
+      value: Space1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206986474556296831, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: m_Name
+      value: Space4
+      objectReference: {fileID: 0}
     - target: {fileID: 3532020903940481419, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
       propertyPath: m_Name
       value: MainGameScenePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299938004420041669, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: m_Name
+      value: Space3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6166350403863931037, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: m_Name
+      value: Space2
       objectReference: {fileID: 0}
     - target: {fileID: 8761862073092190392, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
       propertyPath: Flags

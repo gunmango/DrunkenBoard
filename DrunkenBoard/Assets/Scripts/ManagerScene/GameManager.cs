@@ -33,11 +33,12 @@ public class GameManager : MonoBehaviour
     public static FusionSession FusionSession => Instance.fusionSession;
     
     
-    public bool IsTestMode = false;
+    public bool IsSignaling = false;
+    
 
     private void Start()
     {
-        if (IsTestMode == false)
+        if (IsSignaling)
             FusionSession.ActOnPlayerJoined += ConnectFusionAndSignalingClient;
     }
 

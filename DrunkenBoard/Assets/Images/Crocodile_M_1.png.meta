@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Crocodile_M_1_0: 8749255639056307197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
