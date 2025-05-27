@@ -8,7 +8,7 @@ using UnityEngine;
 public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField] private NetworkRunner runnerPrefab;
-    
+    [SerializeField] private ESceneType mainGameScene;
     public NetworkRunner Runner { get; private set; }
     public Action<NetworkRunner> ActOnSceneLoadDone {get; set;}
     public Action<NetworkRunner,PlayerRef> ActOnPlayerJoined {get; set;}
@@ -35,7 +35,7 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
                 SessionName = sessionName,
                 SceneManager = Runner.GetComponent<INetworkSceneManager>(),
                 ObjectProvider = Runner.GetComponent<INetworkObjectProvider>(),
-                Scene = SceneRef.FromIndex((int)ESceneType.MainGame)
+                Scene = SceneRef.FromIndex((int)mainGameScene)
             });
         yield return new WaitUntil(() => task.IsCompleted);
         
