@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FusionSession fusionSession;
     public static FusionSession FusionSession => Instance.fusionSession;
     
+    
     public bool IsTestMode = false;
 
     private void Start()

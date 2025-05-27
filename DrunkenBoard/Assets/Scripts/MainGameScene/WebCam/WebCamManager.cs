@@ -3,7 +3,6 @@ using Fusion;
 using Unity.WebRTC;
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class WebCamManager : SimulationBehaviour
 {
@@ -28,8 +27,17 @@ public class WebCamManager : SimulationBehaviour
         MainGameSceneManager.MiniGameManager.OnMiniGameEnd += MoveCamsToBoardView;
     }
 
+    public Vector3 GetWebCamUnitAnchoredPosOrZero(int uuid)
+    {
+        foreach (var unit in _webCamUnits)
+        {
+            if(unit.Uuid == uuid)
+                return unit.Mover.GetAnchoredPosition();
+        }
 
-
+        return Vector3.zero;
+    }
+    
     private WebCamUnit CreateUnit(NetworkRunner runner, PlayerRef playerRef)
     {
         WebCamUnit webCamUnit;

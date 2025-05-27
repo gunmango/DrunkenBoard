@@ -167,9 +167,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2052332683544081963, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: NestedObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2052332683544081963, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: 'NestedObjects.Array.data[1]'
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3532020903940481419, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
       propertyPath: m_Name
       value: MainGameScenePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761862073092190392, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: Flags
+      value: 262145
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761862073092190392, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 1668319733
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761862073092190392, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761862073092190392, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: 'NetworkedBehaviours.Array.data[0]'
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
