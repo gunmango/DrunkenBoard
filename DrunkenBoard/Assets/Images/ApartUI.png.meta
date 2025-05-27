@@ -423,7 +423,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ApartUI_0: -8433577667565778524
+      ApartUI_1: 8939549576071973341
+      ApartUI_10: 5402659758741692246
+      ApartUI_2: 1319100230817195489
+      ApartUI_3: 973612949955678092
+      ApartUI_4: -1987639131515938225
+      ApartUI_5: 3753878588048238199
+      ApartUI_6: -5842486031231210059
+      ApartUI_7: -5729351610837645491
+      ApartUI_8: -1699498525672000520
+      ApartUI_9: 2304520683446584883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
