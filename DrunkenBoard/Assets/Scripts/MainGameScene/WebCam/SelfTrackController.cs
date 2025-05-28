@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.WebRTC;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,16 +11,10 @@ public class SelfTrackController : ATrackController
     private WebCamTexture _webCamTexture;
     private VideoStreamTrack _track;
     private bool _isCamOn = false;
-
+    
     public override void SetTrack(VideoStreamTrack track)
     {
-        _webCamTexture = new WebCamTexture(WebCamTexture.devices[deviceNum].name);
         _webCamTexture.Play();
-        image.texture = _webCamTexture;
-        
-        _track = new VideoStreamTrack(_webCamTexture);
-        
-        GameManager.WebRtcController.SetSelfWebCamTexture(_track);    
     }
 
     public override void UnsetTrack()
@@ -31,6 +26,12 @@ public class SelfTrackController : ATrackController
     {
         MainGameSceneManager.Instance.ActInitialize += Initialize;
         activationButton.onClick.AddListener(ToggleActivation);
+        
+        _webCamTexture = new WebCamTexture(WebCamTexture.devices[deviceNum].name, 640, 480, 30);
+        image.texture = _webCamTexture;
+
+        StartCoroutine(NewTrackCo());
+        GameManager.WebRtcController.SetSelfWebCamTexture(_track);    
     }
 
     private void Initialize()
@@ -43,5 +44,15 @@ public class SelfTrackController : ATrackController
         _isCamOn = !_isCamOn;
         image.enabled = _isCamOn;
         _track.Enabled = _isCamOn;
+    }
+
+    private IEnumerator NewTrackCo()
+    {
+        yield return new WaitUntil(() => 
+            _webCamTexture.width  > 100 && 
+            _webCamTexture.height > 100
+        );
+        
+        _track = new VideoStreamTrack(_webCamTexture);
     }
 }
