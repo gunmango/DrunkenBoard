@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WebCamAnchoredPosition", menuName = "Create New WebCamAnchoredPosition Table")]
+[CreateAssetMenu(fileName = "WebCamAnchoredPosition", menuName = "WebCamAnchoredPosition Table")]
 public class WebCamAnchoredPositionTable : ScriptableObject
 {
     public List<WebCamAnchoredPosition> Positions;
