@@ -31,6 +31,7 @@ public class BoardGamePlayer : ATurnPlayer
         {
             rollDiceButton.gameObject.SetActive(false);
             _clicked = true;
+            _diceDisplayer.IsRolling = true;
             _diceSetter.SetRandomResult_RPC();
         });
         rollDiceButton.gameObject.SetActive(false);

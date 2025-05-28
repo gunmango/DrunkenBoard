@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f174fc53d96a6ce4a98525907f35f705, type: 2}
+    - target: {fileID: 4829786554309579462, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
+      propertyPath: playerColor
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7249394655975730233, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
       propertyPath: SortKey
       value: 3757516227
