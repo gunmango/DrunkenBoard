@@ -9,8 +9,6 @@ public class PlayerManager : NetworkBehaviour
     public static PlayerManager Instance;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);  
-        
         if (Instance == null)
         {
             Instance = this;
@@ -36,6 +34,17 @@ public class PlayerManager : NetworkBehaviour
         Players.Add(player);
     }
 
+    public bool IsPlayerValid(int uuid)
+    {
+        foreach (var player in Players)
+        {
+            if (player.Uuid == uuid)
+                return player.Object.IsValid;
+        }
+        
+        return false;
+    }
+    
     public EPlayerColor GetPlayerColor(int uuid)
     {
         foreach (var player in Players)

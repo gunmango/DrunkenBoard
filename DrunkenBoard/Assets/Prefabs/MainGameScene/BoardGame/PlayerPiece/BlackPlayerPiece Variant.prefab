@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 187e6f31428add246b68b1168426d5d4, type: 2}
+    - target: {fileID: 7249394655975730233, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
+      propertyPath: SortKey
+      value: 4258305834
+      objectReference: {fileID: 0}
     - target: {fileID: 7593355337780795556, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
       propertyPath: m_Sprite
       value: 

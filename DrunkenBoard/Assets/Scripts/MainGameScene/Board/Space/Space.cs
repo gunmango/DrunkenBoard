@@ -7,8 +7,8 @@ public class Space : MonoBehaviour
     [SerializeField] private List<Transform> PieceSpots;
     public SpriteRendererTweener SpriteTweener => spriteTweener;
 
-    public Transform PieceSpot(int index)
+    public Vector3 PieceSpot(int index)
     {
-        return PieceSpots[index];
+        return PieceSpots[index].position;
     }
 }
