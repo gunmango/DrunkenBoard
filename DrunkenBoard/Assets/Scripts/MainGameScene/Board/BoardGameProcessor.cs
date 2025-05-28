@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Fusion;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class BoardGameProcessor : SimulationBehaviour
     [SerializeField] private TurnSystem turnSystem;
     [SerializeField] private BoardGamePlayer originalPlayer;
     [SerializeField] private DiceSetter diceSetter;
+    [SerializeField] private DiceDisplayer diceDisplayer;
     
     private void Start()
     {
@@ -31,7 +33,7 @@ public class BoardGameProcessor : SimulationBehaviour
         
         //보드게임 플레이어 생성
         var newPlayer = arg1.Spawn(originalPlayer);
-        newPlayer.Initialize(diceSetter, turnSystem, arg1.LocalPlayer.RawEncoded);
+        newPlayer.Initialize(diceSetter, diceDisplayer, turnSystem, arg1.LocalPlayer.RawEncoded);
 
         //말 생성
         StartCoroutine(SpawnPiece(arg1, arg2, newPlayer));

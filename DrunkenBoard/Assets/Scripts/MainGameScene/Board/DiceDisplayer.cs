@@ -5,7 +5,7 @@ public class DiceDisplayer : MonoBehaviour
     [SerializeField] private Animator diceAnimator;
     [SerializeField] private float delayDuration = 1f;
     public bool IsRolling { get; private set; }
-
+    
     private readonly string[] _animNames = { "Dice1", "Dice2", "Dice3", "Dice4", "Dice5", "Dice6" };
     
     public void Awake()
@@ -26,6 +26,5 @@ public class DiceDisplayer : MonoBehaviour
     private void FinishRoll()
     {
         IsRolling = false;
-        
     }
 }
