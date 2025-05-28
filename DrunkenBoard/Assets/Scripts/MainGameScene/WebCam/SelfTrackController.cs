@@ -31,7 +31,6 @@ public class SelfTrackController : ATrackController
         image.texture = _webCamTexture;
 
         StartCoroutine(NewTrackCo());
-        GameManager.WebRtcController.SetSelfWebCamTexture(_track);    
     }
 
     private void Initialize()
@@ -54,5 +53,6 @@ public class SelfTrackController : ATrackController
         );
         
         _track = new VideoStreamTrack(_webCamTexture);
+        GameManager.WebRtcController.SetSelfWebCamTexture(_track);    
     }
 }
