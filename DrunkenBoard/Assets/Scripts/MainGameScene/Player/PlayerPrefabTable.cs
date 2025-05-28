@@ -33,7 +33,7 @@ public class PlayerPrefabTable : ScriptableObject
     }
     
     /// <summary>
-    /// 키에 해당하는 데이터를 가져옵니다. 없으면 검은색
+    /// 키에 해당하는 데이터를 가져옵니다. 없으면 하얀색
     /// </summary>
     public PlayerPrefabs Get(EPlayerColor key)
     {
@@ -46,6 +46,11 @@ public class PlayerPrefabTable : ScriptableObject
             return value;
         }
         
-        return _lookup[EPlayerColor.Black];
+        return _lookup[EPlayerColor.White];
+    }
+
+    public PlayerPiece GetPiece(EPlayerColor key)
+    {
+        return Get(key).PlayerPiece;
     }
 }

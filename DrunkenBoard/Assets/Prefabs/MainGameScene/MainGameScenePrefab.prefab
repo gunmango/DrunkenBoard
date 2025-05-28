@@ -554,6 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a106d5ca868a74ca4a4a4803fa51bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefabTable: {fileID: 11400000, guid: f7789192c2c7a2a449b3fd82c619db7d, type: 2}
   _Players: []
 --- !u!114 &6813519542249968744
 MonoBehaviour:
