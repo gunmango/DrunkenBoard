@@ -11,6 +11,9 @@ public class DiceDisplayer : MonoBehaviour
     public void Awake()
     {
         IsRolling = false;
+
+        MainGameSceneManager.GameStateManager.ActOnBoard += ()=>gameObject.SetActive(true);
+        MainGameSceneManager.GameStateManager.ActOnSpaceEvent += ()=>gameObject.SetActive(false);
     }
 
     public void ShowRoll(int result)

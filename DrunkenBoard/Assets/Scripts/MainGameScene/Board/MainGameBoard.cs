@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class MainGameBoard : MonoBehaviour
 {
@@ -8,15 +9,38 @@ public class MainGameBoard : MonoBehaviour
     
     public Vector2 GetSpaceSpotPosition(int spaceIndex, int spotIndex)
     {
-        return spaces[spaceIndex].PieceSpot(spotIndex);
+        return spaces[spaceIndex].GetPieceSpotPos(spotIndex);
     }
     
     public int GetSpaceCount => spaces.Count;
+
+    public int GetSpaceSpotCount(int spaceIndex)
+    {
+        return spaces[spaceIndex].GetSpotCount();
+    }
+
+    public void PlaySpaceEvent(int spaceIndex)
+    {
+        MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.SpaceEvent);
+        ESpaceEventType spaceEventType = spaces[spaceIndex].SpaceEventType;
+        MainGameSceneManager.SpaceEventManager.PlayEvent(spaceEventType);
+    }
     
     private void Start()
     {
-        MainGameSceneManager.MiniGameManager.OnMiniGameStart += FadeOutBoard;
-        MainGameSceneManager.MiniGameManager.OnMiniGameEnd += FadeInBoard;
+        MainGameSceneManager.GameStateManager.ActOnSpaceEvent += FadeOutBoard;
+        MainGameSceneManager.GameStateManager.ActOnBoard += FadeInBoard;
+        InitializeSpaceEvents();
+    }
+
+    private void InitializeSpaceEvents()
+    {
+        List<ASpaceEvent> spaceEvents = MainGameSceneManager.SpaceEventManager.SpaceEvents;
+
+        foreach (var space in spaces)
+        {
+            space.SpaceEventType = (spaceEvents[Random.Range(0, spaceEvents.Count)].SpaceEventType);
+        }
     }
     
     private void FadeOutBoard()

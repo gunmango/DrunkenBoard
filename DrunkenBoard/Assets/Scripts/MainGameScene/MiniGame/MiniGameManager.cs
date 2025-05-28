@@ -9,8 +9,6 @@ public class MiniGameManager : MonoBehaviour
 
     public bool IsPlaying { get; private set; } = false;
     
-    [SerializeField] private Button demoMiniGameButton;
-    
     public void StartMiniGame()
     {
         IsPlaying = true;
@@ -22,20 +20,4 @@ public class MiniGameManager : MonoBehaviour
         IsPlaying = false;
         OnMiniGameEnd?.Invoke();
     }
-
-    private void Start()
-    {
-        demoMiniGameButton.onClick.AddListener(() =>
-        {
-            if (IsPlaying)
-            {
-                EndMiniGame();
-            }
-            else
-            {
-                StartMiniGame();
-            }
-        });
-    }
-    
 }
