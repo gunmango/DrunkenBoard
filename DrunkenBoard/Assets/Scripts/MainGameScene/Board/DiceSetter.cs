@@ -6,8 +6,6 @@ public class DiceSetter : NetworkBehaviour
     [SerializeField] private DiceDisplayer diceDisplayer;
     
     [Networked] public int DiceResult { get; set; }
-    public int DiceNumber { get; set; }
-    public bool IsRolling => diceDisplayer.IsRolling;
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void SetRandomResult_RPC()
@@ -26,7 +24,6 @@ public class DiceSetter : NetworkBehaviour
     private void ShowDiceRoll(int result)
     {
         diceDisplayer.ShowRoll(result);
-        DiceNumber = result;
     }
 
 

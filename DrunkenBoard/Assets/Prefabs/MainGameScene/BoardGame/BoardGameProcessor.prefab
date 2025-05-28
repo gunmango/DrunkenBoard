@@ -97,6 +97,7 @@ MonoBehaviour:
   turnSystem: {fileID: 6446565440793925738}
   originalPlayer: {fileID: 8084325657878495276, guid: be32429915137b94e89f73a2698540dd, type: 3}
   diceSetter: {fileID: 1880591382928469287}
+  diceDisplayer: {fileID: 460569433947481355}
 --- !u!1 &2631637377993783587
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diceDisplayer: {fileID: 460569433947481355}
+  _DiceResult: 0
 --- !u!114 &3172179762956646349
 MonoBehaviour:
   m_ObjectHideFlags: 0

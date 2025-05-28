@@ -73,3 +73,9 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Unity 에디터 사용자별 설정 폴더 무시
+/[Uu]ser[Ss]ettings/
+
+# 프로젝트 설정 폴더 내 EditorUserSettings.asset 무시
+/ProjectSettings/EditorUserSettings.asset
