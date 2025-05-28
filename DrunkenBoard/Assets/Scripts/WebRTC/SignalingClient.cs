@@ -102,13 +102,8 @@ public class SignalingClient : MonoBehaviour
 
             if (_websocket.IsAlive)
             {
-                if(reconnectCanvas.activeSelf)
-                    reconnectCanvas.SetActive(false);
                 continue;
             }
-            
-            if(reconnectCanvas.activeSelf == false)
-                reconnectCanvas.SetActive(true);
             
             Debug.Log("Reconnecting...");
             _websocket.ConnectAsync();
