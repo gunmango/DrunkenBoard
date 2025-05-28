@@ -15,7 +15,7 @@ MonoBehaviour:
   entries:
   - Key: 1
     Data:
-      PlayerPiece: {fileID: 4829786554309579462, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
+      PlayerPiece: {fileID: 5209305351229257329, guid: f17302d153935ce4094adcd8ef98fe13, type: 3}
   - Key: 2
     Data:
       PlayerPiece: {fileID: 1929679894986538462, guid: 3dfe4103634e7f64f8cfb147b1bc633b, type: 3}
@@ -37,6 +37,6 @@ MonoBehaviour:
   - Key: 8
     Data:
       PlayerPiece: {fileID: 8679823249015018655, guid: c38c35c4439ac604e90307fc5d6bcd9e, type: 3}
-  - Key: 8
+  - Key: 9
     Data:
       PlayerPiece: {fileID: 4829786554309579462, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
