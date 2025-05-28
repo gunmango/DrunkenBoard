@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7951d0acfca706d43abd91d2d558c845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Count: 0
+  _IsOpen: 0
   updater: {fileID: 6609826875469233320}
 --- !u!114 &416536060859036704
 MonoBehaviour:
@@ -593,7 +593,7 @@ Canvas:
   m_GameObject: {fileID: 8186769011896919390}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

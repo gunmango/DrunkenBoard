@@ -50,9 +50,13 @@ public class BoardGamePlayer : ATurnPlayer
         _diceResult = _diceSetter.DiceResult;
         yield return StartCoroutine(_piece.MoveSpace(_diceResult));
         
-        
         //스페이스 이벤트 기다리기
+        bool ready = false;
+        MainGameSceneManager.GameStateManager.ActOnBoard += () => ready = true;
+        yield return new WaitUntil(() => ready);
         
+        
+        MainGameSceneManager.GameStateManager.ActOnBoard -= () => ready = true;
         _clicked = false;
         EndTurn();
     }

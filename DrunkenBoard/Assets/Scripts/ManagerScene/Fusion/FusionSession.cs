@@ -42,7 +42,6 @@ public class FusionSession : MonoBehaviour, INetworkRunnerCallbacks
         GameManager.PopupManager.ToggleInteraction(true);
 
         var result = task.Result;
-        Debug.Log($"StartGame Result: {result.ShutdownReason}");
         if (!result.Ok)
         {
             Debug.LogWarning(result.ShutdownReason);

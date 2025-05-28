@@ -23,8 +23,8 @@ public class WebCamManager : SimulationBehaviour
         GameManager.WebRtcController.OnVideoReceived += OnVideoReceived;
         GameManager.WebRtcController.OnVideoDisconnect += OnVideoDisconnect;
 
-        MainGameSceneManager.MiniGameManager.OnMiniGameStart += MoveCamsToGameView;
-        MainGameSceneManager.MiniGameManager.OnMiniGameEnd += MoveCamsToBoardView;
+        MainGameSceneManager.GameStateManager.ActOnSpaceEvent += MoveCamsToGameView;
+        MainGameSceneManager.GameStateManager.ActOnBoard += MoveCamsToBoardView;
     }
 
     public Vector3 GetWebCamUnitAnchoredPosOrZero(int uuid)

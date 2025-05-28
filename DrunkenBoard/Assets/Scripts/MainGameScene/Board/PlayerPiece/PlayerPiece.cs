@@ -9,13 +9,13 @@ public class PlayerPiece : NetworkBehaviour
     [SerializeField] private PlayerPieceAnimator animator;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private EPlayerColor playerColor;
-    public int SpaceIndex { get; private set; } = 0;    //보드게임 몇번째 칸에 있는지
+    public int SpaceIndex { get; private set; } = 0;  //보드게임 몇번째 칸에 있는지
     
-    private int _spotIndex = -1;    //한 칸 안의 위치
+    private int _spotIndex = -1;  //한 칸 안의 위치
 
     public override void Spawned()
     {
-        _spotIndex = Mathf.Clamp((int)playerColor - 1, 0, MainGameSceneManager.Board.GetSpaceCount - 1);
+        _spotIndex = Mathf.Clamp((int)playerColor - 1, 0, MainGameSceneManager.Board.GetSpaceSpotCount(0) - 1);
     }
 
     public IEnumerator MoveSpace(int spaceCount)
@@ -40,6 +40,8 @@ public class PlayerPiece : NetworkBehaviour
 
             yield return tween.WaitForCompletion();
         }
+        
+        MainGameSceneManager.Board.PlaySpaceEvent(SpaceIndex);
     }
 
     private void OnCycleCompleted()

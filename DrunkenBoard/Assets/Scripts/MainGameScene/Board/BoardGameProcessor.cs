@@ -12,7 +12,7 @@ public class BoardGameProcessor : SimulationBehaviour
     
     private void Start()
     {
-        MainGameSceneManager.GameStateManager.ActOnBoard += StartBoardGame;
+        MainGameSceneManager.GameStateManager.ActOnStartGame += StartBoardGame;
         
         GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
         GameManager.FusionSession.ActOnPlayerLeft += OnPlayerLeft;

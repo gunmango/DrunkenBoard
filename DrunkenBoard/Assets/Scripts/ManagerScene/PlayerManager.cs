@@ -55,6 +55,17 @@ public class PlayerManager : NetworkBehaviour
         
         return EPlayerColor.None;
     }
+
+    public int GetPlayerId(EPlayerColor playerColor)
+    {
+        foreach (var player in Players)
+        {
+            if (player.PlayerColor == playerColor)
+                return player.Uuid;
+        }
+        
+        return 0;
+    }
     
     private void OnPlayerLeft(NetworkRunner arg1, PlayerRef arg2)
     {
