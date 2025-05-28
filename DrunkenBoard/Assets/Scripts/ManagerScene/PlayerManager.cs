@@ -25,6 +25,9 @@ public class PlayerManager : NetworkBehaviour
 
     #endregion
 
+    [SerializeField] private PlayerPrefabTable playerPrefabTable;
+    public static PlayerPrefabTable Table => Instance.playerPrefabTable;
+    
     [Networked, Capacity(8)] public NetworkLinkedList<Player> Players => default;
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
