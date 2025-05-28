@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
         if (player == runner.LocalPlayer)
         {
             SignalingClient.Uuid = player.RawEncoded.ToString();
-            SignalingClient.JoinRoom();
         }    
     }
 }
