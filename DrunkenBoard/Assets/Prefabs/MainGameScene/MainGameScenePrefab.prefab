@@ -737,6 +737,7 @@ MonoBehaviour:
   webCamManager: {fileID: 7196470766377026625}
   miniGameManager: {fileID: 2047633700178296266}
   gameStateManager: {fileID: 1648234622428510157}
+  mainGameBoard: {fileID: 1873770424755801972}
 --- !u!1 &8529143481037480295
 GameObject:
   m_ObjectHideFlags: 0

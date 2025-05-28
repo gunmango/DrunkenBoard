@@ -14,6 +14,9 @@ public class MainGameSceneManager : ASceneManager<MainGameSceneManager>
     [SerializeField] private MainGameStateManager gameStateManager;
     public static MainGameStateManager GameStateManager => Instance.gameStateManager;
     
+    [SerializeField] private MainGameBoard mainGameBoard;
+    public static MainGameBoard Board => Instance.mainGameBoard;
+    
     protected void Start()
     {
         webCamManager.Initialize();
