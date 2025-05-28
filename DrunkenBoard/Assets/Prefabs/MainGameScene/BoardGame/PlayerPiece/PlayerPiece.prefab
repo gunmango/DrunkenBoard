@@ -421,6 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4329422458854059600}
   moveSpeed: 2
+  playerColor: 9
 --- !u!114 &7249394655975730233
 MonoBehaviour:
   m_ObjectHideFlags: 0
