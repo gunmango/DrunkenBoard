@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7d19d7b730543498a6f41df19529f3, type: 3}
+  m_Name: PlayerPrefabTable
+  m_EditorClassIdentifier: 
+  entries:
+  - Key: 1
+    Data:
+      PlayerPiece: {fileID: 4829786554309579462, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
+  - Key: 2
+    Data:
+      PlayerPiece: {fileID: 1929679894986538462, guid: 3dfe4103634e7f64f8cfb147b1bc633b, type: 3}
+  - Key: 3
+    Data:
+      PlayerPiece: {fileID: 8293626008187903403, guid: 0a0c03668d63d0d4498ca04d30de139c, type: 3}
+  - Key: 4
+    Data:
+      PlayerPiece: {fileID: 7184891630251799578, guid: 117844528d5e5fd479ae4e1f542bfd1b, type: 3}
+  - Key: 5
+    Data:
+      PlayerPiece: {fileID: 2765428165328934894, guid: e7d25fd079abc4542aec14acf5172f18, type: 3}
+  - Key: 6
+    Data:
+      PlayerPiece: {fileID: 685979226168658985, guid: ae34516350928df4d9fc1d1a8354405e, type: 3}
+  - Key: 7
+    Data:
+      PlayerPiece: {fileID: 5542509856789352641, guid: d2521f5b5c2a3134797593859cdcb76a, type: 3}
+  - Key: 7
+    Data:
+      PlayerPiece: {fileID: 8679823249015018655, guid: c38c35c4439ac604e90307fc5d6bcd9e, type: 3}
