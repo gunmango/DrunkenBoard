@@ -4,11 +4,12 @@ using DG.Tweening;
 using Fusion;
 using UnityEngine;
 
-public class PlayerPiece : NetworkBehaviour
+public class PlayerPiece : NetworkBehaviour, IDespawned
 {
     [SerializeField] private PlayerPieceAnimator animator;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private EPlayerColor playerColor;
+    [SerializeField] private SpriteRendererTweener spriteRendererTweener;
     public int SpaceIndex { get; private set; } = 0;  //보드게임 몇번째 칸에 있는지
     
     private int _spotIndex = -1;  //한 칸 안의 위치
@@ -16,6 +17,9 @@ public class PlayerPiece : NetworkBehaviour
     public override void Spawned()
     {
         _spotIndex = Mathf.Clamp((int)playerColor - 1, 0, MainGameSceneManager.Board.GetSpaceSpotCount(0) - 1);
+
+        MainGameSceneManager.GameStateManager.ActOnBoard += spriteRendererTweener.FadeIn;
+        MainGameSceneManager.GameStateManager.ActOnSpaceEvent += spriteRendererTweener.FadeOut;
     }
 
     public IEnumerator MoveSpace(int spaceCount)
@@ -53,5 +57,11 @@ public class PlayerPiece : NetworkBehaviour
     private void OnCycleCompleted()
     {
         //1바퀴 완주
+    }
+
+    public override void Despawned(NetworkRunner runner, bool hasState)
+    {
+        MainGameSceneManager.GameStateManager.ActOnBoard -= spriteRendererTweener.FadeIn;
+        MainGameSceneManager.GameStateManager.ActOnSpaceEvent -= spriteRendererTweener.FadeOut;
     }
 }
