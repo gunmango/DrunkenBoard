@@ -252,7 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7954499397183662531}
   - component: {fileID: 4259171561434663700}
-  - component: {fileID: 3952742380604113963}
+  - component: {fileID: 223608928115698049}
   m_Layer: 0
   m_Name: Space
   m_TagString: Untagged
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec966be6ce1fd841bd484e7be1a32cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteTweener: {fileID: 3952742380604113963}
+  spriteTweener: {fileID: 223608928115698049}
   pieceSpots:
   - {fileID: 9178149437172666112}
   - {fileID: 1619942764628653148}
@@ -301,7 +301,7 @@ MonoBehaviour:
   - {fileID: 4376763248789250031}
   - {fileID: 730739103608787931}
   eventNameText: {fileID: 80536362762766941}
---- !u!114 &3952742380604113963
+--- !u!114 &223608928115698049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,11 +310,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5773238457005465241}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 983dc4385086bbc40bfdcb7ec41bbad0, type: 3}
+  m_Script: {fileID: 11500000, guid: d73a1f55d2d75d4468f5bfaf25917f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 7456848286493722150}
   fadeDuration: 2
+  eventNameText: {fileID: 80536362762766941}
 --- !u!1 &6703368552295258726
 GameObject:
   m_ObjectHideFlags: 0

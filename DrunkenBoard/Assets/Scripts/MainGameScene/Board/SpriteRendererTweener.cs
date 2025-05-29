@@ -4,14 +4,14 @@ using DG.Tweening;
 public class SpriteRendererTweener : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer image;
-    [SerializeField] private float fadeDuration = 2f;
+    [SerializeField] protected float fadeDuration = 2f;
 
-    public void FadeIn()
+    public virtual void FadeIn()
     {
         image.DOFade(1f, fadeDuration);
     }
     
-    public void FadeOut()
+    public virtual void FadeOut()
     {
         image.DOFade(0f, fadeDuration);
     }

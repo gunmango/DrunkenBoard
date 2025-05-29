@@ -62,8 +62,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Y
     m_Mirror: 0
-  m_BlendParameter: Y
-  m_BlendParameterY: X
+  m_BlendParameter: X
+  m_BlendParameterY: Y
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -80,13 +80,13 @@ AnimatorController:
   m_AnimatorParameters:
   - m_Name: Y
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: -0.03
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: X
     m_Type: 1
-    m_DefaultFloat: 0
+    m_DefaultFloat: -1
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}

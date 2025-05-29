@@ -33,9 +33,15 @@ public class PlayerPiece : NetworkBehaviour
             spaceCount--;
             
             Vector3 targetPos = MainGameSceneManager.Board.GetSpaceSpotPosition(SpaceIndex, _spotIndex);
+            
+            //애니메이션
+            Vector3 dir = (targetPos - transform.position).normalized;
+            animator.SetMovement(dir);
+            
+            //이동
             float distance = Vector3.Distance(transform.position, targetPos);
             float duration = distance / moveSpeed;
-
+            
             Tween tween = transform.DOMove(targetPos, duration).SetEase(Ease.Linear).SetUpdate(UpdateType.Late);
 
             yield return tween.WaitForCompletion();
