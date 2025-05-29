@@ -127,6 +127,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 929536863086161245, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -67.899994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189392438437201333, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 3783424643
+      objectReference: {fileID: 0}
+    - target: {fileID: 1350978771860485963, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 3547089677
+      objectReference: {fileID: 0}
     - target: {fileID: 1845839458588749855, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -170,6 +182,54 @@ PrefabInstance:
     - target: {fileID: 3532020903940481419, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
       propertyPath: m_Name
       value: MainGameScenePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393885302924038190, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 1050247834
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299870782320589145, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 2631353185
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669840692624788057, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 998795651
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841237411644180275, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 145093154
+      objectReference: {fileID: 0}
+    - target: {fileID: 6401103714890966486, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 3872924605
+      objectReference: {fileID: 0}
+    - target: {fileID: 6586804964130530523, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 128780886
+      objectReference: {fileID: 0}
+    - target: {fileID: 7398805813625657852, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 707446270
+      objectReference: {fileID: 0}
+    - target: {fileID: 7607508908304240665, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 1753154614
+      objectReference: {fileID: 0}
+    - target: {fileID: 8240223932014632675, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 297830185
+      objectReference: {fileID: 0}
+    - target: {fileID: 8508913622729278323, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 3071381224
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097084076142444492, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 4118047526
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221887362568956621, guid: 754a3e6d2dbb4e2469206d6d8ce97310, type: 3}
+      propertyPath: SortKey
+      value: 295424749
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

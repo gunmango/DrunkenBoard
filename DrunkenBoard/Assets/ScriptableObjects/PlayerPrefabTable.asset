@@ -17,53 +17,53 @@ MonoBehaviour:
     Data:
       PlayerPiece: {fileID: 5209305351229257329, guid: f17302d153935ce4094adcd8ef98fe13, type: 3}
       ApartPrefab: {fileID: 6783714966495321000, guid: 40803192cfe437642bed3582c384a69c, type: 3}
-      CameraBarPrefab: {fileID: 21815654656128933, guid: a96c281cc7a2b2c44a03f760876865c7, type: 3}
-      TurncameraBarPrefab: {fileID: 3542451871049671643, guid: 15ae5b7bc86afe241af9cd69cb9c9c4b, type: 3}
+      WebCamBoundaryBasic: {fileID: 62665614065263049, guid: 748fe0488556b894fa58439700717902, type: 3}
+      WebCamBoundarySelected: {fileID: -1367337137, guid: 748fe0488556b894fa58439700717902, type: 3}
   - Key: 2
     Data:
       PlayerPiece: {fileID: 1929679894986538462, guid: 3dfe4103634e7f64f8cfb147b1bc633b, type: 3}
       ApartPrefab: {fileID: 5264791707702917229, guid: c027d903f5a965c4baa2bb18c63f4fce, type: 3}
-      CameraBarPrefab: {fileID: 5433717917856423306, guid: 1925b20da17dfcb45a0afa08766f3ab1, type: 3}
-      TurncameraBarPrefab: {fileID: 2248427388724060419, guid: 5c8d933dc32d787419496afa0a60d4d0, type: 3}
+      WebCamBoundaryBasic: {fileID: -2326156284863869797, guid: c4d82441beaeb1846aab45e02d906fc4, type: 3}
+      WebCamBoundarySelected: {fileID: -5277099574928707774, guid: c4d82441beaeb1846aab45e02d906fc4, type: 3}
   - Key: 3
     Data:
       PlayerPiece: {fileID: 8293626008187903403, guid: 0a0c03668d63d0d4498ca04d30de139c, type: 3}
       ApartPrefab: {fileID: 5991354901273210786, guid: edb6e6ed32041254e9ff811cbc9a209e, type: 3}
-      CameraBarPrefab: {fileID: 3935042391509620277, guid: 91d8110ce8b0b6044b41bda196d5d4ae, type: 3}
-      TurncameraBarPrefab: {fileID: 3908415458918227207, guid: e57a03b5a93a76a41bf047f24498bf0f, type: 3}
+      WebCamBoundaryBasic: {fileID: 8847918181860824569, guid: c4d82441beaeb1846aab45e02d906fc4, type: 3}
+      WebCamBoundarySelected: {fileID: 1591842643, guid: c4d82441beaeb1846aab45e02d906fc4, type: 3}
   - Key: 4
     Data:
       PlayerPiece: {fileID: 7184891630251799578, guid: 117844528d5e5fd479ae4e1f542bfd1b, type: 3}
       ApartPrefab: {fileID: 1155117541064133507, guid: 4a14cdf882b391a4e9439ccfe67155db, type: 3}
-      CameraBarPrefab: {fileID: 1234286695292154409, guid: 868b5e6115f97f54399fd78d0f141ee7, type: 3}
-      TurncameraBarPrefab: {fileID: 6748247165187486139, guid: 584d2215b8fa9ba4da58ead5d3dd1c96, type: 3}
+      WebCamBoundaryBasic: {fileID: -2179559348983213259, guid: 8fa2c86a3288bf14db44af094e473452, type: 3}
+      WebCamBoundarySelected: {fileID: 6924697122866264325, guid: 8fa2c86a3288bf14db44af094e473452, type: 3}
   - Key: 5
     Data:
       PlayerPiece: {fileID: 2765428165328934894, guid: e7d25fd079abc4542aec14acf5172f18, type: 3}
       ApartPrefab: {fileID: 598563044184847436, guid: dd5d1254781a28e428201127d4b35cf5, type: 3}
-      CameraBarPrefab: {fileID: 2755145932180674966, guid: e532f2329a8dc9f43bacc0db4cdcf369, type: 3}
-      TurncameraBarPrefab: {fileID: 4292662914204093025, guid: ec80eaa3ae0243241a56fc6db3e8bb95, type: 3}
+      WebCamBoundaryBasic: {fileID: 2183828330904258812, guid: 8fa2c86a3288bf14db44af094e473452, type: 3}
+      WebCamBoundarySelected: {fileID: -294002676, guid: 8fa2c86a3288bf14db44af094e473452, type: 3}
   - Key: 6
     Data:
       PlayerPiece: {fileID: 685979226168658985, guid: ae34516350928df4d9fc1d1a8354405e, type: 3}
       ApartPrefab: {fileID: 3790186709488770938, guid: 6a858f16373dc744bbc855fdd4f81400, type: 3}
-      CameraBarPrefab: {fileID: 1298552627464668054, guid: bac7a117f512a0048a5ca3490471f060, type: 3}
-      TurncameraBarPrefab: {fileID: 753711354589778175, guid: 17271f31e803ed24da88a8f867cf83a2, type: 3}
+      WebCamBoundaryBasic: {fileID: -795718836394157809, guid: 8d564bd7b97f77846bfc6fc6127f5df2, type: 3}
+      WebCamBoundarySelected: {fileID: 7230283711575717605, guid: 8d564bd7b97f77846bfc6fc6127f5df2, type: 3}
   - Key: 7
     Data:
       PlayerPiece: {fileID: 5542509856789352641, guid: d2521f5b5c2a3134797593859cdcb76a, type: 3}
       ApartPrefab: {fileID: 5891685565308519718, guid: 40295ca6c2e192e4bb7930eae54b1b7e, type: 3}
-      CameraBarPrefab: {fileID: 5518865753431545522, guid: e05ef216aa3c60645bccad25551c272f, type: 3}
-      TurncameraBarPrefab: {fileID: 1153849466893597300, guid: 38fc395e94208c245bf9ad2b14339d4a, type: 3}
+      WebCamBoundaryBasic: {fileID: -5917531936943285643, guid: 8d564bd7b97f77846bfc6fc6127f5df2, type: 3}
+      WebCamBoundarySelected: {fileID: -564159113, guid: 8d564bd7b97f77846bfc6fc6127f5df2, type: 3}
   - Key: 8
     Data:
       PlayerPiece: {fileID: 8679823249015018655, guid: c38c35c4439ac604e90307fc5d6bcd9e, type: 3}
       ApartPrefab: {fileID: 5012152450873845351, guid: efbea4e751e318642b9287aa6e41f0e6, type: 3}
-      CameraBarPrefab: {fileID: 6423279727309459794, guid: 7a398931454b59545b4ed0544b08d472, type: 3}
-      TurncameraBarPrefab: {fileID: 5176741069607813421, guid: 8cfc64081e8e64f42b5fc8fdbc1a4dc6, type: 3}
+      WebCamBoundaryBasic: {fileID: -4924003983254031125, guid: ad6ce7546e1707845b023f9b387a6896, type: 3}
+      WebCamBoundarySelected: {fileID: 1964644060849947093, guid: ad6ce7546e1707845b023f9b387a6896, type: 3}
   - Key: 9
     Data:
       PlayerPiece: {fileID: 4829786554309579462, guid: f9efb361eefcf7c4682f3a551a4c8c67, type: 3}
       ApartPrefab: {fileID: 4200601756212465909, guid: 188349ecc3c184e4e88b3eeca4dbdc94, type: 3}
-      CameraBarPrefab: {fileID: 832729150396357691, guid: f2f52a3ad41ee4f49b73f097281e75ea, type: 3}
-      TurncameraBarPrefab: {fileID: 3334404806556474602, guid: 668cd0d8bfd8410459efeef93665e9e5, type: 3}
+      WebCamBoundaryBasic: {fileID: 4097260106649167521, guid: 748fe0488556b894fa58439700717902, type: 3}
+      WebCamBoundarySelected: {fileID: 5605047004273147689, guid: 748fe0488556b894fa58439700717902, type: 3}

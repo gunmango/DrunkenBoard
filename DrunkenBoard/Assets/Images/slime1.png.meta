@@ -384,7 +384,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime1_6
+      name: CameraBarBasic_White
       rect:
         serializedVersion: 2
         x: 1431
@@ -516,7 +516,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime1_13
+      name: CameraBarSelectF_White
       rect:
         serializedVersion: 2
         x: 1431
@@ -648,7 +648,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime1_20
+      name: CameraBarSelectB_White
       rect:
         serializedVersion: 2
         x: 1432
@@ -890,7 +890,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime1_34
+      name: CameraBarBasic_Red
       rect:
         serializedVersion: 2
         x: 1431
@@ -1022,7 +1022,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime1_41
+      name: CameraBarSelectF_Red
       rect:
         serializedVersion: 2
         x: 1431
@@ -1154,7 +1154,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime1_48
+      name: CameraBarSelectB_Red
       rect:
         serializedVersion: 2
         x: 1431
@@ -1321,6 +1321,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      CameraBarBasic_Red: 62665614065263049
+      CameraBarBasic_White: 4097260106649167521
+      CameraBarSelectB_Red: -1367337137
+      CameraBarSelectB_White: 5605047004273147689
+      CameraBarSelectF_Red: 5461711432207391712
+      CameraBarSelectF_White: 8058638291672534907
       Red: 8633294031026004242
       Shadow_1: -1355146981
       Shadow_2: -1624595240
@@ -1354,7 +1360,6 @@ TextureImporter:
       slime1_10: -9032166077373618330
       slime1_11: -2981162006517151100
       slime1_12: 4643188060002183006
-      slime1_13: 8058638291672534907
       slime1_14: -7640481045291949729
       slime1_15: -7432499546893754384
       slime1_16: -4461290245473427872
@@ -1362,20 +1367,15 @@ TextureImporter:
       slime1_18: -8114634477336423918
       slime1_19: -1611220192023432521
       slime1_2: -2851724377359858702
-      slime1_20: 5605047004273147689
       slime1_26: -2809150487169397359
       slime1_27: -6797504488951992283
       slime1_3: 8666801654570291683
       slime1_33: 2786592017964038572
-      slime1_34: 62665614065263049
       slime1_4: 4716848356589353756
       slime1_40: -5523426223512676287
-      slime1_41: 5461711432207391712
       slime1_47: -2061672936
-      slime1_48: -1367337137
       slime1_5: 5794092588957780287
       slime1_54: 1799849643
-      slime1_6: 4097260106649167521
       slime1_7: 8239696598333894049
       slime1_8: -7096873504417901390
       slime1_9: -7896866560251965140
