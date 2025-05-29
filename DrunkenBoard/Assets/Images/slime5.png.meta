@@ -381,7 +381,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime5_6
+      name: CameraBarBasic_Black
       rect:
         serializedVersion: 2
         x: 1366
@@ -513,7 +513,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime5_13
+      name: CameraBarSelectF_Black
       rect:
         serializedVersion: 2
         x: 1368
@@ -645,7 +645,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime5_20
+      name: CameraBarSelectB_Black
       rect:
         serializedVersion: 2
         x: 1367
@@ -1274,6 +1274,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      CameraBarBasic_Black: -4924003983254031125
+      CameraBarSelectB_Black: 1964644060849947093
+      CameraBarSelectF_Black: 2501658702698911339
       Slime_Black_Down_1: 197140382691607611
       Slime_Black_Down_2: -607456806052309172
       Slime_Black_Down_3: 33713023537610753
@@ -1315,16 +1318,13 @@ TextureImporter:
       Slime_White_Up_4: 5626400902206235835
       Slime_White_Up_5: -5673680617535897488
       slime5_12: -1074024242601912910
-      slime5_13: 2501658702698911339
       slime5_19: 5692052745851865791
-      slime5_20: 1964644060849947093
       slime5_26: -3886953115984613722
       slime5_27: -7680224782072841871
       slime5_43: 7837375646143267997
       slime5_49: -1991030122
       slime5_5: -7271830167991281477
       slime5_50: -342737681
-      slime5_6: -4924003983254031125
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

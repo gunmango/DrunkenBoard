@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1452919359797950183}
   - component: {fileID: 40054314629597330}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SelfCamToggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2453442833936916295, guid: 47fcaedd5b69baa4d91867b5b095fdb4, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 7059616129843150003}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7993888285234021200, guid: 47fcaedd5b69baa4d91867b5b095fdb4, type: 3}

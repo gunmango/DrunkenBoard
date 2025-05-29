@@ -52,6 +52,10 @@ public class WebCamManager : SimulationBehaviour
         }
         
         webCamUnit.SetUuid(playerRef.RawEncoded);
+        
+        EPlayerColor playerColor = PlayerManager.Instance.GetPlayerColor(playerRef.RawEncoded);
+        webCamUnit.SetColor(playerColor);
+        
         webCamUnit.gameObject.SetActive(true);
         _webCamUnits.Add(webCamUnit);
         
@@ -111,7 +115,6 @@ public class WebCamManager : SimulationBehaviour
             }
         }
     }
-    
     
     #region 위치옮기기
 

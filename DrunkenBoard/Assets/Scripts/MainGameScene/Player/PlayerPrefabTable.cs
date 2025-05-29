@@ -9,12 +9,12 @@ public class PlayerPrefabTable : ScriptableObject
     private struct Entry
     {
         public EPlayerColor Key;
-        public PlayerPrefabs Data;
+        public PlayerColorSet Data;
     }
     
     [SerializeField] private List<Entry> entries = new List<Entry>();
     
-    private Dictionary<EPlayerColor, PlayerPrefabs> _lookup;
+    private Dictionary<EPlayerColor, PlayerColorSet> _lookup;
     
     private void OnEnable()
     {
@@ -35,9 +35,8 @@ public class PlayerPrefabTable : ScriptableObject
     /// <summary>
     /// 키에 해당하는 데이터를 가져옵니다. 없으면 하얀색
     /// </summary>
-    public PlayerPrefabs Get(EPlayerColor key)
+    public PlayerColorSet Get(EPlayerColor key)
     {
-        
         if (_lookup == null)
             OnEnable();
 

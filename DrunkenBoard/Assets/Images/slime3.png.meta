@@ -378,7 +378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime3_6
+      name: CameraBarBasic_Green
       rect:
         serializedVersion: 2
         x: 1368
@@ -510,7 +510,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime3_13
+      name: CameraBarSelectF_Green
       rect:
         serializedVersion: 2
         x: 1367
@@ -642,7 +642,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime3_20
+      name: CameraBarSelectB_Green
       rect:
         serializedVersion: 2
         x: 1367
@@ -906,7 +906,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime3_34
+      name: CameraBarBasic_Blue
       rect:
         serializedVersion: 2
         x: 1368
@@ -1038,7 +1038,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime3_41
+      name: CameraBarSelectF_Blue
       rect:
         serializedVersion: 2
         x: 1367
@@ -1170,7 +1170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slime3_48
+      name: CameraBarSelectB_Blue
       rect:
         serializedVersion: 2
         x: 1367
@@ -1337,6 +1337,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      CameraBarBasic_Blue: 2183828330904258812
+      CameraBarBasic_Green: -2179559348983213259
+      CameraBarSelectB_Blue: -294002676
+      CameraBarSelectB_Green: 6924697122866264325
+      CameraBarSelectF_Blue: 7982864234733902243
+      CameraBarSelectF_Green: 3120466678144584899
       Slime_Blue_Down_1: -1296995194829934159
       Slime_Blue_Down_2: 306998518547183621
       Slime_Blue_Down_3: -1988324145
@@ -1378,21 +1384,15 @@ TextureImporter:
       Slime_Green_Up_4: -9008858446333339109
       Slime_Green_Up_5: -4532550613574101807
       slime3_12: -1562484915634483212
-      slime3_13: 3120466678144584899
       slime3_19: -434226650475329988
-      slime3_20: 6924697122866264325
       slime3_26: -2862030742656701279
       slime3_27: 1486393529350923236
       slime3_33: -2877804869692601724
-      slime3_34: 2183828330904258812
       slime3_40: 6983640506238097389
-      slime3_41: 7982864234733902243
       slime3_47: 1357095456
-      slime3_48: -294002676
       slime3_5: 6529898465886414292
       slime3_54: -822260091
       slime3_55: 1610515688
-      slime3_6: -2179559348983213259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

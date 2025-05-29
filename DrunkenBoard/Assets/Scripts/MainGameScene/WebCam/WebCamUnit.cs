@@ -16,6 +16,13 @@ public class WebCamUnit : MonoBehaviour
     }
     
     public void SetTrack(VideoStreamTrack track) => clientTrackController.SetTrack(track);
+
+    public void SetColor(EPlayerColor color)
+    {
+        PlayerColorSet playerColorSet = PlayerManager.Table.Get(color);
+        webCamUpdater.BoundaryImage.sprite = playerColorSet.WebCamBoundaryBasic;
+        webCamUpdater.BoundarySelectedImage.sprite = playerColorSet.WebCamBoundarySelected;
+    }
     
     //플레이어 webrtc 연결끊김
     public void UnSetTrack()
