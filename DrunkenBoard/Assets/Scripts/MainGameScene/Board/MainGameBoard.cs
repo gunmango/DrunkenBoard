@@ -39,7 +39,8 @@ public class MainGameBoard : MonoBehaviour
 
         foreach (var space in spaces)
         {
-            space.SpaceEventType = (spaceEvents[Random.Range(0, spaceEvents.Count)].SpaceEventType);
+            ASpaceEvent randomEvent = spaceEvents[Random.Range(0, spaceEvents.Count)];
+            space.SetEvent(randomEvent.EventType, randomEvent.EventName);
         }
     }
     

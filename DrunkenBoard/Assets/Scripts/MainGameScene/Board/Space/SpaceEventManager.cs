@@ -7,6 +7,6 @@ public class SpaceEventManager : MonoBehaviour
 
     public void PlayEvent(ESpaceEventType eventType)
     {
-        SpaceEvents.Find(x => x.SpaceEventType == eventType).PlayEvent();
+        SpaceEvents.Find(x => x.EventType == eventType).PlayEvent();
     }
 }
