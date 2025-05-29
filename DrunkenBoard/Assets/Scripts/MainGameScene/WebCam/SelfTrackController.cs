@@ -54,6 +54,8 @@ public class SelfTrackController : ATrackController
         
         _track = new VideoStreamTrack(_webCamTexture);
         GameManager.WebRtcController.SetSelfWebCamTexture(_track);
-        GameManager.SignalingClient.JoinRoom();
+        
+        if(GameManager.Instance.IsSignaling)
+            GameManager.SignalingClient.JoinRoom();
     }
 }
