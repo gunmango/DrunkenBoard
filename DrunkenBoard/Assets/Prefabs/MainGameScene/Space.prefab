@@ -313,7 +313,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73a1f55d2d75d4468f5bfaf25917f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 7456848286493722150}
+  images:
+  - {fileID: 7456848286493722150}
   fadeDuration: 2
   eventNameText: {fileID: 80536362762766941}
 --- !u!1 &6703368552295258726

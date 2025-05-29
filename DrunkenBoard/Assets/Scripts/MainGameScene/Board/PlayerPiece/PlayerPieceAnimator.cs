@@ -1,4 +1,5 @@
 using Fusion;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerPieceAnimator : NetworkBehaviour
@@ -15,13 +16,10 @@ public class PlayerPieceAnimator : NetworkBehaviour
     public void SetMovement(Vector2 movement)
     {
         if (HasStateAuthority == false)
-        {
-            Debug.Log("no authority");
             return;
-        }
         
-        CurrentMovement = new Vector3(movement.x, 0, movement.y);
-        
+        CurrentMovement = new Vector3(movement.x, movement.y, 0);
+
         animator.SetFloat(HashX, movement.x);
         animator.SetFloat(HashY, movement.y);
     }

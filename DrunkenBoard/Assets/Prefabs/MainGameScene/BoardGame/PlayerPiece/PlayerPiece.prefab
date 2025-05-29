@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3983056114224986744}
   - component: {fileID: 7593355337780795556}
+  - component: {fileID: 5556796186864170371}
   m_Layer: 0
   m_Name: CharacterSprite
   m_TagString: Untagged
@@ -150,6 +151,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5556796186864170371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2535619381414610311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983dc4385086bbc40bfdcb7ec41bbad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images:
+  - {fileID: 7593355337780795556}
+  - {fileID: 3623741936878016229}
+  fadeDuration: 2
 --- !u!1 &4742802287036179416
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4374156593416301665}
+  _CurrentMovement: {x: 0, y: 0, z: 0}
 --- !u!1 &8442965808037065930
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +440,7 @@ MonoBehaviour:
   animator: {fileID: 4329422458854059600}
   moveSpeed: 2
   playerColor: 9
+  spriteRendererTweener: {fileID: 5556796186864170371}
 --- !u!114 &7249394655975730233
 MonoBehaviour:
   m_ObjectHideFlags: 0
