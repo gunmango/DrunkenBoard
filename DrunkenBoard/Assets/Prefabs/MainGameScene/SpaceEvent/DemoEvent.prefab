@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eebe2413c853aa4cb00056734817776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpaceEventType: 3
-  EventName: "\uB370\uBAA8"
+  EventType: 0
+  EventName: '  '
