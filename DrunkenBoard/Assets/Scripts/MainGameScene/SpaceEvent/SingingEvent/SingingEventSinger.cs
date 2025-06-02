@@ -5,6 +5,7 @@ public class SingingEventSinger : ACollectivePlayer
 {
     protected override IEnumerator TakeTurnCoroutine()
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
+        yield break;
     }
 }

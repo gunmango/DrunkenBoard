@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CrocodielGameEvent : ASpaceEvent
+public class CrocodileGameEvent : ASpaceEvent
 {
     public void EndEvent()
     {
@@ -9,6 +9,6 @@ public class CrocodielGameEvent : ASpaceEvent
 
     public override void PlayEvent(int enteredPlayerUuid)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 }
