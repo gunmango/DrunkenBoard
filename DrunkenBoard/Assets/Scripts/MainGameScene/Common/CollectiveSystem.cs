@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Fusion;
@@ -10,15 +11,22 @@ public class CollectiveSystem : NetworkBehaviour
 
     public Action<List<ACollectivePlayer>> ActOnEndSystem { get; set; }
     
-    public void StartSystem()
+    public void StartSystem(int totalPlayerCount)
     {
         FinishedPlayers.Clear();
         gameObject.SetActive(true);
+        
+        StartCoroutine(PlayersTakeAction(totalPlayerCount));
+    }
 
+    private IEnumerator PlayersTakeAction(int totalPlayerCount)
+    {
+        yield return new WaitUntil(() => CollectivePlayers.Count == totalPlayerCount);
+        
         foreach (var collectivePlayer in CollectivePlayers)
         {
             collectivePlayer.TakeAction_RPC();
-        }
+        }  
     }
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
@@ -33,7 +41,7 @@ public class CollectiveSystem : NetworkBehaviour
     {
         if (FinishedPlayers.Contains(finishedPlayer))
         {
-            Debug.LogWarning($"Player {finishedPlayer.name} has finished action");
+            Debug.LogWarning($"Player {finishedPlayer.name} has already finished action");
             return;
         }
         

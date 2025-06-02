@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerPiece : NetworkBehaviour, IDespawned
 {
-    public int Uuid { get; set; }
+    [Networked] public int Uuid { get; set; }
     
     [SerializeField] private PlayerPieceAnimator animator;
     [SerializeField] private float moveSpeed = 2f;

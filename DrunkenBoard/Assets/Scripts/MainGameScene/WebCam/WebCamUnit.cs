@@ -1,14 +1,15 @@
 using Unity.WebRTC;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class WebCamUnit : MonoBehaviour
 {
     [SerializeField] private WebCamUpdater webCamUpdater;
     [SerializeField] private ATrackController clientTrackController;
-    [SerializeField] private WebCamMover mover;
+    [FormerlySerializedAs("mover")] [SerializeField] private WebCamTweener tweener;
     public int Uuid { get; private set; }
     public int Index { get; private set; }
-    public WebCamMover Mover => mover;
+    public WebCamTweener Tweener => tweener;
     
     public void SetUuid(int uuid)
     {
@@ -19,7 +20,7 @@ public class WebCamUnit : MonoBehaviour
 
     public void SetColor(EPlayerColor color)
     {
-        PlayerColorSet playerColorSet = PlayerManager.Table.Get(color);
+        PlayerColorSet playerColorSet = PlayerManager.Table.GetColorSet(color);
         webCamUpdater.BoundaryImage.sprite = playerColorSet.WebCamBoundaryBasic;
         webCamUpdater.BoundarySelectedImage.sprite = playerColorSet.WebCamBoundarySelected;
     }

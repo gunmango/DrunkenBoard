@@ -32,7 +32,7 @@ public class WebCamManager : SimulationBehaviour
         foreach (var unit in _webCamUnits)
         {
             if(unit.Uuid == uuid)
-                return unit.Mover.GetAnchoredPosition();
+                return unit.Tweener.GetAnchoredPosition();
         }
 
         return Vector3.zero;
@@ -124,7 +124,7 @@ public class WebCamManager : SimulationBehaviour
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
-            _webCamUnits[i].Mover.SetTo(camAnchoredPosition.BoardViewPositions[i]);
+            _webCamUnits[i].Tweener.SetTo(camAnchoredPosition.BoardViewPositions[i]);
         }
     }
 
@@ -135,7 +135,7 @@ public class WebCamManager : SimulationBehaviour
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
             WebCamUnit unit = _webCamUnits[i];
-            unit.Mover.MoveTween(camAnchoredPosition.BoardViewPositions[i], ()=>
+            unit.Tweener.MoveTween(camAnchoredPosition.BoardViewPositions[i], ()=>
             {
                 unit.ShowItemSocket();
             });
@@ -148,8 +148,36 @@ public class WebCamManager : SimulationBehaviour
         
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
-            _webCamUnits[i].Mover.MoveTween(camAnchoredPosition.GameViewPositions[i]);
+            _webCamUnits[i].Tweener.MoveTween(camAnchoredPosition.GameViewPositions[i]);
             _webCamUnits[i].HideItemSocket();
+        }
+    }
+
+    public void SetCamToStageView(int uuid)
+    {
+        var newSize = positionTable.OnStageSize;
+        var newPos = positionTable.OnStageAnchoredPosition;
+        foreach (var unit in _webCamUnits)
+        {
+            if (unit.Uuid == uuid)
+            {
+                unit.Tweener.ResizeTween(newSize.parentWidth, newSize.parentHeight, newSize.rawImageWidth, newSize.rawImageHeight);
+                unit.Tweener.MoveTween(newPos);
+                break;
+            }
+        }
+    }
+
+    public void SetCamToNormalSize(int uuid)
+    {
+        var newSize = positionTable.OriginalSize;
+
+        foreach (var unit in _webCamUnits)
+        {
+            if (unit.Uuid == uuid)
+            {
+                unit.Tweener.ResizeTween(newSize.parentWidth, newSize.parentHeight, newSize.rawImageWidth, newSize.rawImageHeight);
+            }
         }
     }
     
