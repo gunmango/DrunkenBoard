@@ -22,6 +22,7 @@ public class BoardGamePlayer : ATurnPlayer
     public void SetPiece(PlayerPiece piece)
     {
         _piece = piece;
+        _piece.Uuid = Uuid;
     }
     
     public override void Spawned()

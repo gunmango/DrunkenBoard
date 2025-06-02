@@ -109,3 +109,14 @@ MonoBehaviour:
     - {x: -505, y: 193}
     GameViewPositions:
     - {x: -792, y: 0}
+  OriginalSize:
+    parentWidth: 335
+    parentHeight: 253
+    rawImageWidth: 324.5
+    rawImageHeight: 240
+  OnStageSize:
+    parentWidth: 670
+    parentHeight: 506
+    rawImageWidth: 649
+    rawImageHeight: 480
+  OnStageAnchoredPosition: {x: 0, y: 262}

@@ -1,14 +1,16 @@
 using System.Collections;
 using Fusion;
+using UnityEngine;
 
 public abstract class ACollectivePlayer : NetworkBehaviour
 {
-    public int Uuid { get; set; }
+    [Networked] public int Uuid { get; set; }
     public CollectiveSystem CollectiveSystem { get; set; }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public virtual void TakeAction_RPC()
     {
+        Debug.Log($"{Uuid} Taking action");
         StartCoroutine(TakeTurnCoroutine());
     }
 
