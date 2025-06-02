@@ -6,10 +6,13 @@ using UnityEngine;
 
 public class PlayerPiece : NetworkBehaviour, IDespawned
 {
+    public int Uuid { get; set; }
+    
     [SerializeField] private PlayerPieceAnimator animator;
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private EPlayerColor playerColor;
     [SerializeField] private SpriteRendererTweener spriteRendererTweener;
+    
     public int SpaceIndex { get; private set; } = 0;  //보드게임 몇번째 칸에 있는지
     
     private int _spotIndex = -1;  //한 칸 안의 위치
@@ -51,7 +54,7 @@ public class PlayerPiece : NetworkBehaviour, IDespawned
             yield return tween.WaitForCompletion();
         }
         
-        MainGameSceneManager.Board.PlaySpaceEvent(SpaceIndex);
+        MainGameSceneManager.Board.PlaySpaceEvent(SpaceIndex, Uuid);
     }
 
     private void OnCycleCompleted()

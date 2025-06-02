@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Fusion;
-using UnityEngine;
 
 public class TurnSystem : NetworkBehaviour
 {
@@ -76,5 +74,10 @@ public class TurnSystem : NetworkBehaviour
         TurnEnded = true;
     }
 
+    public void EndSystem()
+    {
+        TurnPlayers.Clear();
+        gameObject.SetActive(false);
+    }
 
 }

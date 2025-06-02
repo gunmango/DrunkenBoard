@@ -1066,6 +1066,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Button
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 1545
+        width: 207
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac5e89dc767db94c829e170e00e5e4e
+      internalID: 1737413842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1087,6 +1109,7 @@ TextureImporter:
       Board_Corner: 538268971
       Board_Height: -1894688940
       Board_Width: -1117332760
+      Button: 1737413842
       Chat_Box: -1748113262
       DarkGreen: 1856641380
       GalticP_Board: -1695452895

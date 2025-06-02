@@ -19,11 +19,11 @@ public class MainGameBoard : MonoBehaviour
         return spaces[spaceIndex].GetSpotCount();
     }
 
-    public void PlaySpaceEvent(int spaceIndex)
+    public void PlaySpaceEvent(int spaceIndex, int enteredPlayerUuid)
     {
         MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.SpaceEvent);
         ESpaceEventType spaceEventType = spaces[spaceIndex].SpaceEventType;
-        MainGameSceneManager.SpaceEventManager.PlayEvent(spaceEventType);
+        MainGameSceneManager.SpaceEventManager.PlayEvent(spaceEventType, enteredPlayerUuid);
     }
     
     private void Start()

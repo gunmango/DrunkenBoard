@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DemoSpaceEvent : ASpaceEvent
 {
-    public override void PlayEvent()
+    public override void PlayEvent(int enteredPlayerUuid)
     {
         StartCoroutine(DemoWait());
     }
