@@ -9,7 +9,6 @@ public class SingingEventAudience : NetworkBehaviour
     private AudienceVoteUpdater _updater = null; 
     private SingingEventProcessor _processor = null;
     
-    private float _currentVoteTime = 0f;
     private int _currentVote = -1;  //-1선택안함, 0빨강, 1파랑
     
     public void Initialize(AudienceVoteUpdater updater, SingingEventProcessor processor)
@@ -24,7 +23,6 @@ public class SingingEventAudience : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void StartVoting_RPC()
     {
-        Debug.Log("StartVoting_RPC");
         _updater.gameObject.SetActive(true);
         _updater.VoteGauge.gameObject.SetActive(true);
         _updater.RadioButtonGroup.gameObject.SetActive(true);
@@ -54,7 +52,6 @@ public class SingingEventAudience : NetworkBehaviour
 
     private void EndVoting()
     {
-        Debug.Log("end action");
         _updater.RadioButtonGroup.OnValueChanged -= ChangeGauge;
         _updater.CountDownTimer.ActOnEndTimer -= EndVoting;
 

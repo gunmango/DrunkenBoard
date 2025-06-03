@@ -37,7 +37,6 @@ public class SingingEventSinger : NetworkBehaviour
     
     private void EndEvent()
     {
-        Debug.Log("EndEventSinger");
         _updater.CountDownTimer.ActOnEndTimer -= EndEvent;
         _processor.OnEndEvent();
         _updater.VoteGauge.gameObject.SetActive(false);
