@@ -20,7 +20,6 @@ public class ReadyPopup : NetworkBehaviour
         }
         
         updater.StartButton.gameObject.SetActive(false);
- 
         updater.gameObject.SetActive((IsOpen));
     }
     
