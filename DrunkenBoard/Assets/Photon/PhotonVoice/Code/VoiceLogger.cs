@@ -38,7 +38,7 @@ namespace Photon.Voice.Unity
 
             // look for VoiceLogger at the root
             VoiceLogger vlRoot = null;
-            foreach (var vl in Object.FindObjectsOfType<VoiceLogger>())
+            foreach (var vl in Object.FindObjectsByType<VoiceLogger>(FindObjectsSortMode.None))
             {
                 if (vl.transform.parent == null && vl.enabled)
                 {

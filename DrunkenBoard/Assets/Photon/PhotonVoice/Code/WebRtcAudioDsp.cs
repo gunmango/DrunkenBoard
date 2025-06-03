@@ -360,7 +360,7 @@ namespace Photon.Voice.Unity
 
         private void setOutputListener(bool set)
         {
-            var audioListener = FindObjectOfType<AudioListener>();
+            var audioListener = FindAnyObjectByType<AudioListener>();
             if (audioListener != null)
             {
                 var ac = audioListener.gameObject.GetComponent<AudioOutCapture>();
