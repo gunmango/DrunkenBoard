@@ -49,6 +49,38 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 5872161641469018595, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872161641469018595, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872161641469018595, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872161641469018595, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872161641469018595, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872161641469018595, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5906755443986032485, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 388
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313721047569124524, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7988122010666076801, guid: b0e92c922fb59a349b2a7678fe9b9816, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -7,6 +7,7 @@ public class CrocodileGameManager : NetworkBehaviour
 {
     [Header("씬에 배치된 이빨들을 Inspector에서 수동 등록")]
     [SerializeField] private CrocodileTooth[] allTeeth;
+    [SerializeField] private TurnTimer turnTimer;
 
     [SerializeField] private TurnSystem turnSystemInScene;
     [SerializeField] private CrocodilePlayer playerPrefab;
@@ -58,7 +59,6 @@ public class CrocodileGameManager : NetworkBehaviour
 
     private IEnumerator DelayedInitializeGame()
     {
-        yield return new WaitForSeconds(2f); 
         // 씬 로딩이 완전히 끝날 때까지 대기
         yield return new WaitForSeconds(0.5f);
         
@@ -256,8 +256,8 @@ public class CrocodileGameManager : NetworkBehaviour
     public void EndGame()
     {
         Debug.Log("🔥 게임 종료됨!");
-
-      
+        
+        // turnTimer.HideTimerUI();
         // 모든 이빨에게 게임 종료 알림
         foreach (var tooth in allTeeth)
         {

@@ -21,6 +21,7 @@ public class CrocodilePlayer : ATurnPlayer
     }
     public void OnTurnStart()
     {
+        Debug.Log($"🎯 플레이어 {Uuid} 턴 시작");
         // 🔄 턴 시작 시 모든 이빨의 상태를 확인해서 시각적 상태 반영
         foreach (var tooth in allTeeth)
         {
