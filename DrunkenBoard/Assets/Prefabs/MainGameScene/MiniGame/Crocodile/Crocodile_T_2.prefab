@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4696451386679360926}
   - component: {fileID: 8608359249750605786}
-  - component: {fileID: 6458065837950905750}
   - component: {fileID: 2140780031882253572}
   - component: {fileID: 3503287034907546777}
+  - component: {fileID: 1540433417536320545}
   m_Layer: 0
   m_Name: Crocodile_T_2
   m_TagString: Untagged
@@ -90,24 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6458065837950905750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7532171204061175206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e99374e8e701b2e41a44ff89be14271a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upToothSprite: {fileID: -1042753673, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
-  downToothSprite: {fileID: 974177799, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
-  _IsPressed: 0
-  _Istrap: 0
-  gameManager: {fileID: 0}
-  Croc: {fileID: 0}
 --- !u!60 &2140780031882253572
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -185,5 +167,22 @@ MonoBehaviour:
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
-  - {fileID: 6458065837950905750}
+  - {fileID: 1540433417536320545}
   ForceRemoteRenderTimeframe: 0
+--- !u!114 &1540433417536320545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7532171204061175206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d8e1b698c446847a7b63c82193cb78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toothIndex: 1
+  normalSprite: {fileID: -1042753673, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
+  downSprite: {fileID: 974177799, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
+  crocodileMouth: {fileID: 7536278453175834854, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
+  gameManager: {fileID: 0}

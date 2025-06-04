@@ -41,13 +41,13 @@ public class CrocodileGameManager : NetworkBehaviour
         GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
         GameManager.FusionSession.ActOnPlayerLeft += OnPlayerLeft;
         
-        Debug.Log("CrocodileGameManager 시작됨");
+        // Debug.Log("CrocodileGameManager 시작됨");
     }
 
     public override void Spawned()
     {
         base.Spawned();
-        Debug.Log("CrocodileGameManager Spawned");
+        // Debug.Log("CrocodileGameManager Spawned");
         
         // StateAuthority에서만 게임 초기화
         if (Object.HasStateAuthority)
@@ -138,11 +138,11 @@ public class CrocodileGameManager : NetworkBehaviour
     private IEnumerator InitializePlayerSafe(NetworkRunner runner, PlayerRef playerRef)
     {
         int uuid = playerRef.RawEncoded;
-        Debug.Log($"InitializePlayerSafe 시작 for player {uuid}");
+        // Debug.Log($"InitializePlayerSafe 시작 for player {uuid}");
 
         if (playerTimers.ContainsKey(uuid))
         {
-            Debug.LogWarning($"TurnTimer for player {uuid} already exists!");
+            // Debug.LogWarning($"TurnTimer for player {uuid} already exists!");
             yield break;
         }
 
@@ -150,17 +150,17 @@ public class CrocodileGameManager : NetworkBehaviour
         yield return new WaitUntil(() => PlayerManager.Instance != null);
         yield return new WaitUntil(() => PlayerManager.Instance.Object.IsValid);
         yield return new WaitUntil(() => PlayerManager.Instance.IsPlayerValid(uuid));
-        Debug.Log($"PlayerManager 확인 완료 for {uuid}");
+        // Debug.Log($"PlayerManager 확인 완료 for {uuid}");
 
         // 플레이어 스폰
         var newPlayer = runner.Spawn(playerPrefab);
         if (newPlayer == null)
         {
-            Debug.LogError("Player prefab 스폰 실패!");
+            // Debug.LogError("Player prefab 스폰 실패!");
             yield break;
         }
         
-        Debug.Log("Player prefab Spawn 완료");
+        // Debug.Log("Player prefab Spawn 완료");
         spawnedPlayers.Add(newPlayer);
 
         // TurnTimer 할당
@@ -183,7 +183,7 @@ public class CrocodileGameManager : NetworkBehaviour
         yield return new WaitUntil(() => newPlayer.Object.IsValid);
         
         newPlayer.Initialize(turnSystem, uuid, assignedTimer, allTeeth);
-        Debug.Log("newPlayer.Initialize 완료");
+        // Debug.Log("newPlayer.Initialize 완료");
 
         // 턴 시스템에 플레이어 추가
         if (turnSystem != null)

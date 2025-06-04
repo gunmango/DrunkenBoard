@@ -33,13 +33,13 @@ public class CrocodileTooth : NetworkBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
-            Debug.LogError($"❌ SpriteRenderer가 없습니다! GameObject: {gameObject.name}");
+            // Debug.LogError($"❌ SpriteRenderer가 없습니다! GameObject: {gameObject.name}");
         }
     }
 
     public override void Spawned()
     {
-        Debug.Log($"🦷 이빨 {toothIndex} Spawned, HasStateAuthority: {Object.HasStateAuthority}");
+        // Debug.Log($"🦷 이빨 {toothIndex} Spawned, HasStateAuthority: {Object.HasStateAuthority}");
         UpdateVisuals();
     }
 
@@ -58,7 +58,7 @@ public class CrocodileTooth : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     private void RPC_RequestClickTooth(int requesterPlayerId)
     {
-        Debug.Log($"🔄 이빨 {toothIndex} 클릭 요청 받음 from player {requesterPlayerId}");
+        // Debug.Log($"🔄 이빨 {toothIndex} 클릭 요청 받음 from player {requesterPlayerId}");
         
         // StateAuthority에서만 실제 처리
         if (Object.HasStateAuthority && !isClicked && !isGameEnded)
@@ -75,7 +75,7 @@ public class CrocodileTooth : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     private void RPC_ExecuteClickTooth(bool wasTrap)
     {
-        Debug.Log($"🖱️ 이빨 {toothIndex} 클릭 처리. 트랩인가? {wasTrap}");
+        // Debug.Log($"🖱️ 이빨 {toothIndex} 클릭 처리. 트랩인가? {wasTrap}");
 
         // 상태 확실히 동기화
         isClicked = true;
@@ -85,7 +85,7 @@ public class CrocodileTooth : NetworkBehaviour
 
         if (wasTrap)
         {
-            Debug.Log($"💥 트랩 이빨 눌림! 게임 종료 처리 시작");
+            // Debug.Log($"💥 트랩 이빨 눌림! 게임 종료 처리 시작");
             
             isGameEnded = true;
             UpdateVisuals(); // 게임 종료 상태 즉시 반영
@@ -105,7 +105,7 @@ public class CrocodileTooth : NetworkBehaviour
     {
         isGameEnded = true;
         UpdateVisuals();
-        Debug.Log($"🔥 이빨 {toothIndex} 게임 종료 처리됨");
+        // Debug.Log($"🔥 이빨 {toothIndex} 게임 종료 처리됨");
     }
 
     // StateAuthority가 아닌 곳에서 게임 종료를 요청할 때 사용
@@ -145,7 +145,7 @@ public class CrocodileTooth : NetworkBehaviour
         spriteRenderer.sprite = isClicked ? downSprite : normalSprite;
         spriteRenderer.color = Color.white;
         
-        Debug.Log($"🎨 이빨 {toothIndex} 시각적 업데이트: {(isClicked ? "DOWN" : "UP")}");
+        // Debug.Log($"🎨 이빨 {toothIndex} 시각적 업데이트: {(isClicked ? "DOWN" : "UP")}");
     }
 
     private void OnMouseDown()
@@ -164,7 +164,7 @@ public class CrocodileTooth : NetworkBehaviour
         int playerId = Runner.LocalPlayer.RawEncoded;
         RPC_RequestClickTooth(playerId);
         
-        Debug.Log($"✅ 이빨 {toothIndex} 클릭 요청 전송됨");
+        // Debug.Log($"✅ 이빨 {toothIndex} 클릭 요청 전송됨");
     }
 
     // 네트워크 상태 변경 감지 및 시각적 업데이트
@@ -177,14 +177,14 @@ public class CrocodileTooth : NetworkBehaviour
         {
             previousIsClicked = isClicked;
             stateChanged = true;
-            Debug.Log($"🔄 이빨 {toothIndex} 클릭 상태 변경: {isClicked}");
+            // Debug.Log($"🔄 이빨 {toothIndex} 클릭 상태 변경: {isClicked}");
         }
         
         if (previousIsGameEnded != isGameEnded)
         {
             previousIsGameEnded = isGameEnded;
             stateChanged = true;
-            Debug.Log($"🔄 이빨 {toothIndex} 게임 종료 상태 변경: {isGameEnded}");
+            // Debug.Log($"🔄 이빨 {toothIndex} 게임 종료 상태 변경: {isGameEnded}");
         }
         
         // 상태가 변경된 경우에만 시각적 업데이트
