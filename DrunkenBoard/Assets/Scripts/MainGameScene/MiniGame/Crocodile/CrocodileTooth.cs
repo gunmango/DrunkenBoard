@@ -91,7 +91,12 @@ public class CrocodileTooth : NetworkBehaviour
             UpdateVisuals(); // 게임 종료 상태 즉시 반영
             
             crocodileMouth?.CloseMouth();
-            gameManager?.EndGame();
+            
+            // StateAuthority에서만 게임 종료 처리
+            if (Object.HasStateAuthority)
+            {
+                gameManager?.EndGame();
+            }
         }
     }
 
@@ -101,6 +106,29 @@ public class CrocodileTooth : NetworkBehaviour
         isGameEnded = true;
         UpdateVisuals();
         Debug.Log($"🔥 이빨 {toothIndex} 게임 종료 처리됨");
+    }
+
+    // StateAuthority가 아닌 곳에서 게임 종료를 요청할 때 사용
+    public void RequestEndGame()
+    {
+        if (Object.HasStateAuthority)
+        {
+            RPC_EndGame();
+        }
+        else
+        {
+            // StateAuthority에게 게임 종료 요청
+            RPC_RequestEndGame();
+        }
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    private void RPC_RequestEndGame()
+    {
+        if (Object.HasStateAuthority)
+        {
+            RPC_EndGame();
+        }
     }
 
     public void UpdateVisuals()
