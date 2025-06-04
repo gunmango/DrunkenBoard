@@ -15,4 +15,6 @@ public static class NetWorkConstants
 public static class SpaceEventConstants
 {
     public const float SingingEventVoteCountDown = 3f;
+    
+    public const float CrocodileTurnTime = 3f;
 }

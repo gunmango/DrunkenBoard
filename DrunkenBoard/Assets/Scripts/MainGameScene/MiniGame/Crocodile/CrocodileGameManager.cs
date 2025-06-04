@@ -7,23 +7,23 @@ public class CrocodileGameManager : NetworkBehaviour
 {
     [Header("씬에 배치된 이빨들을 Inspector에서 수동 등록")]
     [SerializeField] private CrocodileTooth[] allTeeth;
-    [SerializeField] private TurnTimer turnTimer;
 
     [SerializeField] private TurnSystem turnSystemInScene;
     [SerializeField] private CrocodilePlayer playerPrefab;
 
     // 플레이어별 TurnTimer를 씬에서 미리 할당(예: 플레이어수만큼 배열이나 리스트)
-    [SerializeField] private List<TurnTimer> preplacedTurnTimers;
+    [SerializeField] private NetworkTimer timer;
 
     [Header("게임 설정")]
     [SerializeField] private int minPlayersToStart = 2; // 게임 시작에 필요한 최소 플레이어 수
 
     private TurnSystem turnSystem;
-    private Dictionary<int, TurnTimer> playerTimers = new Dictionary<int, TurnTimer>();
     private List<CrocodilePlayer> spawnedPlayers = new List<CrocodilePlayer>();
     
     [Networked] private bool gameStarted { get; set; }
     [Networked] private int trapToothIndex { get; set; } = -1; // 🧠 트랩 이빨 인덱스를 네트워크로 공유
+    
+    [Networked] public bool GameEnded { get; private set; } = false;
 
     private void Awake()
     {
@@ -112,12 +112,6 @@ public class CrocodileGameManager : NetworkBehaviour
         
         int uuid = playerRef.RawEncoded;
         
-        // 타이머 정리
-        if (playerTimers.ContainsKey(uuid))
-        {
-            playerTimers.Remove(uuid);
-        }
-        
         // 스폰된 플레이어 리스트에서 제거
         for (int i = spawnedPlayers.Count - 1; i >= 0; i--)
         {
@@ -140,12 +134,6 @@ public class CrocodileGameManager : NetworkBehaviour
         int uuid = playerRef.RawEncoded;
         // Debug.Log($"InitializePlayerSafe 시작 for player {uuid}");
 
-        if (playerTimers.ContainsKey(uuid))
-        {
-            // Debug.LogWarning($"TurnTimer for player {uuid} already exists!");
-            yield break;
-        }
-
         // PlayerManager 준비 대기
         yield return new WaitUntil(() => PlayerManager.Instance != null);
         yield return new WaitUntil(() => PlayerManager.Instance.Object.IsValid);
@@ -163,26 +151,10 @@ public class CrocodileGameManager : NetworkBehaviour
         // Debug.Log("Player prefab Spawn 완료");
         spawnedPlayers.Add(newPlayer);
 
-        // TurnTimer 할당
-        TurnTimer assignedTimer = null;
-        if (preplacedTurnTimers.Count > 0)
-        {
-            assignedTimer = preplacedTurnTimers[0];
-            preplacedTurnTimers.RemoveAt(0);
-            Debug.Log("TurnTimer 할당 완료");
-        }
-        else
-        {
-            Debug.LogError("미리 할당된 TurnTimer가 부족합니다!");
-            yield break;
-        }
-
-        playerTimers.Add(uuid, assignedTimer);
-
         // 플레이어 초기화 - 네트워크 객체가 완전히 준비될 때까지 대기
         yield return new WaitUntil(() => newPlayer.Object.IsValid);
         
-        newPlayer.Initialize(turnSystem, uuid, assignedTimer, allTeeth);
+        newPlayer.Initialize(turnSystem, uuid, timer, allTeeth, this);
         // Debug.Log("newPlayer.Initialize 완료");
 
         // 턴 시스템에 플레이어 추가
@@ -256,6 +228,7 @@ public class CrocodileGameManager : NetworkBehaviour
     public void EndGame()
     {
         Debug.Log("🔥 게임 종료됨!");
+        GameEnded = true; // ✅ 게임 종료 상태 저장
         
         // turnTimer.HideTimerUI();
         // 모든 이빨에게 게임 종료 알림
@@ -274,9 +247,11 @@ public class CrocodileGameManager : NetworkBehaviour
                 tooth.gameObject.SetActive(false);
             }
         }
+        timer.gameObject.SetActive(false);
         // 게임 상태를 종료로 변경
         gameStarted = false;
-    
-      
+        
+       
+
     }
 }

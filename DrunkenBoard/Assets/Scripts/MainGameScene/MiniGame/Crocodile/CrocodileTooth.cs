@@ -91,7 +91,7 @@ public class CrocodileTooth : NetworkBehaviour
             UpdateVisuals(); // 게임 종료 상태 즉시 반영
             
             crocodileMouth?.CloseMouth();
-            
+          
             // StateAuthority에서만 게임 종료 처리
             if (Object.HasStateAuthority)
             {

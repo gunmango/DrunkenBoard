@@ -49,6 +49,7 @@ public class NetworkTimer : NetworkBehaviour
     public void StopCountDown_RPC()
     {
         IsPlaying = false;
+        _hasEnded = true;
     }
     
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]

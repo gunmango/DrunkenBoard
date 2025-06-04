@@ -5,19 +5,23 @@ using Fusion;
 
 public class CrocodilePlayer : ATurnPlayer
 {
+    
+    [SerializeField] private CrocodileGameManager gameManager;
+    
     private CrocodileTooth[] allTeeth;
     private bool clicked = false;
     private CrocodileTooth selectedTooth;
 
-    private TurnTimer _turnTimer;
+    private NetworkTimer _timer;
 
     // 턴 시스템, UUID, 타이머, 그리고 이빨 배열까지 초기화 인자로 받음
-    public void Initialize(TurnSystem turnSystem, int uuid, TurnTimer turnTimer, CrocodileTooth[] teeth)
+    public void Initialize(TurnSystem turnSystem, int uuid, NetworkTimer turnTimer, CrocodileTooth[] teeth, CrocodileGameManager crocodileGameManager)
     {
         TurnSystem = turnSystem;
         Uuid = uuid;
-        _turnTimer = turnTimer;
+        _timer = turnTimer;
         allTeeth = teeth;
+        gameManager = crocodileGameManager;
     }
     public void OnTurnStart()
     {
@@ -42,15 +46,21 @@ public class CrocodilePlayer : ATurnPlayer
         SubscribeToothEvents();
 
         // ✅ 타이머 시작
-        _turnTimer.OnTurnTimeout += OnTurnTimeout;
-        _turnTimer.StartTurn();
+        _timer.ActOnEndTimer += OnTurnTimeout;
+        _timer.gameObject.SetActive(true);
+        _timer.StartCountDown_RPC(SpaceEventConstants.CrocodileTurnTime);
 
         Debug.Log($"⏱️ 타이머 시작, 이빨 클릭 대기 중...");
 
         // ✅ 클릭 완료까지 대기
-        yield return new WaitUntil(() => clicked == true);
+        yield return new WaitUntil(() => clicked == true || gameManager.GameEnded);
 
-        Debug.Log($"✅ 이빨 클릭 완료: {selectedTooth?.toothIndex}");
+        if (gameManager.GameEnded)
+        {
+            Debug.Log($"🛑 게임이 종료되었으므로 플레이어 {Uuid}의 턴을 종료하지 않습니다");
+            CleanupTurn();
+            yield break;
+        }
 
         CleanupTurn();
         EndTurn();
@@ -140,8 +150,8 @@ public class CrocodilePlayer : ATurnPlayer
         UnsubscribeToothEvents();
 
         // 타이머 정리
-        _turnTimer.OnTurnTimeout -= OnTurnTimeout;
-        _turnTimer.EndTurn();
+        _timer.ActOnEndTimer -= OnTurnTimeout;
+        _timer.gameObject.SetActive(false);
     }
 
     // ✅ 이빨 클릭 완료 알림
@@ -155,16 +165,17 @@ public class CrocodilePlayer : ATurnPlayer
         Debug.Log($"✅ 플레이어 {Uuid} 이빨 {tooth.toothIndex} 선택 완료");
         
         // 타이머 강제 종료
-        _turnTimer.ForceEndTurnByInput();
+        _timer.StopCountDown_RPC();
+        _timer.gameObject.SetActive(false);
     }
 
     // ✅ 게임 종료 시 정리
     public void Cleanup()
     {
         UnsubscribeToothEvents();
-        if (_turnTimer != null)
+        if (_timer != null)
         {
-            _turnTimer.OnTurnTimeout -= OnTurnTimeout;
+            _timer.ActOnEndTimer -= OnTurnTimeout;
         }
     }
 }
