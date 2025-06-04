@@ -81,7 +81,6 @@ namespace Photon.Voice.Unity.Editor
             DeleteDirectory("Assets/Photon/PhotonVoice/Demos/DemoVoicePun");
             DeleteDirectory("Assets/Photon/PhotonVoice/Code/PUN");
             DeleteDirectory("Assets/Photon/PhotonUnityNetworking");
-            CleanUpPunDefineSymbols();
         }
 
         [MenuItem("Window/Photon Voice/Remove Photon Chat", true, 2)]

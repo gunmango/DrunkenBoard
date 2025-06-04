@@ -6,6 +6,8 @@ using UnityEngine;
 public class Player : NetworkBehaviour
 {
     [Networked] public int Uuid { get; set; }
+    
+    [Networked] public string PlayerName { get; set; }
     [Networked] public EPlayerColor PlayerColor { get; set; }
 
     [Networked] public int BoardCycleCount { get; set; }
@@ -16,9 +18,6 @@ public class Player : NetworkBehaviour
     {
         if (HasStateAuthority)
         {
-            Array colors = Enum.GetValues(typeof(EPlayerColor));
-            PlayerColor = (EPlayerColor)colors.GetValue(UnityEngine.Random.Range(0, colors.Length));
-
             StartCoroutine(AddSelfCo());
         }
     }

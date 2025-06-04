@@ -32,9 +32,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FusionSession fusionSession;
     public static FusionSession FusionSession => Instance.fusionSession;
     
-    
     public bool IsSignaling = false;
     
+    public string LocalPlayerName = string.Empty;
+    public EPlayerColor LocalPlayerColor = EPlayerColor.None;
 
     private void Start()
     {
