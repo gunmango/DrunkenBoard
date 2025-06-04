@@ -31,6 +31,8 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
                     if (spawnedPlayer.Object.HasStateAuthority)
                     {
                         spawnedPlayer.Uuid = playerRef.RawEncoded;
+                        spawnedPlayer.PlayerName = GameManager.Instance.LocalPlayerName;
+                        spawnedPlayer.PlayerColor = GameManager.Instance.LocalPlayerColor;
                     }
                     
                     Runner.SetPlayerObject(Runner.LocalPlayer, res.Object);

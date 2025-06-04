@@ -44,6 +44,14 @@ public class RadioButtonGroup: MonoBehaviour
         OnValueChanged?.Invoke(SelectedIndex);
     }
 
+    public void ResetSelectedButton()
+    {
+        if (SelectedIndex == -1)
+            return;
+        
+        SetSelectedButton(SelectedIndex);
+    }
+    
     public void EnableAllButtons()
     {
         foreach (var button in _buttons)

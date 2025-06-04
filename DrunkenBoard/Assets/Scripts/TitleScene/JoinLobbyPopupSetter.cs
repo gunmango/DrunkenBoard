@@ -1,15 +1,11 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class JoinLobbyPopupSetter : ABasePopup
 {
-    [SerializeField] private Button joinLobbyButton;
     [SerializeField] private JoinLobbyPopupUpdater updater;
     
     private void Start()
     {
-        joinLobbyButton.onClick.AddListener(()=>GameManager.PopupManager.OpenPopup(this));
         updater.CloseButton.onClick.AddListener(()=>GameManager.PopupManager.CloseTopPopup());
         updater.JoinLobbyButton.onClick.AddListener(JoinLobby);
     }

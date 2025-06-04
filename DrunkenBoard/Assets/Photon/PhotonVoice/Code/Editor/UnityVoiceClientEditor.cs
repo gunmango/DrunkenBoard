@@ -125,7 +125,6 @@ namespace Photon.Voice.Unity.Editor
             {
                 this.DisplayVoiceStats();
                 this.DisplayDebugInfo(this.connection.Client);
-                this.DisplayCachedVoiceInfo();
                 this.DisplayTrafficStats(this.connection.Client.LoadBalancingPeer);
 
                 if (connection.Client.State == ClientState.PeerCreated || connection.Client.State == ClientState.Disconnected)
