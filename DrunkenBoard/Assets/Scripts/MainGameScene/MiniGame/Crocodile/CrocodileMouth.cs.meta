@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: dd9b1454b47efca43aee315fa7795b99
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - openMouthSprite: {fileID: -1187487534, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
+  - closedMouthSprite: {fileID: -942150936, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

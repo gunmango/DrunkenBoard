@@ -1,388 +1,282 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Fusion;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
-using Random = UnityEngine.Random;
-// using TMPro;
+using Fusion;
 
 public class CrocodileGameManager : NetworkBehaviour
 {
-    [Networked] private int currentTurnIndex{get;set;}
-    [Networked] private bool gameStarted {get;set;}
+    [Header("씬에 배치된 이빨들을 Inspector에서 수동 등록")]
+    [SerializeField] private CrocodileTooth[] allTeeth;
 
-    private List<Player> _fusionplayers;
-    public Crocodile Croc;
-    public List<Tooth> allTeeth = new List<Tooth>();
-   
-    [SerializeField] private Button startButton;
-    
-    [Header("Ui")]
-    [SerializeField] public Text currentTurnText;
-    [SerializeField] public Text timeText;
+    [SerializeField] private TurnSystem turnSystemInScene;
+    [SerializeField] private CrocodilePlayer playerPrefab;
 
-    [SerializeField] private float turnDuration = 3f;
-    private float _turnTimer = 0f;
-    private bool _isTurnActive = false;
-    private bool _isSpawned = false;
+    // 플레이어별 TurnTimer를 씬에서 미리 할당(예: 플레이어수만큼 배열이나 리스트)
+    [SerializeField] private List<TurnTimer> preplacedTurnTimers;
+
+    [Header("게임 설정")]
+    [SerializeField] private int minPlayersToStart = 2; // 게임 시작에 필요한 최소 플레이어 수
+
+    private TurnSystem turnSystem;
+    private Dictionary<int, TurnTimer> playerTimers = new Dictionary<int, TurnTimer>();
+    private List<CrocodilePlayer> spawnedPlayers = new List<CrocodilePlayer>();
     
-    
-    private Dictionary<int, int> playerOrders = new Dictionary<int, int>();
+    [Networked] private bool gameStarted { get; set; }
+    [Networked] private int trapToothIndex { get; set; } = -1; // 🧠 트랩 이빨 인덱스를 네트워크로 공유
+
+    private void Awake()
+    {
+        turnSystem = turnSystemInScene;
+        
+        // 이빨들 초기화
+        for (int i = 0; i < allTeeth.Length; i++)
+        {
+            allTeeth[i].toothIndex = i;
+        }
+    }
+
+    private void Start()
+    {
+        GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
+        GameManager.FusionSession.ActOnPlayerLeft += OnPlayerLeft;
+        
+        Debug.Log("CrocodileGameManager 시작됨");
+    }
 
     public override void Spawned()
     {
         base.Spawned();
-        Debug.Log($"PlayerManager.Instance is null? {PlayerManager.Instance == null}");
-        Debug.Log($"Players count: {(PlayerManager.Instance != null ? PlayerManager.Instance.Players.Count : -1)}");
-        StartCoroutine(WaitForPlayerManagerReady());
-    }
-    
-    private IEnumerator WaitForPlayerManagerReady()
-    {
-        yield return new WaitUntil(() => PlayerManager.Instance != null);
-
-        Debug.Log("✅ PlayerManager 존재함. 플레이어 등록 대기 중...");
-
-        // Player 수가 ActivePlayers 수와 같아질 때까지 대기
-        yield return new WaitUntil(() => 
-            PlayerManager.Instance.Players.Count >= GameManager.FusionSession.Runner.ActivePlayers.Count());
-
-        Debug.Log($"✅ 모든 플레이어 등록 완료: {PlayerManager.Instance.Players.Count}명");
-
-        // Tooth들 Spawn 완료 대기
-        yield return new WaitUntil(() => allTeeth.All(t => t.Object != null && t.Object.IsSpawnable));
-
-        Debug.Log("🦷 모든 이빨 준비 완료 ✅");
-
-        _isSpawned = true;
-        RefreshPlayerList();
-        gameStarted = false;
-        currentTurnIndex = 0;
-
-        InitGame();
-    }
-
-    private void InitGame()
-    {
-      
+        Debug.Log("CrocodileGameManager Spawned");
+        
+        // StateAuthority에서만 게임 초기화
         if (Object.HasStateAuthority)
         {
-            RPC_SetTrap(Random.Range(0, allTeeth.Count));
-            RPC_ResetTeeth();
-            if (startButton != null)
-            {
-                startButton.gameObject.SetActive(true);
-                startButton.onClick.RemoveAllListeners();
-                startButton.onClick.AddListener(StartGame);
-            }
-            else
-            {
-                Debug.LogError("startButton is NULL in InitGame()");
-            }
+            // 잠시 대기 후 초기화 (씬 로딩 완료 대기)
+            StartCoroutine(DelayedInitializeGame());
+        }
+    }
+
+    private IEnumerator DelayedInitializeGame()
+    {
+        yield return new WaitForSeconds(2f); 
+        // 씬 로딩이 완전히 끝날 때까지 대기
+        yield return new WaitForSeconds(0.5f);
+        
+        // TurnSystem이 NetworkObject로 제대로 초기화될 때까지 대기
+        yield return new WaitUntil(() => turnSystem != null && turnSystem.Object != null && turnSystem.Object.IsValid);
+        
+        InitializeGame();
+    }
+
+    private void InitializeGame()
+    {
+        Debug.Log("게임 초기화 시작");
+
+        // 🧠 트랩 이빨 지정은 오직 여기서!
+        trapToothIndex = UnityEngine.Random.Range(0, allTeeth.Length);
+        Debug.Log($"🎯 트랩 이빨 지정: {trapToothIndex}");
+
+        for (int i = 0; i < allTeeth.Length; i++)
+        {
+            allTeeth[i].toothIndex = i;
+
+            // 🧠 모든 클라이언트에 트랩 여부 설정 동기화
+            bool isTrap = (i == trapToothIndex);
+            allTeeth[i].RPC_SetTrap(isTrap);
+        }
+
+        if (turnSystem != null)
+        {
+            turnSystem.StartSystem();
         }
         else
         {
-            if (startButton != null)
-                startButton.gameObject.SetActive(false);
+            Debug.LogError("TurnSystem이 할당되지 않았습니다!");
         }
     }
-        [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        private void RPC_SetTrap(int trapIndex)
-        {
-            if (trapIndex >= 0 && trapIndex < allTeeth.Count)
-                allTeeth[trapIndex].Istrap = true;
-        }
 
-        [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-        private void RPC_ResetTeeth()
+    private void OnPlayerJoined(NetworkRunner runner, PlayerRef playerRef)
+    {
+        Debug.Log($"OnPlayerJoined 호출됨: {playerRef.RawEncoded}");
+        
+        // 로컬 플레이어가 아닌 경우 무시
+        if (runner.LocalPlayer != playerRef)
+            return;
+
+        StartCoroutine(InitializePlayerSafe(runner, playerRef));
+    }
+
+    private void OnPlayerLeft(NetworkRunner runner, PlayerRef playerRef)
+    {
+        Debug.Log($"OnPlayerLeft 호출됨: {playerRef.RawEncoded}");
+        
+        int uuid = playerRef.RawEncoded;
+        
+        // 타이머 정리
+        if (playerTimers.ContainsKey(uuid))
         {
-            foreach (var tooth in allTeeth)
+            playerTimers.Remove(uuid);
+        }
+        
+        // 스폰된 플레이어 리스트에서 제거
+        for (int i = spawnedPlayers.Count - 1; i >= 0; i--)
+        {
+            if (spawnedPlayers[i] != null && spawnedPlayers[i].Uuid == uuid)
             {
-                tooth.IsPressed = false;
-                tooth.ShowTooth();
+                spawnedPlayers.RemoveAt(i);
+                break;
             }
         }
-
-        private void Awake()
-    {
-        if (allTeeth == null) allTeeth = new List<Tooth>();
-        allTeeth.AddRange(GetComponentsInChildren<Tooth>());
-    }
-    // private void Start()
-    // {
-    //     Debug.Log($"PlayerManager.Instance: {PlayerManager.Instance}");
-    //     Debug.Log($"startButton: {startButton}");
-    //     Debug.Log($"allTeeth Count: {allTeeth.Count}");
-    //     Debug.Log($"Croc: {Croc}");
-    // }
-
-    private void Update()
-    {
-        if (!_isSpawned) return; 
         
-        if(!gameStarted || !_isTurnActive) return;
-        if (!Object.HasStateAuthority) return;
-        
-        _turnTimer += Time.deltaTime;
-        float remainingTime = Mathf.Max(0, turnDuration - _turnTimer);
-        if (timeText != null)
-            timeText.text = $"{remainingTime:F1}";
-
-        if (_turnTimer >= turnDuration)
+        // 턴 시스템에서 플레이어 제거
+        if (turnSystem != null)
         {
-            AutoPressTooth();
-            _turnTimer = 0f;
+            turnSystem.RemoveTurnPlayer_RPC(uuid);
         }
     }
-    private void AssignPlayerOrder()
+
+    private IEnumerator InitializePlayerSafe(NetworkRunner runner, PlayerRef playerRef)
     {
-        playerOrders.Clear();
+        int uuid = playerRef.RawEncoded;
+        Debug.Log($"InitializePlayerSafe 시작 for player {uuid}");
 
-        Debug.Log("AssignPlayerOrder 호출, 플레이어 리스트:");
-        foreach (var player in _fusionplayers)
+        if (playerTimers.ContainsKey(uuid))
         {
-            Debug.Log($"플레이어 UUID: {player.Uuid}");
+            Debug.LogWarning($"TurnTimer for player {uuid} already exists!");
+            yield break;
         }
 
-        if (_fusionplayers.Count == 0)
+        // PlayerManager 준비 대기
+        yield return new WaitUntil(() => PlayerManager.Instance != null);
+        yield return new WaitUntil(() => PlayerManager.Instance.Object.IsValid);
+        yield return new WaitUntil(() => PlayerManager.Instance.IsPlayerValid(uuid));
+        Debug.Log($"PlayerManager 확인 완료 for {uuid}");
+
+        // 플레이어 스폰
+        var newPlayer = runner.Spawn(playerPrefab);
+        if (newPlayer == null)
         {
-            Debug.LogWarning("AssignPlayerOrder: 플레이어가 없습니다.");
-            return;
+            Debug.LogError("Player prefab 스폰 실패!");
+            yield break;
         }
-    
-        var firstPlayer = _fusionplayers[0];
-        var otherPlayers = _fusionplayers.Skip(1).OrderBy(p => Random.value).ToList();
+        
+        Debug.Log("Player prefab Spawn 완료");
+        spawnedPlayers.Add(newPlayer);
 
-        _fusionplayers = new List<Player> { firstPlayer };
-        _fusionplayers.AddRange(otherPlayers);
-
-        playerOrders.Clear();
-        for (int i = 0; i < _fusionplayers.Count; i++)
+        // TurnTimer 할당
+        TurnTimer assignedTimer = null;
+        if (preplacedTurnTimers.Count > 0)
         {
-            Debug.Log($"순서 부여: 플레이어 { _fusionplayers[i].Uuid} => 순서 {i}");
-            playerOrders[_fusionplayers[i].Uuid] = i;
+            assignedTimer = preplacedTurnTimers[0];
+            preplacedTurnTimers.RemoveAt(0);
+            Debug.Log("TurnTimer 할당 완료");
+        }
+        else
+        {
+            Debug.LogError("미리 할당된 TurnTimer가 부족합니다!");
+            yield break;
+        }
+
+        playerTimers.Add(uuid, assignedTimer);
+
+        // 플레이어 초기화 - 네트워크 객체가 완전히 준비될 때까지 대기
+        yield return new WaitUntil(() => newPlayer.Object.IsValid);
+        
+        newPlayer.Initialize(turnSystem, uuid, assignedTimer, allTeeth);
+        Debug.Log("newPlayer.Initialize 완료");
+
+        // 턴 시스템에 플레이어 추가
+        if (turnSystem != null)
+        {
+            turnSystem.AddTurnPlayer_RPC(newPlayer);
+            Debug.Log("turnSystem.AddTurnPlayer_RPC 호출 완료");
+        }
+
+        // 게임 시작 조건 확인
+        CheckGameStartCondition();
+    }
+
+    private void CheckGameStartCondition()
+    {
+        if (Object.HasStateAuthority && !gameStarted && spawnedPlayers.Count >= minPlayersToStart)
+        {
+            Debug.Log($"게임 시작 조건 만족! 플레이어 수: {spawnedPlayers.Count}");
+            StartGame();
         }
     }
-    
+
     private void StartGame()
     {
-        if (playerOrders.Count != _fusionplayers.Count)
-        {
-            AssignPlayerOrder();
-        }
-        RefreshPlayerList();
-        if (!Object.HasStateAuthority) return;
-     
+        if (gameStarted) return;
+        
         gameStarted = true;
-        startButton.gameObject.SetActive(false);
+        Debug.Log("게임 시작!");
         
-        // int trapIndex = Random.Range(0, allTeeth.Count);
-        // allTeeth[trapIndex].Istrap = true;
+        // 모든 클라이언트에게 게임 시작 알림
+        RPC_OnGameStarted();
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_OnGameStarted()
+    {
+        Debug.Log("게임이 시작되었습니다!");
         
-        if (_fusionplayers.Count > 0)
-        {
-            int myUuid = GameManager.FusionSession.Runner.LocalPlayer.RawEncoded;
-            int myOrder = GetPlayerOrder(myUuid);
-            Debug.Log($"[StartGame] 내 UUID: {myUuid}, 내 순서: {myOrder}");
-
-            StartTurn();
-        }
-        else
-        {
-            Debug.LogWarning("플레이어가 아직 없습니다. 플레이어가 들어올 때까지 기다립니다.");
-        }
-    }
-
-    
-    // 플레이어 순서 가져오는 함수
-    private int GetPlayerOrder(int playerUuid)
-    {
-        if (playerOrders.TryGetValue(playerUuid, out int order))
-            return order;
-        return -1; // 순서 없을 때
-    }
-
-
-    public bool IsCurrentPlayerTurn
-    {
-        get
-        {
-            if (!gameStarted) return false;
-            if (!_isTurnActive) return false;
-            if (IsGameOver) return false;
-            if (_fusionplayers.Count == 0) return false;
-
-            int myUuid = GameManager.FusionSession.Runner.LocalPlayer.RawEncoded;
-
-            Debug.Log($"내 UUID: {myUuid}, 현재 턴 순서: {(currentTurnIndex % _fusionplayers.Count)}, 내 순서: {GetPlayerOrder(myUuid)}");
-
-            int currentTurnOrder = (currentTurnIndex % _fusionplayers.Count);
-            int myOrder = GetPlayerOrder(myUuid);
-
-            return myOrder == currentTurnOrder;
-        }
-    }
-
-    public void PressTooth(Tooth tooth, bool force = false)
-    {
-
-        int myUuid = GameManager.FusionSession.Runner.LocalPlayer.RawEncoded;
-        Debug.Log($"내 UUID: {myUuid}");
-        Debug.Log("playerOrders 내용:");
-        foreach (var kvp in playerOrders)
-        {
-            Debug.Log($"UUID: {kvp.Key}, Order: {kvp.Value}");
-        }
-        
-        Debug.Log($"PressTooth 호출: IsCurrentPlayerTurn={IsCurrentPlayerTurn}, tooth.IsPressed={tooth.IsPressed}");
-        if (!force && !IsCurrentPlayerTurn) return;
-        if (tooth.IsPressed) return;
-
-        _isTurnActive = false;
-    
-        if (tooth.HasInputAuthority)
-        {
-            Debug.Log("내가 권한 있음 → RPC 호출");
-            tooth.RPC_RequestPressTooth();
-        }
-        else
-        {
-            Debug.LogWarning("권한 없음 → RPC 안됨");
-        }
-        
-        if (tooth.Istrap)
-        {
-            Debug.Log("함정 눌러버렸찌 머야~ ");
-            OnTrapTriggered();
-            int currentPlayerUuid = _fusionplayers[currentTurnIndex % _fusionplayers.Count].Uuid;
-            currentTurnText.text = $"Game Over! {currentPlayerUuid}";
-            return;
-        }
-    
-        NextCycle();
-    }
-
-    private void AutoPressTooth()
-    {
-        var available = allTeeth.Where(t => !t.IsPressed).ToList();
-        if (available.Count > 0)
-        {
-            var randomTooth = available[Random.Range(0, available.Count)];
-            PressTooth(randomTooth, true); // ✅ 강제로 누르기
-            Debug.Log($"{randomTooth.name} pressed (Auto)");
-        }
-    }
-    private void NextCycle()
-    {
-        currentTurnIndex++;
-
-        if (currentTurnIndex < allTeeth.Count)
-        {
-            StartTurn();
-        }
-        else
-        {
-            Debug.Log("게임종료");
-            currentTurnText.text = "GameOver";
-            OnTrapTriggered();
-        }
-    }
-
-    private void StartTurn()
-    {
-        Debug.Log("StartCycle 호출됨");
-        
-        var playerList = GameManager.FusionSession.Runner.ActivePlayers.ToList();
-        
-        _isTurnActive = true;
-        _turnTimer = 0f;
-
-        int currentPlayerIndex = currentTurnIndex % _fusionplayers.Count;
-        UpdateTurnText(currentPlayerIndex);
-        Debug.Log($"현재 턴: {_fusionplayers[currentPlayerIndex].Uuid}");
-        
-        StartTurnForPlayer(_fusionplayers[currentPlayerIndex]);
-
-        // AssignToothInputAuthority();  // ← 여기서 권한 재할당!
-        
-        if (_fusionplayers.Count == 0)
-        {
-            Debug.LogWarning("플레이어 리스트 비어있음.");
-            return;
-        }
-    }
-
-    private void UpdateTurnText(int currentTurnIndex)
-    {
-        if (_fusionplayers.Count == 0)
-        {
-            currentTurnText.text = "플레이어 없음 or 게임 종료";
-            return;
-        }
-
-        var player = _fusionplayers[currentTurnIndex];
-        currentTurnText.text = $"턴:플레이어{player.Uuid} (번호){GetPlayerOrder(player.Uuid)}";
-    }
-    
-    public Player GetCurrentTurnPlayer()
-    {
-        if (_fusionplayers == null || _fusionplayers.Count == 0)
-            return null;
-
-        return _fusionplayers[currentTurnIndex % _fusionplayers.Count];
-    }
-    
-    public bool IsGameOver => currentTurnIndex >= allTeeth.Count;
-    public void OnTrapTriggered()
-    {
-        Croc.CloseMouth();
-        foreach (var tooth in allTeeth)
-        {
-            tooth.HideTooth();
-        }
-        _isTurnActive = false;
-    }
-
-    private void RefreshPlayerList()
-    {
-        _fusionplayers = PlayerManager.Instance.Players.ToList();
-        Debug.Log($"RefreshPlayerList 호출, 플레이어 수: {_fusionplayers.Count}");
+        // 여기서 게임 시작 UI 표시 등 추가 로직 수행
+        // 예: 모든 이빨 활성화, 게임 시작 사운드 재생 등
         
         foreach (var tooth in allTeeth)
         {
-            tooth.gameManager = this; // 이 부분 꼭 할당해야 함!
-        }
-    }
-
-    private void AssignToothInputAuthority()
-    {
-        Player currentPlayer = GetCurrentTurnPlayer();
-        if (currentPlayer == null)
-        {
-            Debug.LogWarning("현재 턴 플레이어가 없습니다.");
-            return;
-        }
-
-        foreach (var tooth in allTeeth)
-        {
-            if (tooth.Object.HasStateAuthority)
+            if (tooth != null)
             {
-                tooth.AssignInputAuthorityTo(currentPlayer, GameManager.FusionSession.Runner);
+                tooth.gameObject.SetActive(true);
             }
         }
     }
-    private void StartTurnForPlayer(Player player)
-    {
+    
 
+    // 디버그용 - 게임 강제 시작
+    [ContextMenu("Force Start Game")]
+    private void ForceStartGame()
+    {
+        if (Object.HasStateAuthority)
+        {
+            StartGame();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.FusionSession != null)
+        {
+            GameManager.FusionSession.ActOnPlayerJoined -= OnPlayerJoined;
+            GameManager.FusionSession.ActOnPlayerLeft -= OnPlayerLeft;
+        }
+    }
+    
+    public void EndGame()
+    {
+        Debug.Log("🔥 게임 종료됨!");
+
+      
+        // 모든 이빨에게 게임 종료 알림
         foreach (var tooth in allTeeth)
         {
-            tooth.AssignInputAuthorityTo(player, GameManager.FusionSession.Runner);
+            if (tooth != null)
+            {
+                tooth.RPC_EndGame(); // 🔧 새로 추가된 RPC 호출
+            }
         }
-
-        _turnTimer = 0;
-        _isTurnActive = true;
+        // 🔧 로컬에서도 즉시 이빨 비활성화 (시각적 피드백)
+        foreach (var tooth in allTeeth)
+        {
+            if (tooth != null)
+            {
+                tooth.gameObject.SetActive(false);
+            }
+        }
+        // 게임 상태를 종료로 변경
+        gameStarted = false;
+    
+      
     }
 }
