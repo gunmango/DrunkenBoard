@@ -6,12 +6,12 @@ public class PopupManager : MonoBehaviour
 {
     [SerializeField] private EventSystem eventSystem;
     
-    private readonly Stack<ABasePopup> _popupStack = new();
+    private readonly Stack<IBasePopup> _popupStack = new();
     public bool IsAnyPopupOpen => _popupStack.Count > 0;
 
-    public void OpenPopup(ABasePopup popup)
+    public void OpenPopup(IBasePopup popup, PopupDataBase data = null)
     {
-        popup.Open();
+        popup.Open(data);
         _popupStack.Push(popup);
     }
 

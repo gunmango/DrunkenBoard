@@ -21,7 +21,6 @@ public class MainGameBoard : MonoBehaviour
 
     public void PlaySpaceEvent(int spaceIndex, int enteredPlayerUuid)
     {
-        MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.SpaceEvent);
         ESpaceEventType spaceEventType = spaces[spaceIndex].SpaceEventType;
         MainGameSceneManager.SpaceEventManager.PlayEvent(spaceEventType, enteredPlayerUuid);
     }

@@ -18,8 +18,8 @@ public class SingingEventProcessor : SimulationBehaviour
     {
         _singerUuid = enteredPlayerUuid;
         updater.VoteGauge.ResetGauge();
-        
-        Invoke(nameof(SetCamPos), 2f ); //나중엔 팝업닫히고 실행
+
+        SetCamPos();
 
         if (GameManager.FusionSession.Runner.LocalPlayer.RawEncoded == enteredPlayerUuid)
         {

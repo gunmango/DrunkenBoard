@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpaceEventManager : NetworkBehaviour
 {
     public List<ASpaceEvent> SpaceEvents;
-
+    
     public void PlayEvent(ESpaceEventType eventType, int enteredPlayerUuid)
     {
         BroadCastEvent_RPC(eventType, enteredPlayerUuid);
@@ -18,6 +18,13 @@ public class SpaceEventManager : NetworkBehaviour
         if (GameManager.FusionSession.Runner.IsResimulation)
             return;
 
-        SpaceEvents.Find(x => x.EventType == eventType).PlayEvent(enteredPlayerUuid);
+        ASpaceEvent spaceEvent = SpaceEvents.Find(x => x.EventType == eventType);
+        if (spaceEvent == null)
+        {
+            Debug.LogError("event not found");
+            return;
+        }
+        
+        spaceEvent.ReadyEvent(enteredPlayerUuid);
     }
 }
