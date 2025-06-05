@@ -4,8 +4,8 @@ public class SingingEvent : ASpaceEvent
 {
     [SerializeField] private SingingEventProcessor processor;
     
-    public override void PlayEvent(int enteredPlayerUuid)
+    protected override void PlayEvent()
     {
-        processor.StartEvent(enteredPlayerUuid);
+        processor.StartEvent(_enteredPlayerUuid);
     }
 }

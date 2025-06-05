@@ -18,3 +18,8 @@ public static class SpaceEventConstants
     
     public const float CrocodileTurnTime = 3f;
 }
+
+public static class WebCamConstants
+{
+    public const float MoveDuration = 2f;
+}

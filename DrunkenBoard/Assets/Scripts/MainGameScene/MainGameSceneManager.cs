@@ -1,4 +1,5 @@
 using System;
+using ExitGames.Client.Photon;
 using UnityEngine;
 
 public class MainGameSceneManager : ASceneManager<MainGameSceneManager>
@@ -20,9 +21,17 @@ public class MainGameSceneManager : ASceneManager<MainGameSceneManager>
     [SerializeField] private SpaceEventManager spaceEventManager;
     public static SpaceEventManager SpaceEventManager => Instance.spaceEventManager;
     
+    [SerializeField] private EventReadyPopup eventReadyPopup;
+    public static EventReadyPopup EventReadyPopup => Instance.eventReadyPopup;
+    
     protected void Start()
     {
         webCamManager.Initialize();
         ActInitialize?.Invoke();
+    }
+
+    public void OpenSpaceEventReadyPopup(EventReadyPopupData popupData)
+    {
+        GameManager.PopupManager.OpenPopup(EventReadyPopup, popupData);
     }
 }

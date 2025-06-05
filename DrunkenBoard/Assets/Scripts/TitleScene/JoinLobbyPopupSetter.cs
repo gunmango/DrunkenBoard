@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JoinLobbyPopupSetter : ABasePopup
+public class JoinLobbyPopupSetter : MonoBehaviour, IBasePopup
 {
     [SerializeField] private JoinLobbyPopupUpdater updater;
     
@@ -10,12 +10,12 @@ public class JoinLobbyPopupSetter : ABasePopup
         updater.JoinLobbyButton.onClick.AddListener(JoinLobby);
     }
 
-    public override void Open()
+    public void Open(PopupDataBase data = null)
     {
         updater.gameObject.SetActive(true);
     }
 
-    public override void Close()
+    public void Close()
     {
         updater.gameObject.SetActive(false);
     }

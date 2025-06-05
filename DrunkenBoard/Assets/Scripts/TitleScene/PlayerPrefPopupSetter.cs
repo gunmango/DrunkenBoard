@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
  
-public class PlayerPrefPopupSetter : ABasePopup
+public class PlayerPrefPopupSetter : MonoBehaviour, IBasePopup
 {
     [SerializeField] private CreateLobbyPopupSetter createLobbyPopup;
     [SerializeField] private JoinLobbyPopupSetter joinLobbyPopup;
@@ -12,7 +12,7 @@ public class PlayerPrefPopupSetter : ABasePopup
     
     [SerializeField] private PlayerPrefPopupUpdater updater;
     
-    private ABasePopup _nextPopup = null;
+    private IBasePopup _nextPopup = null;
     
     private void Start()
     {
@@ -31,13 +31,13 @@ public class PlayerPrefPopupSetter : ABasePopup
         updater.OkButton.onClick.AddListener(TryOpenNextPopup);
     }
 
-    public override void Open()
+    public void Open(PopupDataBase data = null)
     {
         updater.gameObject.SetActive(true);
         updater.PaletteButtons.ResetSelectedButton();
     }
 
-    public override void Close()
+    public void Close()
     {
         updater.gameObject.SetActive(false);
     }
