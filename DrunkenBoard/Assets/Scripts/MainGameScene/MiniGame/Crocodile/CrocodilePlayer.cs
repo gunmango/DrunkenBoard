@@ -47,7 +47,6 @@ public class CrocodilePlayer : ATurnPlayer
 
         // ✅ 타이머 시작
         _timer.ActOnEndTimer += OnTurnTimeout;
-        _timer.gameObject.SetActive(true);
         _timer.StartCountDown_RPC(SpaceEventConstants.CrocodileTurnTime);
 
         Debug.Log($"⏱️ 타이머 시작, 이빨 클릭 대기 중...");
@@ -151,7 +150,6 @@ public class CrocodilePlayer : ATurnPlayer
 
         // 타이머 정리
         _timer.ActOnEndTimer -= OnTurnTimeout;
-        _timer.gameObject.SetActive(false);
     }
 
     // ✅ 이빨 클릭 완료 알림

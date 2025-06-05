@@ -39,6 +39,7 @@ public class NetworkTimer : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void StartCountDown_RPC(float time)
     {
+        gameObject.SetActive(true);
         StartTime = Runner.SimulationTime;
         Duration = time;
         IsPlaying = true;
@@ -46,7 +47,7 @@ public class NetworkTimer : NetworkBehaviour
     }
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void StopCountDown_RPC()
+    public void StopCountDown_RPC() //이벤트 실행안함
     {
         IsPlaying = false;
         _hasEnded = true;
@@ -62,5 +63,6 @@ public class NetworkTimer : NetworkBehaviour
     private void EndTimer_RPC()
     {
         ActOnEndTimer?.Invoke();
+        gameObject.SetActive(false);
     }
 }

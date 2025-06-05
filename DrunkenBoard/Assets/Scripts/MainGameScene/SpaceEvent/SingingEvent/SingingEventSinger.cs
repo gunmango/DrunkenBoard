@@ -24,13 +24,14 @@ public class SingingEventSinger : NetworkBehaviour
         _updater.StartCountDownButton.gameObject.SetActive(true);
         _updater.CountDownTimer.gameObject.SetActive(false);
         _updater.RadioButtonGroup.gameObject.SetActive(false);
+        _updater.VoteGauge.gameObject.SetActive(false);
+
         _updater.StartCountDownButton.onClick.AddListener(EndSinging);
     }
 
     private void EndSinging()
     {
         _updater.StartCountDownButton.gameObject.SetActive(false);
-        _updater.CountDownTimer.gameObject.SetActive(true);
         _audienceController.StartCountDown();
         _updater.CountDownTimer.StartCountDown_RPC(SpaceEventConstants.SingingEventVoteCountDown);
     }
@@ -39,7 +40,6 @@ public class SingingEventSinger : NetworkBehaviour
     {
         _updater.CountDownTimer.ActOnEndTimer -= EndEvent;
         _processor.OnEndEvent();
-        _updater.VoteGauge.gameObject.SetActive(false);
         
         GameManager.FusionSession.Runner.Despawn(Object);
     }
