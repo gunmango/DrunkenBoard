@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1952733882716825161}
   - component: {fileID: 5775760564174211798}
   - component: {fileID: 7536278453175834854}
+  - component: {fileID: 7883903002847776820}
   m_Layer: 0
   m_Name: Crocodile
   m_TagString: Untagged
@@ -102,3 +103,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openMouthSprite: {fileID: -1187487534, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
   closedMouthSprite: {fileID: -942150936, guid: de2c4339f191f664586ed07bc9e369a6, type: 3}
+--- !u!114 &7883903002847776820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274984620661794612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SortKey: 4260385096
+  ObjectInterest: 1
+  Flags: 262145
+  NestedObjects: []
+  NetworkedBehaviours:
+  - {fileID: 7536278453175834854}
+  ForceRemoteRenderTimeframe: 0
