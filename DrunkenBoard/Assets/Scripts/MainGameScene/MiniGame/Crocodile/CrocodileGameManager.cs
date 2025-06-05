@@ -38,7 +38,7 @@ public class CrocodileGameManager : NetworkBehaviour
 
     private void Start()
     {
-        GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
+        //GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
         GameManager.FusionSession.ActOnPlayerLeft += OnPlayerLeft;
         
         // Debug.Log("CrocodileGameManager 시작됨");
@@ -85,26 +85,31 @@ public class CrocodileGameManager : NetworkBehaviour
             allTeeth[i].RPC_SetTrap(isTrap);
         }
 
-        if (turnSystem != null)
-        {
-            turnSystem.StartSystem();
-        }
-        else
-        {
-            Debug.LogError("TurnSystem이 할당되지 않았습니다!");
-        }
+        // if (turnSystem != null)
+        // {
+        //     turnSystem.StartSystem();
+        // }
+        // else
+        // {
+        //     Debug.LogError("TurnSystem이 할당되지 않았습니다!");
+        // }
     }
 
-    private void OnPlayerJoined(NetworkRunner runner, PlayerRef playerRef)
+    public void SetPlayerAndStart()
     {
-        Debug.Log($"OnPlayerJoined 호출됨: {playerRef.RawEncoded}");
-        
-        // 로컬 플레이어가 아닌 경우 무시
-        if (runner.LocalPlayer != playerRef)
-            return;
-
-        StartCoroutine(InitializePlayerSafe(runner, playerRef));
+        StartCoroutine(InitializePlayerSafe(Runner, Runner.LocalPlayer));
     }
+    
+    // private void OnPlayerJoined(NetworkRunner runner, PlayerRef playerRef)
+    // {
+    //     Debug.Log($"OnPlayerJoined 호출됨: {playerRef.RawEncoded}");
+    //     
+    //     // 로컬 플레이어가 아닌 경우 무시
+    //     if (runner.LocalPlayer != playerRef)
+    //         return;
+    //
+    //     StartCoroutine(InitializePlayerSafe(runner, playerRef));
+    // }
 
     private void OnPlayerLeft(NetworkRunner runner, PlayerRef playerRef)
     {
@@ -184,6 +189,8 @@ public class CrocodileGameManager : NetworkBehaviour
         gameStarted = true;
         Debug.Log("게임 시작!");
         
+        turnSystem.StartSystem();
+        
         // 모든 클라이언트에게 게임 시작 알림
         RPC_OnGameStarted();
     }
@@ -220,7 +227,7 @@ public class CrocodileGameManager : NetworkBehaviour
     {
         if (GameManager.FusionSession != null)
         {
-            GameManager.FusionSession.ActOnPlayerJoined -= OnPlayerJoined;
+            //GameManager.FusionSession.ActOnPlayerJoined -= OnPlayerJoined;
             GameManager.FusionSession.ActOnPlayerLeft -= OnPlayerLeft;
         }
     }
