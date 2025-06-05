@@ -21,28 +21,19 @@ public class CrocodileTooth : NetworkBehaviour
 
     [Networked]
     private bool isGameEnded { get; set; }
-
-    // 이전 상태 추적용 (변경 감지)
-    private bool previousIsClicked = false;
-    private bool previousIsGameEnded = false;
-
+    
     public event Action<int> OnToothClicked;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-        {
-            // Debug.LogError($"❌ SpriteRenderer가 없습니다! GameObject: {gameObject.name}");
-        }
     }
 
     public override void Spawned()
     {
-        // Debug.Log($"🦷 이빨 {toothIndex} Spawned, HasStateAuthority: {Object.HasStateAuthority}");
         UpdateVisuals();
     }
-
+    
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     public void RPC_SetTrap(bool trap)
     {
@@ -50,7 +41,7 @@ public class CrocodileTooth : NetworkBehaviour
 
         if (isTrap)
         {
-            Debug.Log($"🧨 이빨 {toothIndex}이 트랩으로 설정됨!");
+            //Debug.Log($"🧨 이빨 {toothIndex}이 트랩으로 설정됨!");
         }
     }
 
@@ -90,12 +81,12 @@ public class CrocodileTooth : NetworkBehaviour
             isGameEnded = true;
             UpdateVisuals(); // 게임 종료 상태 즉시 반영
             
-            crocodileMouth?.CloseMouth();
+            crocodileMouth.CloseMouth();
           
             // StateAuthority에서만 게임 종료 처리
             if (Object.HasStateAuthority)
             {
-                gameManager?.EndGame();
+                gameManager.EndGame();
             }
         }
     }
@@ -107,43 +98,22 @@ public class CrocodileTooth : NetworkBehaviour
         UpdateVisuals();
         // Debug.Log($"🔥 이빨 {toothIndex} 게임 종료 처리됨");
     }
-
-    // StateAuthority가 아닌 곳에서 게임 종료를 요청할 때 사용
-    public void RequestEndGame()
-    {
-        if (Object.HasStateAuthority)
-        {
-            RPC_EndGame();
-        }
-        else
-        {
-            // StateAuthority에게 게임 종료 요청
-            RPC_RequestEndGame();
-        }
-    }
-
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    private void RPC_RequestEndGame()
-    {
-        if (Object.HasStateAuthority)
-        {
-            RPC_EndGame();
-        }
-    }
-
+    
     public void UpdateVisuals()
     {
         if (spriteRenderer == null) return;
 
         if (isGameEnded)
         {
-            spriteRenderer.color = new Color(1f, 1f, 1f, 0.3f);
+            isClicked = false;
+            isTrap = false;
+            isGameEnded = false;
+            spriteRenderer.sprite = normalSprite;
             gameObject.SetActive(false);
             return;
         }
 
         spriteRenderer.sprite = isClicked ? downSprite : normalSprite;
-        spriteRenderer.color = Color.white;
         
         // Debug.Log($"🎨 이빨 {toothIndex} 시각적 업데이트: {(isClicked ? "DOWN" : "UP")}");
     }
@@ -156,7 +126,7 @@ public class CrocodileTooth : NetworkBehaviour
 
     public void ProcessClick()
     {
-        Debug.Log($"ProcessClick called on tooth {toothIndex} by {Runner.LocalPlayer.RawEncoded}");
+        //Debug.Log($"ProcessClick called on tooth {toothIndex} by {Runner.LocalPlayer.RawEncoded}");
         
         // 이미 클릭되었거나 게임이 끝났으면 무시
         if (isClicked || isGameEnded) return;
@@ -166,56 +136,7 @@ public class CrocodileTooth : NetworkBehaviour
         
         // Debug.Log($"✅ 이빨 {toothIndex} 클릭 요청 전송됨");
     }
-
-    // 네트워크 상태 변경 감지 및 시각적 업데이트
-    public override void Render()
-    {
-        // 상태 변경 감지
-        bool stateChanged = false;
-        
-        if (previousIsClicked != isClicked)
-        {
-            previousIsClicked = isClicked;
-            stateChanged = true;
-            // Debug.Log($"🔄 이빨 {toothIndex} 클릭 상태 변경: {isClicked}");
-        }
-        
-        if (previousIsGameEnded != isGameEnded)
-        {
-            previousIsGameEnded = isGameEnded;
-            stateChanged = true;
-            // Debug.Log($"🔄 이빨 {toothIndex} 게임 종료 상태 변경: {isGameEnded}");
-        }
-        
-        // 상태가 변경된 경우에만 시각적 업데이트
-        if (stateChanged)
-        {
-            UpdateVisuals();
-        }
-    }
+    
 
     public bool IsClicked() => isClicked;
-    public bool IsTrap() => isTrap;
-    public bool IsGameEnded() => isGameEnded;
-
-    public void ResetTooth()
-    {
-        if (Object.HasStateAuthority)
-        {
-            isClicked = false;
-            isGameEnded = false;
-            gameObject.SetActive(true);
-            UpdateVisuals();
-        }
-    }
-
-    [ContextMenu("Force Click (Debug)")]
-    private void DebugForceClick()
-    {
-        if (Object.HasStateAuthority && !isClicked && !isGameEnded)
-        {
-            isClicked = true;
-            RPC_ExecuteClickTooth(isTrap);
-        }
-    }
 }

@@ -4,6 +4,11 @@ public class CrocodileEvent : ASpaceEvent
 {
     [SerializeField] private CrocodileGameManager crocodileGameManager;
     [SerializeField] private GameObject crocodile;
+
+    private void Start()
+    {
+        crocodile.SetActive(false);
+    }
     protected override void PlayEvent()
     {
         Debug.Log("CrocodileEvent");
@@ -15,6 +20,7 @@ public class CrocodileEvent : ASpaceEvent
     private void OnEndEvent()
     {
         MainGameSceneManager.GameStateManager.ActOnBoard -= OnEndEvent;
+        Debug.Log("CrocodileEndEvent");
         crocodile.SetActive(false);
     }
 }
