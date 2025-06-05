@@ -1,27 +1,19 @@
+using System;
 using Fusion;
 using UnityEngine;
 
 public class CrocodileMouth : NetworkBehaviour
 {
+    [SerializeField] private SpriteRenderer spriteRenderer;
     public Sprite openMouthSprite;
     public Sprite closedMouthSprite;
-
-    private SpriteRenderer spriteRenderer;
-
+    
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("[CrocodileMouth] SpriteRenderer가 없습니다!");
-        }
+        gameObject.SetActive(true);
     }
 
-
-   
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    private void RPC_CloseMouth()
+    public void CloseMouth()
     {
         Debug.Log("RPC_CloseMouth 실행됨");
 
@@ -43,26 +35,8 @@ public class CrocodileMouth : NetworkBehaviour
             spriteRenderer.sprite = openMouthSprite;
     }
 
-    // 로컬에서 바로 바꾸지 말고, RPC 호출로 모두 동기화!
-    public void CloseMouth()
+    private void OnEnable()
     {
-        Debug.Log($"CloseMouth 호출, HasStateAuthority: {Object.HasStateAuthority}");
-
-        if (Object.HasStateAuthority)
-        {
-            RPC_CloseMouth();
-        }
-        else
-        {
-            Debug.LogWarning("CloseMouth 호출했지만 StateAuthority가 없습니다.");
-        }
-    }
-
-    public void OpenMouth()
-    {
-        if (Object.HasStateAuthority)
-        {
-            RPC_OpenMouth();
-        }
+        spriteRenderer.sprite = openMouthSprite;
     }
 }

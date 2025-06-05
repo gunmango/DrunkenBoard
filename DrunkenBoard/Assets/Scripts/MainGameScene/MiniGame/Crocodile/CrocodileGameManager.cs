@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,11 @@ public class CrocodileGameManager : NetworkBehaviour
     [Networked] private int trapToothIndex { get; set; } = -1; // 🧠 트랩 이빨 인덱스를 네트워크로 공유
     
     [Networked] public bool GameEnded { get; private set; } = false;
-
+    
+    public Action OnGameEnded {get; set;}
+    
+    private int _playingPlayerCount = 0;
+    
     private void Awake()
     {
         turnSystem = turnSystemInScene;
@@ -38,23 +43,7 @@ public class CrocodileGameManager : NetworkBehaviour
 
     private void Start()
     {
-        //GameManager.FusionSession.ActOnPlayerJoined += OnPlayerJoined;
         GameManager.FusionSession.ActOnPlayerLeft += OnPlayerLeft;
-        
-        // Debug.Log("CrocodileGameManager 시작됨");
-    }
-
-    public override void Spawned()
-    {
-        base.Spawned();
-        // Debug.Log("CrocodileGameManager Spawned");
-        
-        // StateAuthority에서만 게임 초기화
-        if (Object.HasStateAuthority)
-        {
-            // 잠시 대기 후 초기화 (씬 로딩 완료 대기)
-            StartCoroutine(DelayedInitializeGame());
-        }
     }
 
     private IEnumerator DelayedInitializeGame()
@@ -70,8 +59,10 @@ public class CrocodileGameManager : NetworkBehaviour
 
     private void InitializeGame()
     {
-        Debug.Log("게임 초기화 시작");
+        //Debug.Log("게임 초기화 시작");
 
+        _playingPlayerCount = PlayerManager.Instance.Players.Count;
+        
         // 🧠 트랩 이빨 지정은 오직 여기서!
         trapToothIndex = UnityEngine.Random.Range(0, allTeeth.Length);
         Debug.Log($"🎯 트랩 이빨 지정: {trapToothIndex}");
@@ -84,36 +75,22 @@ public class CrocodileGameManager : NetworkBehaviour
             bool isTrap = (i == trapToothIndex);
             allTeeth[i].RPC_SetTrap(isTrap);
         }
-
-        // if (turnSystem != null)
-        // {
-        //     turnSystem.StartSystem();
-        // }
-        // else
-        // {
-        //     Debug.LogError("TurnSystem이 할당되지 않았습니다!");
-        // }
     }
 
     public void SetPlayerAndStart()
     {
+        // StateAuthority에서만 게임 초기화
+        if (Object.HasStateAuthority)
+        {
+            // 잠시 대기 후 초기화 (씬 로딩 완료 대기)
+            InitializeGame();
+        }
         StartCoroutine(InitializePlayerSafe(Runner, Runner.LocalPlayer));
     }
-    
-    // private void OnPlayerJoined(NetworkRunner runner, PlayerRef playerRef)
-    // {
-    //     Debug.Log($"OnPlayerJoined 호출됨: {playerRef.RawEncoded}");
-    //     
-    //     // 로컬 플레이어가 아닌 경우 무시
-    //     if (runner.LocalPlayer != playerRef)
-    //         return;
-    //
-    //     StartCoroutine(InitializePlayerSafe(runner, playerRef));
-    // }
 
     private void OnPlayerLeft(NetworkRunner runner, PlayerRef playerRef)
     {
-        Debug.Log($"OnPlayerLeft 호출됨: {playerRef.RawEncoded}");
+        //Debug.Log($"OnPlayerLeft 호출됨: {playerRef.RawEncoded}");
         
         int uuid = playerRef.RawEncoded;
         
@@ -137,57 +114,56 @@ public class CrocodileGameManager : NetworkBehaviour
     private IEnumerator InitializePlayerSafe(NetworkRunner runner, PlayerRef playerRef)
     {
         int uuid = playerRef.RawEncoded;
-        // Debug.Log($"InitializePlayerSafe 시작 for player {uuid}");
+        //Debug.Log($"InitializePlayerSafe 시작 for player {uuid}");
 
         // PlayerManager 준비 대기
         yield return new WaitUntil(() => PlayerManager.Instance != null);
         yield return new WaitUntil(() => PlayerManager.Instance.Object.IsValid);
         yield return new WaitUntil(() => PlayerManager.Instance.IsPlayerValid(uuid));
-        // Debug.Log($"PlayerManager 확인 완료 for {uuid}");
+        //Debug.Log($"PlayerManager 확인 완료 for {uuid}");
 
         // 플레이어 스폰
         var newPlayer = runner.Spawn(playerPrefab);
         if (newPlayer == null)
         {
-            // Debug.LogError("Player prefab 스폰 실패!");
+             Debug.LogError("Player prefab 스폰 실패!");
             yield break;
         }
         
-        // Debug.Log("Player prefab Spawn 완료");
+        //Debug.Log("Player prefab Spawn 완료");
         spawnedPlayers.Add(newPlayer);
 
         // 플레이어 초기화 - 네트워크 객체가 완전히 준비될 때까지 대기
         yield return new WaitUntil(() => newPlayer.Object.IsValid);
         
         newPlayer.Initialize(turnSystem, uuid, timer, allTeeth, this);
-        // Debug.Log("newPlayer.Initialize 완료");
+        //Debug.Log("newPlayer.Initialize 완료");
 
         // 턴 시스템에 플레이어 추가
         if (turnSystem != null)
         {
             turnSystem.AddTurnPlayer_RPC(newPlayer);
-            Debug.Log("turnSystem.AddTurnPlayer_RPC 호출 완료");
+            //Debug.Log("turnSystem.AddTurnPlayer_RPC 호출 완료");
         }
 
         // 게임 시작 조건 확인
-        CheckGameStartCondition();
+        StartCoroutine(WaitForPlayerSpawn());
     }
 
-    private void CheckGameStartCondition()
+    private IEnumerator WaitForPlayerSpawn()
     {
-        if (Object.HasStateAuthority && !gameStarted && spawnedPlayers.Count >= minPlayersToStart)
-        {
-            Debug.Log($"게임 시작 조건 만족! 플레이어 수: {spawnedPlayers.Count}");
-            StartGame();
-        }
+        if (Object.HasStateAuthority == false)
+            yield break;
+        yield return new WaitUntil(()=>turnSystem.TurnPlayers.Count == _playingPlayerCount);
+        StartGame();
     }
-
+    
     private void StartGame()
     {
         if (gameStarted) return;
         
         gameStarted = true;
-        Debug.Log("게임 시작!");
+        //Debug.Log("게임 시작!");
         
         turnSystem.StartSystem();
         
@@ -198,28 +174,14 @@ public class CrocodileGameManager : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     private void RPC_OnGameStarted()
     {
-        Debug.Log("게임이 시작되었습니다!");
+        //Debug.Log("게임이 시작되었습니다!");
         
         // 여기서 게임 시작 UI 표시 등 추가 로직 수행
         // 예: 모든 이빨 활성화, 게임 시작 사운드 재생 등
         
         foreach (var tooth in allTeeth)
         {
-            if (tooth != null)
-            {
-                tooth.gameObject.SetActive(true);
-            }
-        }
-    }
-    
-
-    // 디버그용 - 게임 강제 시작
-    [ContextMenu("Force Start Game")]
-    private void ForceStartGame()
-    {
-        if (Object.HasStateAuthority)
-        {
-            StartGame();
+            tooth.gameObject.SetActive(true);
         }
     }
 
@@ -227,17 +189,15 @@ public class CrocodileGameManager : NetworkBehaviour
     {
         if (GameManager.FusionSession != null)
         {
-            //GameManager.FusionSession.ActOnPlayerJoined -= OnPlayerJoined;
             GameManager.FusionSession.ActOnPlayerLeft -= OnPlayerLeft;
         }
     }
     
     public void EndGame()
     {
-        Debug.Log("🔥 게임 종료됨!");
+        //Debug.Log("🔥 게임 종료됨!");
         GameEnded = true; // ✅ 게임 종료 상태 저장
         
-        // turnTimer.HideTimerUI();
         // 모든 이빨에게 게임 종료 알림
         foreach (var tooth in allTeeth)
         {
@@ -258,7 +218,16 @@ public class CrocodileGameManager : NetworkBehaviour
         // 게임 상태를 종료로 변경
         gameStarted = false;
         
-       
-
+        //끝
+        GameEnded = false;
+        turnSystem.EndSystem();
+        BroadCastGameEnd_RPC();
+    }
+    
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void BroadCastGameEnd_RPC()
+    {
+        OnGameEnded?.Invoke();
+        MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
     }
 }

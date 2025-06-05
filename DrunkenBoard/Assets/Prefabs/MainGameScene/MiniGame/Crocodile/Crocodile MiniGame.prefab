@@ -117,7 +117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9129058349305839018
 Transform:
   m_ObjectHideFlags: 0
@@ -134,7 +134,6 @@ Transform:
   - {fileID: 2012497884005348822}
   - {fileID: 2747636709771182403}
   - {fileID: 7195937139989603643}
-  - {fileID: 3955392235528372199}
   m_Father: {fileID: 5701164828442207552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7691512278230431522
@@ -167,6 +166,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3955392235528372199}
   - {fileID: 9129058349305839018}
   - {fileID: 6402288144641116183}
   m_Father: {fileID: 0}
@@ -198,6 +198,10 @@ PrefabInstance:
     - target: {fileID: 1274984620661794612, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
       propertyPath: m_Name
       value: Crocodile
+      objectReference: {fileID: 0}
+    - target: {fileID: 1274984620661794612, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1952733882716825161, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -238,6 +242,10 @@ PrefabInstance:
     - target: {fileID: 1952733882716825161, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7883903002847776820, guid: 42492d7dd5dfcfa4aa0f3c329484ab6d, type: 3}
+      propertyPath: Flags
+      value: 131073
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -278,7 +286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_AnchorMax.x
@@ -286,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_AnchorMin.x
@@ -294,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_SizeDelta.x
@@ -334,11 +342,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -960
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -930
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -379,7 +387,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 9129058349305839018}
+    m_TransformParent: {fileID: 5701164828442207552}
     m_Modifications:
     - target: {fileID: 1971388595260375651, guid: 36696933863c9894fa3280764af0171e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -399,15 +407,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1971388595260375651, guid: 36696933863c9894fa3280764af0171e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1971388595260375651, guid: 36696933863c9894fa3280764af0171e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1971388595260375651, guid: 36696933863c9894fa3280764af0171e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1971388595260375651, guid: 36696933863c9894fa3280764af0171e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -675,18 +683,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9129058349305839018}
     m_Modifications:
-    - target: {fileID: 230812020439355600, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 1945591904
-      objectReference: {fileID: 0}
-    - target: {fileID: 230812020439355600, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 230812020439355600, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2897009418632495806}
     - target: {fileID: 510411872272359384, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: gameManager
       value: 
@@ -711,18 +707,6 @@ PrefabInstance:
       propertyPath: crocodileMouth
       value: 
       objectReference: {fileID: 7521689108021791609}
-    - target: {fileID: 942004100457721381, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 3094206003
-      objectReference: {fileID: 0}
-    - target: {fileID: 942004100457721381, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 942004100457721381, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1725777550663157594}
     - target: {fileID: 1008101060848139199, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: gameManager
       value: 
@@ -731,18 +715,6 @@ PrefabInstance:
       propertyPath: crocodileMouth
       value: 
       objectReference: {fileID: 7521689108021791609}
-    - target: {fileID: 1923304270119683935, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 628341395
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923304270119683935, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923304270119683935, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 6813247435760837455}
     - target: {fileID: 2239749817535865097, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: gameManager
       value: 
@@ -751,18 +723,6 @@ PrefabInstance:
       propertyPath: crocodileMouth
       value: 
       objectReference: {fileID: 7521689108021791609}
-    - target: {fileID: 2883405910188612359, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 1234927282
-      objectReference: {fileID: 0}
-    - target: {fileID: 2883405910188612359, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2883405910188612359, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7042037130702383192}
     - target: {fileID: 3145223984077906744, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: gameManager
       value: 
@@ -771,18 +731,6 @@ PrefabInstance:
       propertyPath: crocodileMouth
       value: 
       objectReference: {fileID: 7521689108021791609}
-    - target: {fileID: 3150489143328696400, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 4019078426
-      objectReference: {fileID: 0}
-    - target: {fileID: 3150489143328696400, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3150489143328696400, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 8309732234379981550}
     - target: {fileID: 3460774569664725685, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: gameManager
       value: 
@@ -815,42 +763,6 @@ PrefabInstance:
       propertyPath: crocodileMouth
       value: 
       objectReference: {fileID: 7521689108021791609}
-    - target: {fileID: 5298491973630803041, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 2208350727
-      objectReference: {fileID: 0}
-    - target: {fileID: 5298491973630803041, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5298491973630803041, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7424553761799422333}
-    - target: {fileID: 5352386798075826740, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 3905613281
-      objectReference: {fileID: 0}
-    - target: {fileID: 5352386798075826740, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5352386798075826740, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 6647328191968842066}
-    - target: {fileID: 5359826535189174930, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 624078457
-      objectReference: {fileID: 0}
-    - target: {fileID: 5359826535189174930, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5359826535189174930, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 5179488579397415135}
     - target: {fileID: 5361175681639142052, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -891,70 +803,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5777330968826318134, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 1239301833
-      objectReference: {fileID: 0}
-    - target: {fileID: 5777330968826318134, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5777330968826318134, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7307513795207815962}
     - target: {fileID: 6289292451860053684, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: m_Name
       value: CrocodileToothSet
       objectReference: {fileID: 0}
-    - target: {fileID: 7034343426143860363, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 906682000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7034343426143860363, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
+    - target: {fileID: 6289292451860053684, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7034343426143860363, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 6235992769674251043}
-    - target: {fileID: 7124937816941199499, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 2991438934
-      objectReference: {fileID: 0}
-    - target: {fileID: 7124937816941199499, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7124937816941199499, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1871314533251817004}
-    - target: {fileID: 7480400201900834184, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 213392748
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480400201900834184, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7480400201900834184, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 7733367770611698751}
-    - target: {fileID: 7697986690632236749, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 2842973367
-      objectReference: {fileID: 0}
-    - target: {fileID: 7697986690632236749, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7697986690632236749, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1255238867867094717}
     - target: {fileID: 7821450187831598064, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: gameManager
       value: 
@@ -971,18 +827,6 @@ PrefabInstance:
       propertyPath: crocodileMouth
       value: 
       objectReference: {fileID: 7521689108021791609}
-    - target: {fileID: 8784218079450667684, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: SortKey
-      value: 1858411546
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784218079450667684, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: NetworkedBehaviours.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8784218079450667684, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 57551078143625239}
     - target: {fileID: 8913776427354248381, guid: 8c1063cbd93bad6418c9fb47548d454b, type: 3}
       propertyPath: gameManager
       value: 

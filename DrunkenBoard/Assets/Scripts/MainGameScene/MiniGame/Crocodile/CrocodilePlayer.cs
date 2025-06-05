@@ -22,17 +22,7 @@ public class CrocodilePlayer : ATurnPlayer
         _timer = turnTimer;
         allTeeth = teeth;
         gameManager = crocodileGameManager;
-    }
-    public void OnTurnStart()
-    {
-        Debug.Log($"🎯 플레이어 {Uuid} 턴 시작");
-        // 🔄 턴 시작 시 모든 이빨의 상태를 확인해서 시각적 상태 반영
-        foreach (var tooth in allTeeth)
-        {
-            tooth.UpdateVisuals();
-        }
-
-        StartCoroutine(TakeTurnCoroutine());
+        gameManager.OnGameEnded += Cleanup;
     }
 
     protected override IEnumerator TakeTurnCoroutine()
@@ -47,6 +37,7 @@ public class CrocodilePlayer : ATurnPlayer
 
         // ✅ 타이머 시작
         _timer.ActOnEndTimer += OnTurnTimeout;
+        _timer.gameObject.SetActive(true);
         _timer.StartCountDown_RPC(SpaceEventConstants.CrocodileTurnTime);
 
         Debug.Log($"⏱️ 타이머 시작, 이빨 클릭 대기 중...");
@@ -175,5 +166,8 @@ public class CrocodilePlayer : ATurnPlayer
         {
             _timer.ActOnEndTimer -= OnTurnTimeout;
         }
+        gameManager.OnGameEnded -= Cleanup;
+
+        GameManager.FusionSession.Runner.Despawn(Object);
     }
 }

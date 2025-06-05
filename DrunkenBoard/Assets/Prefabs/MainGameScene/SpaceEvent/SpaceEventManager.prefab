@@ -63,12 +63,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 534323073
   ObjectInterest: 1
-  Flags: 262145
+  Flags: 131073
   NestedObjects:
   - {fileID: 1961137151761769202}
   - {fileID: 3008142047082515307}
   - {fileID: 3806862028190624784}
   - {fileID: 8874416789722508550}
+  - {fileID: 4547266129312837035}
   - {fileID: 6286930033303262666}
   - {fileID: 5500415046797886169}
   - {fileID: 9144135978073333377}
@@ -85,7 +86,6 @@ MonoBehaviour:
   - {fileID: 2264628073802922471}
   - {fileID: 2063469087629973426}
   - {fileID: 4108084858112012444}
-  - {fileID: 4547266129312837035}
   - {fileID: 9016133846278533082}
   NetworkedBehaviours:
   - {fileID: 8828866546547946682}
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 1142133058
   ObjectInterest: 1
-  Flags: 262145
+  Flags: 131073
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 851456132119194045}
