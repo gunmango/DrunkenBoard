@@ -43,15 +43,18 @@ public class WebCamTweener : MonoBehaviour
     }
 
     //태두리 깜빡이기
-    public void ToggleBlink()
+    public void StopBlinking()
     {
-        if (_blinkSequence != null && _blinkSequence.IsActive())
+        if (_blinkSequence != null)
         {
             _blinkSequence.Kill();       // 시퀀스 중단
             boundary.SetActive(true);    // 항상 켜진 상태로 복원
-            return;
         }
-        
+    }
+
+    //태두리 안깜빡이기
+    public void StartBlinking()
+    {
         _blinkSequence = DOTween.Sequence()
             .AppendCallback(() => boundary.SetActive(false))
             .AppendInterval(_offDuration)  // 꺼진 상태 유지

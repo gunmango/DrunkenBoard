@@ -5,12 +5,10 @@ using Fusion;
 
 public class CrocodilePlayer : ATurnPlayer
 {
-    
     [SerializeField] private CrocodileGameManager gameManager;
     
     private CrocodileTooth[] allTeeth;
     private bool clicked = false;
-    private CrocodileTooth selectedTooth;
 
     private NetworkTimer _timer;
 
@@ -28,16 +26,17 @@ public class CrocodilePlayer : ATurnPlayer
     protected override IEnumerator TakeTurnCoroutine()
     {
         clicked = false;
-        selectedTooth = null;
 
         Debug.Log($"🎯 플레이어 {Uuid} 턴 시작");
+        Debug.Log("Start Blink: " + Uuid);
+        WebCamStartBlinking_RPC();
 
         // ✅ 이빨 이벤트 구독
         SubscribeToothEvents();
 
         // ✅ 타이머 시작
         _timer.ActOnEndTimer += OnTurnTimeout;
-        _timer.gameObject.SetActive(true);
+        _timer.ShowTimer();
         _timer.StartCountDown_RPC(SpaceEventConstants.CrocodileTurnTime);
 
         //Debug.Log($"⏱️ 타이머 시작, 이빨 클릭 대기 중...");
@@ -45,6 +44,9 @@ public class CrocodilePlayer : ATurnPlayer
         // ✅ 클릭 완료까지 대기
         yield return new WaitUntil(() => clicked == true || gameManager.GameEnded);
 
+        Debug.Log("Stop Blink: " + Uuid);
+        WebCamStopBlinking_RPC();
+        
         if (gameManager.GameEnded)
         {
             Debug.Log($"🛑 게임이 종료되었으므로 플레이어 {Uuid}의 턴을 종료하지 않습니다");
@@ -135,6 +137,7 @@ public class CrocodilePlayer : ATurnPlayer
     private void CleanupTurn()
     {
         Debug.Log($"🧹 플레이어 {Uuid} 턴 정리");
+        
 
         // 이벤트 구독 해제
         UnsubscribeToothEvents();
@@ -149,18 +152,19 @@ public class CrocodilePlayer : ATurnPlayer
         if (clicked) return;
 
         clicked = true;
-        selectedTooth = tooth;
         
         //Debug.Log($"✅ 플레이어 {Uuid} 이빨 {tooth.toothIndex} 선택 완료");
         
         // 타이머 강제 종료
+        _timer.HideTimer();
         _timer.StopCountDown_RPC();
-        _timer.gameObject.SetActive(false);
     }
 
     // ✅ 게임 종료 시 정리
     public void Cleanup()
     {
+        Debug.Log("Clean up Stop Blink: " + Uuid);
+        WebCamStopBlinking_RPC();
         UnsubscribeToothEvents();
         if (_timer != null)
         {

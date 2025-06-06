@@ -117,13 +117,27 @@ public class WebCamManager : SimulationBehaviour
     }
 
     //rpc아님, 각 클라 적용하는 함수
-    public void ToggleBlinkBoundary(int uuid)
+    public void StartBlinkingBoundary(int uuid)
     {
         for (int i = 0; i < _webCamUnits.Count; i++)
         {
             if (_webCamUnits[i].Uuid == uuid)
             {
-                _webCamUnits[i].Tweener.ToggleBlink();
+                _webCamUnits[i].Tweener.StartBlinking();
+                break;
+            }
+        }
+    }
+
+    //rpc아님, 각 클라 적용하는 함수
+    public void StopBlinkingBoundary(int uuid)
+    {
+        for (int i = 0; i < _webCamUnits.Count; i++)
+        {
+            if (_webCamUnits[i].Uuid == uuid)
+            {
+                Debug.Log("StopBlinkingBoundary: " + uuid);
+                _webCamUnits[i].Tweener.StopBlinking();
                 break;
             }
         }

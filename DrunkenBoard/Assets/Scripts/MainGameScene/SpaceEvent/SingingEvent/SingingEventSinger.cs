@@ -33,7 +33,7 @@ public class SingingEventSinger : NetworkBehaviour
     {
         _updater.StartCountDownButton.gameObject.SetActive(false);
         _audienceController.StartCountDown();
-        _updater.CountDownTimer.gameObject.SetActive(true);
+        _updater.CountDownTimer.ShowTimer();
         _updater.CountDownTimer.StartCountDown_RPC(SpaceEventConstants.SingingEventVoteCountDown);
     }
     
