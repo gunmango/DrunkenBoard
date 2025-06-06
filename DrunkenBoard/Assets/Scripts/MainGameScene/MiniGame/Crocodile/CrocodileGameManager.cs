@@ -15,9 +15,6 @@ public class CrocodileGameManager : NetworkBehaviour
     // 플레이어별 TurnTimer를 씬에서 미리 할당(예: 플레이어수만큼 배열이나 리스트)
     [SerializeField] private NetworkTimer timer;
 
-    [Header("게임 설정")]
-    [SerializeField] private int minPlayersToStart = 2; // 게임 시작에 필요한 최소 플레이어 수
-
     private TurnSystem turnSystem;
     private List<CrocodilePlayer> spawnedPlayers = new List<CrocodilePlayer>();
     

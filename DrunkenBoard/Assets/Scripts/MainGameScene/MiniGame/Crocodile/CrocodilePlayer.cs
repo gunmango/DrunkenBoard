@@ -40,7 +40,7 @@ public class CrocodilePlayer : ATurnPlayer
         _timer.gameObject.SetActive(true);
         _timer.StartCountDown_RPC(SpaceEventConstants.CrocodileTurnTime);
 
-        Debug.Log($"⏱️ 타이머 시작, 이빨 클릭 대기 중...");
+        //Debug.Log($"⏱️ 타이머 시작, 이빨 클릭 대기 중...");
 
         // ✅ 클릭 완료까지 대기
         yield return new WaitUntil(() => clicked == true || gameManager.GameEnded);
@@ -151,7 +151,7 @@ public class CrocodilePlayer : ATurnPlayer
         clicked = true;
         selectedTooth = tooth;
         
-        Debug.Log($"✅ 플레이어 {Uuid} 이빨 {tooth.toothIndex} 선택 완료");
+        //Debug.Log($"✅ 플레이어 {Uuid} 이빨 {tooth.toothIndex} 선택 완료");
         
         // 타이머 강제 종료
         _timer.StopCountDown_RPC();

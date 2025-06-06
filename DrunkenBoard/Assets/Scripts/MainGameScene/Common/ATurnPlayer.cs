@@ -3,7 +3,7 @@ using UnityEngine;
 using Fusion;
 public abstract class ATurnPlayer : NetworkBehaviour
 {
-    public int Uuid { get; set; }
+    [Networked] public int Uuid { get; set; }
     public TurnSystem TurnSystem { get; set; }
     
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

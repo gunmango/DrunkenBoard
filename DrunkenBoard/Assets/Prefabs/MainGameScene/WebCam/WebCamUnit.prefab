@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rawImage: {fileID: 808238290919629001}
   rectTransform: {fileID: 2453442833936916295}
-  moveDuration: 2
+  boundary: {fileID: 6220071499397682203}
 --- !u!1 &1994744731344190015
 GameObject:
   m_ObjectHideFlags: 0

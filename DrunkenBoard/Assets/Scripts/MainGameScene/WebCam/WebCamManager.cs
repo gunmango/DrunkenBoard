@@ -115,6 +115,19 @@ public class WebCamManager : SimulationBehaviour
             }
         }
     }
+
+    //rpc아님, 각 클라 적용하는 함수
+    public void ToggleBlinkBoundary(int uuid)
+    {
+        for (int i = 0; i < _webCamUnits.Count; i++)
+        {
+            if (_webCamUnits[i].Uuid == uuid)
+            {
+                _webCamUnits[i].Tweener.ToggleBlink();
+                break;
+            }
+        }
+    }
     
     #region 위치옮기기
 
