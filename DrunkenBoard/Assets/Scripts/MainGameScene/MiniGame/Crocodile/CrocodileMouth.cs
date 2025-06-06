@@ -15,12 +15,12 @@ public class CrocodileMouth : NetworkBehaviour
 
     public void CloseMouth()
     {
-        Debug.Log("RPC_CloseMouth 실행됨");
+        //Debug.Log("RPC_CloseMouth 실행됨");
 
         if (spriteRenderer != null)
         {
             spriteRenderer.sprite = closedMouthSprite;
-            Debug.Log("입 닫힘: 스프라이트 변경 완료");
+            //Debug.Log("입 닫힘: 스프라이트 변경 완료");
         }
         else
         {
