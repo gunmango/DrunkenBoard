@@ -44,12 +44,11 @@ public class CrocodilePlayer : ATurnPlayer
         // ✅ 클릭 완료까지 대기
         yield return new WaitUntil(() => clicked == true || gameManager.GameEnded);
 
-        Debug.Log("Stop Blink: " + Uuid);
         WebCamStopBlinking_RPC();
         
         if (gameManager.GameEnded)
         {
-            Debug.Log($"🛑 게임이 종료되었으므로 플레이어 {Uuid}의 턴을 종료하지 않습니다");
+            //Debug.Log($"🛑 게임이 종료되었으므로 플레이어 {Uuid}의 턴을 종료하지 않습니다");
             CleanupTurn();
             yield break;
         }
@@ -136,8 +135,7 @@ public class CrocodilePlayer : ATurnPlayer
     // ✅ 턴 정리
     private void CleanupTurn()
     {
-        Debug.Log($"🧹 플레이어 {Uuid} 턴 정리");
-        
+        //Debug.Log($"🧹 플레이어 {Uuid} 턴 정리");
 
         // 이벤트 구독 해제
         UnsubscribeToothEvents();
