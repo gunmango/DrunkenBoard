@@ -136,7 +136,6 @@ public class WebCamManager : SimulationBehaviour
         {
             if (_webCamUnits[i].Uuid == uuid)
             {
-                Debug.Log("StopBlinkingBoundary: " + uuid);
                 _webCamUnits[i].Tweener.StopBlinking();
                 break;
             }

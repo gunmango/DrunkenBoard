@@ -28,7 +28,6 @@ public class CrocodilePlayer : ATurnPlayer
         clicked = false;
 
         Debug.Log($"🎯 플레이어 {Uuid} 턴 시작");
-        Debug.Log("Start Blink: " + Uuid);
         WebCamStartBlinking_RPC();
 
         // ✅ 이빨 이벤트 구독
@@ -80,7 +79,7 @@ public class CrocodilePlayer : ATurnPlayer
     {
         if (clicked) return; // 이미 클릭했으면 무시
 
-        Debug.Log($"🦷 플레이어 {Uuid}가 이빨 {toothIndex} 클릭 시도");
+        //Debug.Log($"🦷 플레이어 {Uuid}가 이빨 {toothIndex} 클릭 시도");
 
         // 해당 이빨 찾기
         CrocodileTooth clickedTooth = null;
@@ -161,7 +160,6 @@ public class CrocodilePlayer : ATurnPlayer
     // ✅ 게임 종료 시 정리
     public void Cleanup()
     {
-        Debug.Log("Clean up Stop Blink: " + Uuid);
         WebCamStopBlinking_RPC();
         UnsubscribeToothEvents();
         if (_timer != null)
