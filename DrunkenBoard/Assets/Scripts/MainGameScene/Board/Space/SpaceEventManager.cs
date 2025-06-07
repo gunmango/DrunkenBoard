@@ -15,7 +15,6 @@ public class SpaceEventManager : NetworkBehaviour
     [Rpc(RpcSources.All, RpcTargets.All)]
     private void BroadCastEvent_RPC(ESpaceEventType eventType, int enteredPlayerUuid)
     {
-        Debug.Log("SpaceEventManager::BroadCastEvent_RPC");
         if (GameManager.FusionSession.Runner.IsResimulation)
             return;
 
@@ -26,7 +25,6 @@ public class SpaceEventManager : NetworkBehaviour
             return;
         }
         
-        Debug.Log("ReadyEvent");
         spaceEvent.ReadyEvent(enteredPlayerUuid);
     }
 }

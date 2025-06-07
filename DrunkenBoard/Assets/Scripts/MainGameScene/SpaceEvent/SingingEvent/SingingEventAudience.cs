@@ -27,6 +27,7 @@ public class SingingEventAudience : NetworkBehaviour
         _updater.VoteGauge.gameObject.SetActive(true);
         _updater.RadioButtonGroup.gameObject.SetActive(true);
         _updater.CountDownTimer.gameObject.SetActive(false);
+        _updater.CountDownTimer.HideTimer();
     }
 
     private void ChangeGauge(int buttonIndex)
@@ -48,13 +49,14 @@ public class SingingEventAudience : NetworkBehaviour
     public void StartCountDown_RPC()
     {
         _updater.CountDownTimer.gameObject.SetActive(true);
+        _updater.CountDownTimer.ShowTimer();
     }
 
     private void EndVoting()
     {
         _updater.RadioButtonGroup.OnValueChanged -= ChangeGauge;
         _updater.CountDownTimer.ActOnEndTimer -= EndVoting;
-
+        
         _processor.OnEndEvent();
         _updater.gameObject.SetActive(false);
         

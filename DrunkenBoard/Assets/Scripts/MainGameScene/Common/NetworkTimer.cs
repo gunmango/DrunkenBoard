@@ -10,7 +10,8 @@ public class NetworkTimer : NetworkBehaviour
     [Networked] private float Duration { get; set; }
 
     public Action ActOnEndTimer { get; set; }
-    
+
+    [SerializeField] private GameObject background;
     [SerializeField] private TextMeshProUGUI timerText;
     private bool _hasEnded = false;
 
@@ -64,5 +65,16 @@ public class NetworkTimer : NetworkBehaviour
     {
         ActOnEndTimer?.Invoke();
         gameObject.SetActive(false);
+        background.SetActive(false);
+    }
+
+    public void ShowTimer()
+    {
+        background.SetActive(true);
+    }
+
+    public void HideTimer()
+    {
+        background.SetActive(false);
     }
 }

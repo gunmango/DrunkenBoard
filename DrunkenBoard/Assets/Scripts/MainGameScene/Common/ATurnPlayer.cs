@@ -19,4 +19,16 @@ public abstract class ATurnPlayer : NetworkBehaviour
     {
         TurnSystem.EndTurn_RPC();
     }
+    
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    protected void WebCamStartBlinking_RPC()
+    {
+        MainGameSceneManager.WebCamManager.StartBlinkingBoundary(Uuid);
+    }
+    
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    protected void WebCamStopBlinking_RPC()
+    {
+        MainGameSceneManager.WebCamManager.StopBlinkingBoundary(Uuid);
+    }
 }

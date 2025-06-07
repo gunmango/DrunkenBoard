@@ -44,7 +44,7 @@ public class BoardGamePlayer : ATurnPlayer
         //주사위 굴리고
         yield return new WaitWhile(() => _diceDisplayer.IsRolling);
         rollDiceButton.gameObject.SetActive(true);
-        BroadCastToggleBlink_RPC();
+        WebCamStartBlinking_RPC();
         
         yield return new WaitUntil(() => _clicked);
         yield return new WaitWhile(() => _diceDisplayer.IsRolling);
@@ -53,7 +53,7 @@ public class BoardGamePlayer : ATurnPlayer
         _diceResult = _diceSetter.DiceResult;
         yield return StartCoroutine(_piece.MoveSpace(_diceResult));
         
-        BroadCastToggleBlink_RPC();
+        WebCamStopBlinking_RPC();
         
         //스페이스 이벤트 기다리기
         bool ready = false;
@@ -66,9 +66,5 @@ public class BoardGamePlayer : ATurnPlayer
         EndTurn();
     }
 
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    private void BroadCastToggleBlink_RPC()
-    {
-        MainGameSceneManager.WebCamManager.ToggleBlinkBoundary(Uuid);
-    }
+
 }
