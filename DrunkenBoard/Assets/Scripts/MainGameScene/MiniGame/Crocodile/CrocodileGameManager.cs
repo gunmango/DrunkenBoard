@@ -62,7 +62,7 @@ public class CrocodileGameManager : NetworkBehaviour
         
         // 🧠 트랩 이빨 지정은 오직 여기서!
         trapToothIndex = UnityEngine.Random.Range(0, allTeeth.Length);
-        Debug.Log($"🎯 트랩 이빨 지정: {trapToothIndex}");
+        //Debug.Log($"🎯 트랩 이빨 지정: {trapToothIndex}");
 
         for (int i = 0; i < allTeeth.Length; i++)
         {
@@ -190,7 +190,7 @@ public class CrocodileGameManager : NetworkBehaviour
         }
     }
     
-    public void EndGame()
+    public void EndGame(int deadPlayerId)
     {
         //Debug.Log("🔥 게임 종료됨!");
         GameEnded = true; // ✅ 게임 종료 상태 저장
@@ -200,31 +200,30 @@ public class CrocodileGameManager : NetworkBehaviour
         {
             if (tooth != null)
             {
-                tooth.RPC_EndGame(); // 🔧 새로 추가된 RPC 호출
+                tooth.EndGame(); // 🔧 새로 추가된 RPC 호출
             }
         }
-        // 🔧 로컬에서도 즉시 이빨 비활성화 (시각적 피드백)
-        foreach (var tooth in allTeeth)
-        {
-            if (tooth != null)
-            {
-                tooth.gameObject.SetActive(false);
-            }
-        }
+
         timer.gameObject.SetActive(false);
         // 게임 상태를 종료로 변경
         gameStarted = false;
         
         //끝
-        GameEnded = false;
-        turnSystem.EndSystem();
-        BroadCastGameEnd_RPC();
-    }
-    
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    private void BroadCastGameEnd_RPC()
-    {
+        if (Object.HasStateAuthority)
+        {
+            GameEnded = false;
+            turnSystem.EndSystem();
+        }
+
         OnGameEnded?.Invoke();
-        MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
+
+        ToDrinkTime(deadPlayerId);
+    }
+
+    private void ToDrinkTime(int drinkerId)
+    {
+        List<int> drinker = new List<int>();
+        drinker.Add(drinkerId);
+        MainGameSceneManager.SpaceEventManager.CurrentSpaceEvent.EndEvent(drinker);
     }
 }

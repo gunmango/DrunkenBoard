@@ -17,7 +17,7 @@ public class CrocodileTooth : NetworkBehaviour
     private bool isClicked { get; set; }
 
     [Networked]
-    private bool isTrap { get; set; }
+    public bool isTrap { get; set; }
 
     [Networked]
     private bool isGameEnded { get; set; }
@@ -41,58 +41,33 @@ public class CrocodileTooth : NetworkBehaviour
 
         if (isTrap)
         {
-            //Debug.Log($"🧨 이빨 {toothIndex}이 트랩으로 설정됨!");
+            Debug.Log($"🧨 이빨 {toothIndex}이 트랩으로 설정됨!");
         }
     }
 
-    // 모든 클라이언트에서 StateAuthority로 클릭 요청
-    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    // 모든 클라이언트로 이빨동기화
+    [Rpc(RpcSources.All, RpcTargets.All)]
     private void RPC_RequestClickTooth(int requesterPlayerId)
     {
-        // Debug.Log($"🔄 이빨 {toothIndex} 클릭 요청 받음 from player {requesterPlayerId}");
-        
-        // StateAuthority에서만 실제 처리
-        if (Object.HasStateAuthority && !isClicked && !isGameEnded)
-        {
-            // 즉시 상태 업데이트
-            isClicked = true;
-            
-            // 모든 클라이언트에게 결과 전송
-            RPC_ExecuteClickTooth(isTrap);
-        }
-    }
-
-    // StateAuthority에서 모든 클라이언트로 결과 전송
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    private void RPC_ExecuteClickTooth(bool wasTrap)
-    {
-        // Debug.Log($"🖱️ 이빨 {toothIndex} 클릭 처리. 트랩인가? {wasTrap}");
-
-        // 상태 확실히 동기화
+        //Debug.Log($"🔄 이빨 {toothIndex} 클릭 요청 받음 from player {requesterPlayerId}");
         isClicked = true;
         
         // 즉시 시각적 업데이트
         UpdateVisuals();
-
-        if (wasTrap)
+        
+        if (isTrap)
         {
-            // Debug.Log($"💥 트랩 이빨 눌림! 게임 종료 처리 시작");
+            Debug.Log($"💥 트랩 이빨 눌림! 게임 종료 처리 시작");
             
             isGameEnded = true;
             UpdateVisuals(); // 게임 종료 상태 즉시 반영
             
             crocodileMouth.CloseMouth();
-          
-            // StateAuthority에서만 게임 종료 처리
-            if (Object.HasStateAuthority)
-            {
-                gameManager.EndGame();
-            }
+            gameManager.EndGame(requesterPlayerId);
         }
     }
-
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
-    public void RPC_EndGame()
+    
+    public void EndGame()
     {
         isGameEnded = true;
         UpdateVisuals();
@@ -106,7 +81,6 @@ public class CrocodileTooth : NetworkBehaviour
         if (isGameEnded)
         {
             isClicked = false;
-            isTrap = false;
             isGameEnded = false;
             spriteRenderer.sprite = normalSprite;
             gameObject.SetActive(false);

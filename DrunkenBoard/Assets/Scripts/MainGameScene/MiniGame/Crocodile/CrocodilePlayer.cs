@@ -29,7 +29,7 @@ public class CrocodilePlayer : ATurnPlayer
     {
         clicked = false;
 
-        Debug.Log($"🎯 플레이어 {Uuid} 턴 시작");
+        //Debug.Log($"🎯 플레이어 {Uuid} 턴 시작");
         WebCamStartBlinking_RPC();
 
         // ✅ 이빨 이벤트 구독
@@ -37,6 +37,7 @@ public class CrocodilePlayer : ATurnPlayer
 
         // ✅ 타이머 시작
         _timer.ActOnEndTimer += OnTurnTimeout;
+        _timer.gameObject.SetActive(true);
         _timer.ShowTimer();
         _timer.StartCountDown_RPC(SpaceEventConstants.CrocodileTurnTime);
 
@@ -162,7 +163,6 @@ public class CrocodilePlayer : ATurnPlayer
     // ✅ 게임 종료 시 정리
     public void Cleanup()
     {
-        WebCamStopBlinking_RPC();
         UnsubscribeToothEvents();
         if (_timer != null)
         {
