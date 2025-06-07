@@ -125,7 +125,7 @@ public class CrocodilePlayer : ATurnPlayer
             int randomIndex = Random.Range(0, availableTeeth.Count);
             CrocodileTooth randomTooth = availableTeeth[randomIndex];
             
-            Debug.Log($"🎲 자동 선택된 이빨: {randomTooth.toothIndex}");
+            //Debug.Log($"🎲 자동 선택된 이빨: {randomTooth.toothIndex}");
             
             // 자동 클릭 처리
             randomTooth.ProcessClick();
@@ -162,7 +162,6 @@ public class CrocodilePlayer : ATurnPlayer
     // ✅ 게임 종료 시 정리
     public void Cleanup()
     {
-        Debug.Log("clean Up: " + Uuid);
         WebCamStopBlinking_RPC();
         UnsubscribeToothEvents();
         if (_timer != null)

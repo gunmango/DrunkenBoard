@@ -140,7 +140,6 @@ public class WebCamManager : SimulationBehaviour
                 return;
             }
         }
-        Debug.Log("unit not found: " + uuid);
     }
     
     #region 위치옮기기

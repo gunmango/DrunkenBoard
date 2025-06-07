@@ -23,28 +23,12 @@ public abstract class ATurnPlayer : NetworkBehaviour
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     protected void WebCamStartBlinking_RPC()
     {
-        if (this is CrocodilePlayer)
-        {
-            Debug.Log("Crocodile Start Blink: " + Uuid);
-        }
-        else
-        {
-            Debug.Log("Board Start Blink: " + Uuid);
-        }
         MainGameSceneManager.WebCamManager.StartBlinkingBoundary(Uuid);
     }
     
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     protected void WebCamStopBlinking_RPC()
     {
-        if (this is CrocodilePlayer)
-        {
-            Debug.Log("Crocodile Stop Blink: " + Uuid);
-        }
-        else
-        {
-            Debug.Log("Board Stop Blink: " + Uuid);
-        }
         MainGameSceneManager.WebCamManager.StopBlinkingBoundary(Uuid);
     }
 }
