@@ -47,6 +47,7 @@ public class WebCamTweener : MonoBehaviour
     {
         if (_blinkSequence != null)
         {
+            Debug.Log("StopBlinking: " + gameObject);
             _blinkSequence.Kill();       // 시퀀스 중단
             boundary.SetActive(true);    // 항상 켜진 상태로 복원
         }
@@ -55,6 +56,14 @@ public class WebCamTweener : MonoBehaviour
     //태두리 안깜빡이기
     public void StartBlinking()
     {
+        if (_blinkSequence.IsActive())
+        {
+            Debug.Log("Blinking Already Active");
+            _blinkSequence.Kill();       // 시퀀스 중단
+            _blinkSequence = null;
+        }
+        
+        Debug.Log("StartBlinking: " + gameObject);
         _blinkSequence = DOTween.Sequence()
             .AppendCallback(() => boundary.SetActive(false))
             .AppendInterval(_offDuration)  // 꺼진 상태 유지
