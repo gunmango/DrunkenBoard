@@ -137,9 +137,10 @@ public class WebCamManager : SimulationBehaviour
             if (_webCamUnits[i].Uuid == uuid)
             {
                 _webCamUnits[i].Tweener.StopBlinking();
-                break;
+                return;
             }
         }
+        Debug.Log("unit not found: " + uuid);
     }
     
     #region 위치옮기기
