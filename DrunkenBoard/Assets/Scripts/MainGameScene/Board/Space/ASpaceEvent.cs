@@ -1,5 +1,5 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public abstract class ASpaceEvent : MonoBehaviour
 {
@@ -33,5 +33,35 @@ public abstract class ASpaceEvent : MonoBehaviour
         };
         
         MainGameSceneManager.Instance.OpenSpaceEventReadyPopup(data);
+    }
+    
+    /// <summary>
+    /// 마시는타임 팝업열기
+    /// </summary>
+    /// <param name="drinkerUuids">마실사람 id</param>
+    public void EndEvent(List<int> drinkerUuids)
+    {
+        DrinkTimePopupData data = new DrinkTimePopupData();
+        data.OpenerUuid = _enteredPlayerUuid;
+        
+        List<string>drinkerNames = new List<string>();
+        
+        for (int i = 0; i < drinkerUuids.Count; i++)
+        {
+            drinkerNames.Add(PlayerManager.Instance.GetPlayerName(drinkerUuids[i]));
+            MainGameSceneManager.WebCamManager.StartBlinkingBoundary(drinkerUuids[i]);
+        }
+        
+        data.DrinkerNames = drinkerNames;
+        data.ClosePopupAction = () =>
+        {
+            for (int i = 0; i < drinkerUuids.Count; i++)
+            {
+                MainGameSceneManager.WebCamManager.StopBlinkingBoundary(drinkerUuids[i]);
+            }
+            MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
+        };
+        
+        MainGameSceneManager.Instance.OpenDrinkTimePopup(data);
     }
 }

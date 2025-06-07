@@ -10,6 +10,7 @@ public class MainGameStateManager : NetworkBehaviour
     public Action ActOnStartGame { get; set; } //준비에서 첫시작
     public Action ActOnBoard { get; set; } //보드판
     public Action ActOnSpaceEvent { get; set; } //칸이벤트
+    public Action ActOnDrinkTime { get; set; }
     public bool IsSpawned { get; private set; } = false;
 
     public override void Spawned()
@@ -41,6 +42,12 @@ public class MainGameStateManager : NetworkBehaviour
         if (CurrentState == EMainGameState.Board)
         {
             ActOnBoard?.Invoke();
+            return;
+        }
+
+        if (CurrentState == EMainGameState.DrinkTime)
+        {
+            ActOnDrinkTime?.Invoke();
             return;
         }
         

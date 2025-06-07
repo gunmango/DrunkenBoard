@@ -20,7 +20,6 @@ public class EventReadyPopup : NetworkBehaviour, IBasePopup
         updater.StartButton.onClick.AddListener(ClosePopup_RPC);
         updater.Animator.ActOnEndOpen = ()=> updater.StartButton.gameObject.SetActive(_isStartButtonActive);
         updater.Animator.ActOnEndClose = ()=> updater.gameObject.SetActive(false);
-        ;
     }
 
     public void Open(PopupDataBase data = null)

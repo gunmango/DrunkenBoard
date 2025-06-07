@@ -66,6 +66,18 @@ public class PlayerManager : NetworkBehaviour
         
         return 0;
     }
+
+    public string GetPlayerName(int uuid)
+    {
+        foreach (var player in Players)
+        {
+            if (player.Uuid == uuid)
+                return player.PlayerName;
+        }
+        
+        Debug.LogError("Player not found");
+        return string.Empty;
+    }
     
     private void OnPlayerLeft(NetworkRunner arg1, PlayerRef arg2)
     {

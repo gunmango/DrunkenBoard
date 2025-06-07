@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpaceEventManager : NetworkBehaviour
 {
+    public ASpaceEvent CurrentSpaceEvent { get; private set; }
+    
     public List<ASpaceEvent> SpaceEvents;
     
     public void PlayEvent(ESpaceEventType eventType, int enteredPlayerUuid)
@@ -25,6 +27,7 @@ public class SpaceEventManager : NetworkBehaviour
             return;
         }
         
+        CurrentSpaceEvent = spaceEvent;
         spaceEvent.ReadyEvent(enteredPlayerUuid);
     }
 }

@@ -21,6 +21,13 @@ public class WebCamTweener : MonoBehaviour
 
     public void MoveTween(Vector2 anchoredPosition, Action onComplete = null)
     {
+        //이미 그 자리면
+        if (rectTransform.anchoredPosition == anchoredPosition)
+        {
+            onComplete?.Invoke();
+            return;
+        }
+        
         rectTransform.DOAnchorPos(anchoredPosition, _moveDuration).SetEase(Ease.InOutQuad).OnComplete(() =>
         {
             onComplete?.Invoke();

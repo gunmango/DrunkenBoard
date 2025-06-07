@@ -24,6 +24,9 @@ public class MainGameSceneManager : ASceneManager<MainGameSceneManager>
     [SerializeField] private EventReadyPopup eventReadyPopup;
     public static EventReadyPopup EventReadyPopup => Instance.eventReadyPopup;
     
+    [SerializeField] private DrinkTimePopup drinkTimePopup;
+    public static DrinkTimePopup DrinkTimePopup => Instance.drinkTimePopup;
+    
     protected void Start()
     {
         webCamManager.Initialize();
@@ -33,5 +36,11 @@ public class MainGameSceneManager : ASceneManager<MainGameSceneManager>
     public void OpenSpaceEventReadyPopup(EventReadyPopupData popupData)
     {
         GameManager.PopupManager.OpenPopup(EventReadyPopup, popupData);
+    }
+
+    public void OpenDrinkTimePopup(DrinkTimePopupData popupData)
+    {
+        GameStateManager.ChangeState_RPC(EMainGameState.DrinkTime);
+        GameManager.PopupManager.OpenPopup(DrinkTimePopup, popupData);
     }
 }
