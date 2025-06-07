@@ -25,6 +25,7 @@ public class WebCamManager : SimulationBehaviour
 
         MainGameSceneManager.GameStateManager.ActOnSpaceEvent += MoveCamsToGameView;
         MainGameSceneManager.GameStateManager.ActOnBoard += MoveCamsToBoardView;
+        MainGameSceneManager.GameStateManager.ActOnDrinkTime += MoveCamsToGameView;
     }
 
     public Vector3 GetWebCamUnitAnchoredPosOrZero(int uuid)

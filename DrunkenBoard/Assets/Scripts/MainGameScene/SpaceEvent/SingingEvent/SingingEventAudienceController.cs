@@ -7,7 +7,7 @@ public class SingingEventAudienceController : NetworkBehaviour
     [Networked, Capacity(8)] public NetworkLinkedList<SingingEventAudience> Audiences => default;
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-    public void Initialize_RPC()
+    public void ClearAudiences_RPC()
     {
         Audiences.Clear();
     }

@@ -71,8 +71,13 @@ public class SingingEventProcessor : SimulationBehaviour
 
         if (GameManager.FusionSession.Runner.IsSharedModeMasterClient)
         {
-            audienceController.Initialize_RPC();
-            MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
+            audienceController.ClearAudiences_RPC();
         }
+
+        
+        List<int> drinker = new List<int>();
+        if(updater.VoteGauge.IsBlueWinning)
+            drinker.Add(_singerUuid);
+        MainGameSceneManager.SpaceEventManager.CurrentSpaceEvent.EndEvent(drinker);
     }
 }

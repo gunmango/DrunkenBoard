@@ -13,7 +13,8 @@ public class VoteGauge : NetworkBehaviour
     
     private Tween _redFillTween;
     private Tween _blueFillTween;
-
+    public bool IsBlueWinning => BlueCount > RedCount;
+    
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void AddRedCount_RPC(int redCount)
     {
