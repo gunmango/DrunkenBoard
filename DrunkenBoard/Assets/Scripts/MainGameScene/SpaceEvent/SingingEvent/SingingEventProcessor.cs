@@ -76,7 +76,7 @@ public class SingingEventProcessor : SimulationBehaviour
 
         
         List<int> drinker = new List<int>();
-        if(updater.VoteGauge.IsBlueWinning)
+        if(updater.VoteGauge.IsBlueWinning == false)
             drinker.Add(_singerUuid);
         MainGameSceneManager.SpaceEventManager.CurrentSpaceEvent.EndEvent(drinker);
     }

@@ -11,7 +11,6 @@ public class CrocodileEvent : ASpaceEvent
     }
     protected override void PlayEvent()
     {
-        Debug.Log("CrocodileEvent");
         crocodile.SetActive(true);
         crocodileGameManager.SetPlayerAndStart();
         MainGameSceneManager.GameStateManager.ActOnBoard += OnEndEvent;
@@ -20,7 +19,6 @@ public class CrocodileEvent : ASpaceEvent
     private void OnEndEvent()
     {
         MainGameSceneManager.GameStateManager.ActOnBoard -= OnEndEvent;
-        Debug.Log("CrocodileEndEvent");
         crocodile.SetActive(false);
     }
 }
