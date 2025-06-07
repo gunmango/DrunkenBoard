@@ -21,6 +21,8 @@ public class CrocodilePlayer : ATurnPlayer
         allTeeth = teeth;
         gameManager = crocodileGameManager;
         gameManager.OnGameEnded += Cleanup;
+
+        MainGameSceneManager.GameStateManager.ActOnBoard += DespawnPlayer;
     }
 
     protected override IEnumerator TakeTurnCoroutine()
@@ -160,6 +162,7 @@ public class CrocodilePlayer : ATurnPlayer
     // ✅ 게임 종료 시 정리
     public void Cleanup()
     {
+        Debug.Log("clean Up: " + Uuid);
         WebCamStopBlinking_RPC();
         UnsubscribeToothEvents();
         if (_timer != null)
@@ -167,7 +170,12 @@ public class CrocodilePlayer : ATurnPlayer
             _timer.ActOnEndTimer -= OnTurnTimeout;
         }
         gameManager.OnGameEnded -= Cleanup;
+        StopAllCoroutines();
+    }
 
+    private void DespawnPlayer()
+    {
+        MainGameSceneManager.GameStateManager.ActOnBoard -= DespawnPlayer;
         GameManager.FusionSession.Runner.Despawn(Object);
     }
 }
