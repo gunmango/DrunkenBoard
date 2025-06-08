@@ -10,6 +10,8 @@ public abstract class ASpaceEvent : MonoBehaviour
 
     private float _startDuration = 0.5f;  //웹캠이동후 이벤트 시작까지 대기시간
     
+    public int EnteredPlayerUuid => _enteredPlayerUuid;
+    
     /// <summary>
     /// 팝업 닫았을때 자동실행
     /// </summary>

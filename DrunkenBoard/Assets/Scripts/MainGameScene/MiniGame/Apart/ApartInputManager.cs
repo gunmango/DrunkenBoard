@@ -227,28 +227,12 @@ public class ApartInputManager : NetworkBehaviour
             ApartTurnManager.Instance.StartTurn();
         }
     }
-
-    private IEnumerator ShowNumberInputAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        
-        if (Runner.IsSharedModeMasterClient)
-        {
-            RPC_ShowNumberInputUI();
-        }
-    }
-
-    [Rpc(RpcSources.All, RpcTargets.All)]
-    private void RPC_ShowNumberInputUI()
-    {
-        NumberInputField.text = "";
-        InputPanel.SetActive(true);
-    }
+    
 
     // 숫자 입력 버튼 클릭 처리
     private void OnNumberInputClicked()
     {
-        if (!Runner.IsSharedModeMasterClient) return;
+        //if (!Runner.IsSharedModeMasterClient) return;
 
         if (int.TryParse(NumberInputField.text, out int targetFloor))
         {
@@ -266,19 +250,9 @@ public class ApartInputManager : NetworkBehaviour
             Debug.LogError("[ShowNumberInputUIForCurrentPlayer] ❌ ApartPlayerManager가 없음!");
             return;
         }
-    
-        // 현재 턴 플레이어 가져오기
-        ApartPlayer currentPlayer = ApartPlayerManager.Instance.GetCurrentPlayer();
-        if (currentPlayer == null)
-        {
-            Debug.LogError("[ShowNumberInputUIForCurrentPlayer] ❌ 현재 플레이어가 없음!");
-            return;
-        }
-    
-        Debug.Log($"[ShowNumberInputUIForCurrentPlayer] 현재 턴: {currentPlayer.playerName}, 색상: {currentPlayer.PlayerColor}");
-    
-        // 🔥 현재 플레이어의 UUID 가져오기
-        int currentPlayerUuid = GetPlayerUuidFromApartPlayer(currentPlayer);
+        
+        int currentPlayerUuid = MainGameSceneManager.SpaceEventManager.CurrentSpaceEvent.EnteredPlayerUuid;
+        
         if (currentPlayerUuid < 0)
         {
             Debug.LogError("[ShowNumberInputUIForCurrentPlayer] ❌ 현재 플레이어 UUID를 찾을 수 없음!");
