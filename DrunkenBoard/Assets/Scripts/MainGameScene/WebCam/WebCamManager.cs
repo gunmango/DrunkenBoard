@@ -118,6 +118,21 @@ public class WebCamManager : SimulationBehaviour
         }
     }
 
+    public void RaiseDrinkCount(int uuid)
+    {
+        foreach (WebCamUnit webCamUnit in _webCamUnits)
+        {
+            if (webCamUnit.Uuid == uuid)
+            {
+                webCamUnit.WebCamSocket.IncreaseDrinkCount();
+                break;
+            }
+        }
+    }
+    
+    
+    #region 깜빡이기
+
     //rpc아님, 각 클라 적용하는 함수
     public void StartBlinkingBoundary(int uuid)
     {
@@ -143,6 +158,8 @@ public class WebCamManager : SimulationBehaviour
             }
         }
     }
+    
+    #endregion
     
     #region 위치옮기기
 

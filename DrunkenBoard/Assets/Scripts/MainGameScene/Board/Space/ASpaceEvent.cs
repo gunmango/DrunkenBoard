@@ -60,6 +60,7 @@ public abstract class ASpaceEvent : MonoBehaviour
             for (int i = 0; i < drinkerUuids.Count; i++)
             {
                 MainGameSceneManager.WebCamManager.StopBlinkingBoundary(drinkerUuids[i]);
+                MainGameSceneManager.WebCamManager.RaiseDrinkCount(drinkerUuids[i]);
             }
             MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
         };
