@@ -424,7 +424,7 @@ public class ApartGameManager : NetworkBehaviour
 
         Transform targetFloor = spawnedFloors[index].transform;
         
-        EPlayerColor playerColor = CompletedFloorSequence[floorNumber % CompletedSequenceLength];
+        EPlayerColor playerColor = CompletedFloorSequence[(floorNumber - 1) % CompletedSequenceLength];
         Debug.Log($"color: {playerColor}, floor: {floorNumber}, total: {CompletedSequenceLength}");
         StartCoroutine(MovetoHighlight(targetFloor, playerColor));
     }
@@ -514,12 +514,19 @@ public class ApartGameManager : NetworkBehaviour
         // 🔥 마스터에서도 로컬 초기화
         ResetManager();
 
+        RPC_ToDrinkTime(playerColor);
+    }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_ToDrinkTime(EPlayerColor playerColor)
+    {
         // 게임 상태 변경
         List<int> drinker = new List<int>();
         int uuid = PlayerManager.Instance.GetPlayerId(playerColor);
         drinker.Add(uuid);
         MainGameSceneManager.SpaceEventManager.CurrentSpaceEvent.EndEvent(drinker);
     }
+    
     // 🔧 추가: 모든 매니저 초기화 RPC
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     private void RPC_ResetAllManagers()

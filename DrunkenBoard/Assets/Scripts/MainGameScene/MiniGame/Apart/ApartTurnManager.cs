@@ -111,9 +111,13 @@ public class ApartTurnManager : NetworkBehaviour
         // NetworkTimer 시작 (모든 클라이언트 동기화)
         if (networkTimer != null)
         {
+            Debug.Log("SetTimer");
+            networkTimer.BroadCastShowTimer_RPC();
             networkTimer.ActOnEndTimer = OnTimerEnd;
             networkTimer.StartCountDown_RPC(turnTimeLimit);
+            return;
         }
+        Debug.Log("Timer is null");
     }
 
     private void InitializePlayerSpaceCounts()
@@ -204,6 +208,7 @@ public class ApartTurnManager : NetworkBehaviour
         // NetworkTimer 정지
         if (networkTimer != null)
         {
+            networkTimer.BroadCastHideTimer_RPC();
             networkTimer.StopCountDown_RPC();
         }
 
@@ -283,6 +288,7 @@ public class ApartTurnManager : NetworkBehaviour
 
         if (networkTimer != null)
         {
+            networkTimer.BroadCastHideTimer_RPC();
             networkTimer.StopCountDown_RPC();
         }
 
@@ -316,6 +322,7 @@ public class ApartTurnManager : NetworkBehaviour
             networkTimer.ActOnEndTimer = null;
         
             // 타이머 정지
+            networkTimer.BroadCastHideTimer_RPC();
             networkTimer.StopCountDown_RPC();
         
             // 강제 리셋 (혹시 내부 상태가 남아있을 경우)

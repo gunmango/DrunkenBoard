@@ -74,7 +74,8 @@ public class WebCamManager : SimulationBehaviour
     {
         yield return new WaitUntil(()=> MainGameSceneManager.GameStateManager.IsSpawned);
         yield return new WaitUntil(()=> MainGameSceneManager.GameStateManager.CurrentState == EMainGameState.Board);
-        
+        yield return new WaitUntil(() => PlayerManager.Instance.Object.IsValid);
+
         CreateUnit(runner, playerRef);
     }
 
