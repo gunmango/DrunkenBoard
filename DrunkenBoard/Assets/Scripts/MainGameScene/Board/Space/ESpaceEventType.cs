@@ -6,5 +6,6 @@ public enum ESpaceEventType
     CrocodileMiniGame,
     ApartMiniGame,
     SingingEvent,
+    ConfessionEvent,
     Demo,
 }

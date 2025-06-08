@@ -110,7 +110,7 @@ public class CrocodilePlayer : ATurnPlayer
     {
         if (clicked) return;
 
-        Debug.Log($"⏰ 플레이어 {Uuid} 타임아웃 - 자동 클릭 수행");
+        //Debug.Log($"⏰ 플레이어 {Uuid} 타임아웃 - 자동 클릭 수행");
 
         // 클릭되지 않은 이빨 찾기
         List<CrocodileTooth> availableTeeth = new List<CrocodileTooth>();
