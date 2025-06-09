@@ -74,7 +74,8 @@ public class WebCamManager : SimulationBehaviour
     {
         yield return new WaitUntil(()=> MainGameSceneManager.GameStateManager.IsSpawned);
         yield return new WaitUntil(()=> MainGameSceneManager.GameStateManager.CurrentState == EMainGameState.Board);
-        
+        yield return new WaitUntil(() => PlayerManager.Instance.Object.IsValid);
+
         CreateUnit(runner, playerRef);
     }
 
@@ -117,6 +118,21 @@ public class WebCamManager : SimulationBehaviour
         }
     }
 
+    public void RaiseDrinkCount(int uuid)
+    {
+        foreach (WebCamUnit webCamUnit in _webCamUnits)
+        {
+            if (webCamUnit.Uuid == uuid)
+            {
+                webCamUnit.WebCamSocket.IncreaseDrinkCount();
+                break;
+            }
+        }
+    }
+    
+    
+    #region 깜빡이기
+
     //rpc아님, 각 클라 적용하는 함수
     public void StartBlinkingBoundary(int uuid)
     {
@@ -142,6 +158,8 @@ public class WebCamManager : SimulationBehaviour
             }
         }
     }
+    
+    #endregion
     
     #region 위치옮기기
 

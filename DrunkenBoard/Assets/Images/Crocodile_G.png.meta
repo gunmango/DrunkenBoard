@@ -1250,7 +1250,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crocodile_G_136
+      name: Bottle
       rect:
         serializedVersion: 2
         x: 1792
@@ -2586,6 +2586,7 @@ TextureImporter:
       1: 1825687151
       Apart: -394656667
       Apart_Window: -240634827
+      Bottle: -1911439605
       Colon: -950672727
       Crocodile_1: -942150936
       Crocodile_2: -1187487534
@@ -2602,7 +2603,6 @@ TextureImporter:
       Crocodile_G_128: -1119578298
       Crocodile_G_129: 71535215
       Crocodile_G_13: -1030500124
-      Crocodile_G_136: -1911439605
       Crocodile_G_137: 106289690
       Crocodile_G_138: 2100978068
       Crocodile_G_139: -315437056

@@ -788,6 +788,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 741799960477293421}
     m_Modifications:
+    - target: {fileID: 3613775660596003709, guid: bde5fdd2bdee3cb4bb4e665d57e172d8, type: 3}
+      propertyPath: Flags
+      value: 262145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3613775660596003709, guid: bde5fdd2bdee3cb4bb4e665d57e172d8, type: 3}
+      propertyPath: SortKey
+      value: 4029705172
+      objectReference: {fileID: 0}
     - target: {fileID: 7478529470609390554, guid: bde5fdd2bdee3cb4bb4e665d57e172d8, type: 3}
       propertyPath: m_Name
       value: Bar
@@ -984,6 +992,10 @@ PrefabInstance:
     - target: {fileID: 5672713168187097957, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603890606019962624, guid: 520a5b24646f6fd4f8dc5e34023d492d, type: 3}
+      propertyPath: SortKey
+      value: 3658996558
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

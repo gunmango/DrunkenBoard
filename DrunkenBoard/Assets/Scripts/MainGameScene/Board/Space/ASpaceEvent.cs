@@ -10,6 +10,8 @@ public abstract class ASpaceEvent : MonoBehaviour
 
     private float _startDuration = 0.5f;  //웹캠이동후 이벤트 시작까지 대기시간
     
+    public int EnteredPlayerUuid => _enteredPlayerUuid;
+    
     /// <summary>
     /// 팝업 닫았을때 자동실행
     /// </summary>
@@ -58,6 +60,7 @@ public abstract class ASpaceEvent : MonoBehaviour
             for (int i = 0; i < drinkerUuids.Count; i++)
             {
                 MainGameSceneManager.WebCamManager.StopBlinkingBoundary(drinkerUuids[i]);
+                MainGameSceneManager.WebCamManager.RaiseDrinkCount(drinkerUuids[i]);
             }
             MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
         };

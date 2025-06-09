@@ -77,4 +77,18 @@ public class NetworkTimer : NetworkBehaviour
     {
         background.SetActive(false);
     }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void BroadCastShowTimer_RPC()
+    {
+        gameObject.SetActive(true);
+        ShowTimer();
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.All)]
+    public void BroadCastHideTimer_RPC()
+    {
+        gameObject.SetActive(false);
+        HideTimer();
+    }
 }

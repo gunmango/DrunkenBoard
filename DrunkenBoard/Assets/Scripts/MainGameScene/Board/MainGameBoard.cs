@@ -6,7 +6,7 @@ public class MainGameBoard : MonoBehaviour
 {
     [SerializeField] private SpriteRendererTweener spriteRendererTweener;
     [SerializeField] private List<Space> spaces;
-    
+    [SerializeField] private GameBoardNetworkHelper networkHelper;
     public Vector2 GetSpaceSpotPosition(int spaceIndex, int spotIndex)
     {
         return spaces[spaceIndex].GetPieceSpotPos(spotIndex);
@@ -29,17 +29,17 @@ public class MainGameBoard : MonoBehaviour
     {
         MainGameSceneManager.GameStateManager.ActOnSpaceEvent += FadeOutBoard;
         MainGameSceneManager.GameStateManager.ActOnBoard += FadeInBoard;
-        InitializeSpaceEvents();
     }
-
-    private void InitializeSpaceEvents()
+    
+    //rpc로 각각받은 이벤트 세팅
+    public void SetEvents(List<int> eventIndexes)
     {
         List<ASpaceEvent> spaceEvents = MainGameSceneManager.SpaceEventManager.SpaceEvents;
 
-        foreach (var space in spaces)
+        for (int i = 0; i < spaces.Count; i++)
         {
-            ASpaceEvent randomEvent = spaceEvents[Random.Range(0, spaceEvents.Count)];
-            space.SetEvent(randomEvent.EventType, randomEvent.EventName);
+            ASpaceEvent randomEvent = spaceEvents[eventIndexes[i]];
+            spaces[i].SetEvent(randomEvent.EventType, randomEvent.EventName);
         }
     }
     

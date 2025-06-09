@@ -423,10 +423,13 @@ public class ApartGameManager : NetworkBehaviour
         if (index < 0 || index >= spawnedFloors.Count) return;
 
         Transform targetFloor = spawnedFloors[index].transform;
-        StartCoroutine(MovetoHighlight(targetFloor));
+        
+        EPlayerColor playerColor = CompletedFloorSequence[(floorNumber - 1) % CompletedSequenceLength];
+        Debug.Log($"color: {playerColor}, floor: {floorNumber}, total: {CompletedSequenceLength}");
+        StartCoroutine(MovetoHighlight(targetFloor, playerColor));
     }
     
-    private IEnumerator MovetoHighlight(Transform targetFloor)
+    private IEnumerator MovetoHighlight(Transform targetFloor, EPlayerColor playerColor)
     {  
         yield return StartCoroutine(MoveApartToFloorSmooth(targetFloor));
         yield return StartCoroutine(HighlightAnima(targetFloor));
@@ -434,7 +437,7 @@ public class ApartGameManager : NetworkBehaviour
         
         if (Runner.IsSharedModeMasterClient)
         {
-            EndGame();
+            EndGame(playerColor);
         }
     }
     
@@ -497,7 +500,7 @@ public class ApartGameManager : NetworkBehaviour
     }
     
     // 🔧 수정: EndGame() - RPC로 모든 클라이언트 초기화
-    private void EndGame()
+    private void EndGame(EPlayerColor playerColor)
     {
         if (!Runner.IsSharedModeMasterClient) return;
 
@@ -511,9 +514,19 @@ public class ApartGameManager : NetworkBehaviour
         // 🔥 마스터에서도 로컬 초기화
         ResetManager();
 
-        // 게임 상태 변경
-        MainGameSceneManager.GameStateManager.ChangeState_RPC(EMainGameState.Board);
+        RPC_ToDrinkTime(playerColor);
     }
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
+    private void RPC_ToDrinkTime(EPlayerColor playerColor)
+    {
+        // 게임 상태 변경
+        List<int> drinker = new List<int>();
+        int uuid = PlayerManager.Instance.GetPlayerId(playerColor);
+        drinker.Add(uuid);
+        MainGameSceneManager.SpaceEventManager.CurrentSpaceEvent.EndEvent(drinker);
+    }
+    
     // 🔧 추가: 모든 매니저 초기화 RPC
     [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
     private void RPC_ResetAllManagers()

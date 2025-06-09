@@ -6,10 +6,12 @@ public class WebCamUnit : MonoBehaviour
 {
     [SerializeField] private WebCamUpdater webCamUpdater;
     [SerializeField] private ATrackController clientTrackController;
+    [SerializeField] private WebCamSocket webCamSocket;
     [FormerlySerializedAs("mover")] [SerializeField] private WebCamTweener tweener;
     public int Uuid { get; private set; }
     public int Index { get; private set; }
     public WebCamTweener Tweener => tweener;
+    public WebCamSocket WebCamSocket => webCamSocket;
     
     public void SetUuid(int uuid)
     {
